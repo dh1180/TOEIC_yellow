@@ -13,3 +13,14 @@ jobs:
           node-version: '24'
       - name: Validate vocabulary, deck mapping and spaced repetition
         run: npm test
+  web-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Expo and React Native dependencies
+        run: npm install --no-audit --no-fund
+      - name: Export web bundle
+        run: npx expo export --platform web

@@ -97,7 +97,7 @@ async function downloadBackup(data){
  }
  const [{File,Paths},Sharing]=await Promise.all([import('expo-file-system'),import('expo-sharing')]);
  if(!await Sharing.isAvailableAsync())throw Error('기기에서 파일 공유를 사용할 수 없습니다.');
- const file=new File(Paths.cache,name);file.write(text);await Sharing.shareAsync(file.uri,{mimeType:'application/json',UTI:'public.json'});
+ const file=new File(Paths.cache,name);await file.write(text);await Sharing.shareAsync(file.uri,{mimeType:'application/json',UTI:'public.json'});
 }
 async function selectBackup(){
  if(Platform.OS==='web')return new Promise((resolve,reject)=>{

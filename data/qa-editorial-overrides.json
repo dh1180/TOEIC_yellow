@@ -12667,5 +12667,512 @@
         "reviewReason": "AI-authored English context and full Korean sentence translation, inspected for word sense; independent human review outstanding"
       }
     ]
+  },
+  "1766527461398": {
+    "word": "desperate",
+    "examples": [
+      {
+        "en": "With only one day left before the deadline, the team made a desperate attempt to finish the proposal.",
+        "ko": "마감일까지 하루밖에 남지 않아 팀은 제안서를 끝내기 위해 필사적으로 노력했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461399": {
+    "word": "doubtful",
+    "examples": [
+      {
+        "en": "The accountant is doubtful that the revised budget will cover all expenses.",
+        "ko": "회계 담당자는 수정된 예산으로 모든 비용을 충당할 수 있을지 의심하고 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461400": {
+    "word": "downfall",
+    "examples": [
+      {
+        "en": "Poor financial management contributed to the company's downfall.",
+        "ko": "부실한 재무 관리가 그 회사의 몰락에 영향을 미쳤습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461401": {
+    "word": "enhancement",
+    "examples": [
+      {
+        "en": "The software update includes several security enhancements.",
+        "ko": "이번 소프트웨어 업데이트에는 몇 가지 보안 개선 사항이 포함되어 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461403": {
+    "word": "fortune",
+    "examples": [
+      {
+        "en": "She made a fortune by investing in renewable energy companies.",
+        "ko": "그녀는 재생에너지 기업에 투자해 큰돈을 벌었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461404": {
+    "word": "gross income",
+    "examples": [
+      {
+        "en": "Your gross income is the amount you earn before taxes and other deductions.",
+        "ko": "총소득은 세금과 기타 공제액을 빼기 전의 수입입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461405": {
+    "word": "impossible",
+    "examples": [
+      {
+        "en": "It is impossible to complete the installation without the required permit.",
+        "ko": "필요한 허가 없이 설치 작업을 완료하는 것은 불가능합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461406": {
+    "word": "linguistics",
+    "examples": [
+      {
+        "en": "The university offers a graduate program in linguistics.",
+        "ko": "그 대학은 언어학 대학원 과정을 운영합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461407": {
+    "word": "loosely",
+    "examples": [
+      {
+        "en": "The initial estimate is loosely based on last year's sales figures.",
+        "ko": "초기 추정치는 작년 매출 수치를 대략적으로 바탕으로 했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461408": {
+    "word": "make up for",
+    "examples": [
+      {
+        "en": "The supplier offered a discount to make up for the late delivery.",
+        "ko": "공급업체는 배송 지연을 보상하기 위해 할인을 제안했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461409": {
+    "word": "moderate",
+    "examples": [
+      {
+        "en": "The manager recommended a moderate increase in the advertising budget.",
+        "ko": "관리자는 광고 예산을 적당한 수준으로 증액할 것을 권고했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461411": {
+    "word": "possess",
+    "examples": [
+      {
+        "en": "Applicants must possess a valid driver's license.",
+        "ko": "지원자는 유효한 운전면허증을 소지해야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461412": {
+    "word": "profitable",
+    "examples": [
+      {
+        "en": "The new branch became profitable within its first year.",
+        "ko": "새 지점은 개점 첫해에 수익을 내기 시작했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461417": {
+    "word": "split",
+    "examples": [
+      {
+        "en": "We will split the cost of the conference venue between the two departments.",
+        "ko": "두 부서가 회의 장소 비용을 나누어 부담할 것입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461418": {
+    "word": "submission",
+    "examples": [
+      {
+        "en": "The deadline for submission of the application is Friday at 5 p.m.",
+        "ko": "지원서 제출 마감은 금요일 오후 5시입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461420": {
+    "word": "surrounding",
+    "examples": [
+      {
+        "en": "Residents in the surrounding neighborhoods received advance notice of the construction work.",
+        "ko": "인근 지역 주민들은 공사에 관한 사전 안내를 받았습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461421": {
+    "word": "to that end",
+    "examples": [
+      {
+        "en": "We aim to reduce delivery times; to that end, we are opening a regional warehouse.",
+        "ko": "배송 시간을 줄이는 것이 목표이며, 이를 위해 지역 창고를 열고 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461425": {
+    "word": "additional fee",
+    "examples": [
+      {
+        "en": "An additional fee applies to orders delivered outside the city.",
+        "ko": "시외로 배송되는 주문에는 추가 요금이 부과됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461427": {
+    "word": "commercial value",
+    "examples": [
+      {
+        "en": "The research team is evaluating the commercial value of the new material.",
+        "ko": "연구팀은 신소재의 상업적 가치를 평가하고 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461428": {
+    "word": "dean",
+    "examples": [
+      {
+        "en": "The dean will introduce the new scholarship program at the ceremony.",
+        "ko": "학장이 행사에서 새로운 장학금 제도를 소개할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461429": {
+    "word": "disappointing",
+    "examples": [
+      {
+        "en": "The quarterly sales results were disappointing despite increased advertising spending.",
+        "ko": "광고비를 늘렸음에도 분기 매출 실적은 실망스러웠습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461432": {
+    "word": "file for bankruptcy",
+    "examples": [
+      {
+        "en": "The retailer had to file for bankruptcy after months of declining sales.",
+        "ko": "그 소매업체는 수개월간 매출이 감소한 끝에 파산 신청을 해야 했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461433": {
+    "word": "growth potential",
+    "examples": [
+      {
+        "en": "Investors are interested in the company's long-term growth potential.",
+        "ko": "투자자들은 그 기업의 장기적인 성장 잠재력에 관심을 보입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461434": {
+    "word": "highlight",
+    "examples": [
+      {
+        "en": "The report will highlight the most significant changes in operating costs.",
+        "ko": "보고서는 운영비의 가장 중요한 변화를 강조할 것입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461435": {
+    "word": "long-term stability",
+    "examples": [
+      {
+        "en": "Diversifying suppliers can improve the long-term stability of our operations.",
+        "ko": "공급업체를 다변화하면 운영의 장기적 안정성을 높일 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461436": {
+    "word": "non-profit organization",
+    "examples": [
+      {
+        "en": "The non-profit organization provides free job training to local residents.",
+        "ko": "그 비영리 단체는 지역 주민에게 무료 직업 교육을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461437": {
+    "word": "on the rise",
+    "examples": [
+      {
+        "en": "Demand for electric vehicles is on the rise in several markets.",
+        "ko": "여러 시장에서 전기차 수요가 증가하고 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461438": {
+    "word": "piece by piece",
+    "examples": [
+      {
+        "en": "The technician inspected the damaged equipment piece by piece.",
+        "ko": "기술자는 손상된 장비를 부품 하나하나 꼼꼼히 점검했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461439": {
+    "word": "proportion",
+    "examples": [
+      {
+        "en": "A large proportion of the annual budget is allocated to research.",
+        "ko": "연간 예산의 상당 부분이 연구에 배정됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461441": {
+    "word": "rising cost",
+    "examples": [
+      {
+        "en": "The rising cost of raw materials has reduced the company's profit margin.",
+        "ko": "원자재 비용 상승으로 회사의 이익률이 낮아졌습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461442": {
+    "word": "semester",
+    "examples": [
+      {
+        "en": "Registration for the spring semester begins next Monday.",
+        "ko": "봄 학기 수강 신청은 다음 주 월요일에 시작됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461443": {
+    "word": "timeline",
+    "examples": [
+      {
+        "en": "The project manager shared an updated timeline with the client.",
+        "ko": "프로젝트 관리자가 고객에게 수정된 일정표를 공유했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461445": {
+    "word": "up to",
+    "examples": [
+      {
+        "en": "Customers can save up to 20 percent during the promotion.",
+        "ko": "고객은 행사 기간에 최대 20퍼센트까지 할인받을 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461450": {
+    "word": "bring together",
+    "examples": [
+      {
+        "en": "The conference will bring together researchers from five countries.",
+        "ko": "이번 학회에는 5개국의 연구자들이 모일 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461451": {
+    "word": "certainly",
+    "examples": [
+      {
+        "en": "The shipment will certainly arrive before the store opens.",
+        "ko": "그 배송 물품은 매장이 열리기 전에 분명히 도착할 것입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461452": {
+    "word": "charge for",
+    "examples": [
+      {
+        "en": "The hotel will not charge for breakfast during the promotion.",
+        "ko": "호텔은 행사 기간 동안 조식 요금을 청구하지 않을 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461453": {
+    "word": "cut down",
+    "examples": [
+      {
+        "en": "The company plans to cut down on unnecessary travel expenses.",
+        "ko": "회사는 불필요한 출장비를 줄일 계획입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461454": {
+    "word": "decide on",
+    "examples": [
+      {
+        "en": "The committee will decide on the final design by Friday.",
+        "ko": "위원회는 금요일까지 최종 디자인을 결정할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
+  },
+  "1766527461455": {
+    "word": "flat",
+    "examples": [
+      {
+        "en": "The service charges a flat fee for all domestic deliveries.",
+        "ko": "그 서비스는 모든 국내 배송에 동일한 정액 요금을 부과합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch03",
+        "reviewReason": "AI-authored contextual usage example and full Korean sentence translation; independent human review pending"
+      }
+    ]
   }
 }

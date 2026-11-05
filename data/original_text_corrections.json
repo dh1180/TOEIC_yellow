@@ -94,6 +94,11 @@
       "before": "full time work",
       "after": "full-time work",
       "reason": "Hyphenated compound modifier for common employment term; Anki note ID and wordOriginal preserved."
+    },
+    {
+      "before": "profitable(<->unprofitable)",
+      "after": "profitable",
+      "reason": "The parenthetical antonym annotation is not part of the headword; preserved in wordOriginal."
     }
   ],
   "senseCorrections": [
@@ -135,6 +140,30 @@
       "originalMeaningKo": "태만, 불이행",
       "meaningKo": "채무불이행; 의무 불이행",
       "note": "Loan context in the new example specifically means a debt/payment default."
+    },
+    {
+      "word": "charge for",
+      "originalMeaningKo": "~에 대한 대금",
+      "meaningKo": "요금을 청구하다; ~에 대한 요금",
+      "note": "Corrected the Korean sense for the batch 03 usage sentence; independent human review pending."
+    },
+    {
+      "word": "piece by piece",
+      "originalMeaningKo": "조금씩",
+      "meaningKo": "하나씩, 부분별로; 조금씩",
+      "note": "Corrected the Korean sense for the batch 03 usage sentence; independent human review pending."
+    },
+    {
+      "word": "proportion",
+      "originalMeaningKo": "부분, 몫",
+      "meaningKo": "비율, 부분, 몫",
+      "note": "Corrected the Korean sense for the batch 03 usage sentence; independent human review pending."
+    },
+    {
+      "word": "up to",
+      "originalMeaningKo": "~까지",
+      "meaningKo": "~까지; 최대",
+      "note": "Corrected the Korean sense for the batch 03 usage sentence; independent human review pending."
     }
   ]
 }

@@ -17,6 +17,8 @@ MANIFEST_FILE = ROOT / "src/data/manifest.json"
 OVERRIDES_FILE = ROOT / "data/qa-editorial-overrides.json"
 QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
+    "1766527460527": ("sports tournament", "sport tournament"),
+    "1766527460582": ("over the Internet", "over the lnternet"),
     "1766527458672": ("CEO (chief executive officer)", "CEO(chief executive officer)"),
     "1766527461470": ("chief financial officer (CFO)", "chief financial officer(CEO)"),
     "1766527461936": ("in the distant past", "in the distance past"),
@@ -41,7 +43,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1587:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1696:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -71,6 +73,10 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527460501": ("공예품", "유물, 인공물, 공예품"),
+        "1766527460508": ("꽃꽃이", "꽃꽂이, 꽃꽂이 장식"),
+        "1766527460527": ("운동 경기", "스포츠 대회, 경기 대회"),
+        "1766527460632": ("증명하다", "확인하다, 검증하다; 증명하다"),
         "1766527459736": ("도움의, (음식물) 한 그릇", "(음식의) 한 사람 몫, 한 그릇"),
         "1766527459791": ("떠나다, 출발하다", "(버스·기차 등에서) 내리다; 떠나다, 출발하다"),
         "1766527459462": ("주체, 테마", "주제, 테마"),
@@ -169,7 +175,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=16, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=17, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

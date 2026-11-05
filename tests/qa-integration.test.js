@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],1291);
+  assert.equal(counts['editorial-draft'],1400);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],1885);
-  assert.equal(Object.keys(overrides).length,1587);
+  assert.equal(counts['generated-context'],1776);
+  assert.equal(Object.keys(overrides).length,1696);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -430,4 +430,21 @@ test('batch 13 removes the remaining generated templates from the basic deck', (
     assert.deepEqual(word.examples, overrides[word.id].examples);
     assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
   }
+});
+
+test('batch 14 removes the remaining 800-score DAY 6 and 7 templates', () => {
+  for (const [day, expected] of [[6, 51], [7, 58]]) {
+    const words = data.filter(word => word.category === 'score800' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch14');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.equal(word.examples[0].source, 'editorial-draft');
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const internet = data.find(word => word.id === '1766527460582');
+  assert.equal(internet.word, 'over the Internet');
+  assert.equal(internet.wordOriginal, 'over the lnternet');
 });

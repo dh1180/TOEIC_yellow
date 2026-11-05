@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],970);
+  assert.equal(counts['editorial-draft'],987);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],2206);
-  assert.equal(Object.keys(overrides).length,1266);
+  assert.equal(counts['generated-context'],2189);
+  assert.equal(Object.keys(overrides).length,1283);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -87,7 +87,7 @@ test('batch 01 example corrections preserve target phrases, full translations an
 
 test('batch 02 DAY 1-3 candidates have linked bilingual contexts with explicit draft status',()=>{
   const text=['qa-batch-02-drafts.psv','qa-batch-02-day3.psv']
-    .map(file=>readFileSync(new URL('data/'+file,root),'utf8').trim().split('\n').slice(1))
+    .map(file=>readFileSync(new URL('data/'+file,root),'utf8').trim().split(/\r?\n/).slice(1))
     .flat();
   assert.equal(text.length,229);
   const unique=new Set();
@@ -136,7 +136,7 @@ test('batch 02 nuanced full-time employment and qualification senses are preserv
 });
 
 test('batch 03 preserves 39 new bilingual usage examples, meanings and their provenance',()=>{
- const rows=readFileSync(new URL('data/qa-batch-03-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-03-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,39);
  for(const line of rows){
    const [id,en,ko]=line.split('|'),w=data.find(w=>w.id===id);
@@ -163,7 +163,7 @@ test('batch 03 preserves 39 new bilingual usage examples, meanings and their pro
 });
 
 test('batch 04 replaces all 132 early-day high-risk templates without changing note identities',()=>{
- const rows=readFileSync(new URL('data/qa-batch-04-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-04-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,132);
  const foundIds=new Set();
  const buckets={};
@@ -227,7 +227,7 @@ test('batch 04 corrected headwords and Korean senses retain the original Anki va
 });
 
 test('batch 05: 69 bilingual examples, correct IDs and original correction trail',()=>{
- const rows=readFileSync(new URL('data/qa-batch-05-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-05-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,69);
  const ids=new Set();
  for(const line of rows){
@@ -292,7 +292,7 @@ test('batch 06: 32 reused-source semantic mismatches are replaced, and original 
 });
 
 test('batch 07: all 53 example rewrites are complete bilingual contexts and preserve PR13 crosslink fixes',()=>{
- const records=readFileSync(new URL('data/qa-batch-07-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const records=readFileSync(new URL('data/qa-batch-07-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(records.length,53);
  const ids=new Set();const byDay={};
  for(const record of records){
@@ -356,4 +356,20 @@ test('batch 08 preserves 16 source crosslinks and corrects their Korean glosses 
   assert.equal(correction.humanReviewed,false);
  }
  assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+test('batch 09 replaces the remaining basic DAY 14 templates with bilingual drafts', () => {
+  const day = data.filter(word => word.category === 'basic' && word.day === 14);
+  assert.ok(day.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch09');
+  assert.equal(edited.length, 17);
+  for (const word of edited) {
+    assert.ok(day.includes(word), word.id);
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    const example = word.examples[0];
+    assert.equal(example.source, 'editorial-draft');
+    assert.match(example.en, /[.!?]$/);
+    assert.match(example.ko, /[.!?]$/);
+    assert.doesNotMatch(example.ko, /^핵심 뜻:/);
+  }
 });

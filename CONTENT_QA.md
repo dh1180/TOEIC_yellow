@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **970개**, 원본 예문을 다른 어휘에 재연결한 후보 **296개**, 자동 문맥 초안 **2,206개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **987개**, 원본 예문을 다른 어휘에 재연결한 후보 **296개**, 자동 문맥 초안 **2,189개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -15,7 +15,7 @@
 
 `python3 scripts/audit_content.py --check`는 단어 ID·분류·예문 수·빈칸·출처·검수 단계·검수 대기열 정합성을 검사합니다. 이것은 **문장이 자연스러운지, 단어 뜻과 맞는지, 한국어 뜻이 정확한지**를 확인하는 언어 검수가 아닙니다.
 
-`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 816개와 재연결 후보 328개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
+`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 987개와 재연결 후보 296개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
 
 ### 미완료 검증
 
@@ -119,3 +119,9 @@ npm test
 - 각 변경의 ID·원래 뜻·새 뜻·예문 원본·출처·참고 링크는 `data/qa-batch-08-crosslink-senses.json`과 `data/original_text_corrections.json`에 기록했습니다. [Cambridge supplement](https://dictionary.cambridge.org/dictionary/english/supplement), [developer](https://dictionary.cambridge.org/dictionary/english/developer), [repeat customer](https://dictionary.cambridge.org/dictionary/english/repeat-customer)를 확인했습니다.
 - 원본 예문 1,481개, QA 초안 970개, 기존 프로젝트 작성 391개, 교차 연결 대기 후보 **296개**, 자동 예문 2,206개, 비원본 검수 대기열 3,863개는 그대로입니다.
 - 296개 출처 연결의 **기계적 정합성 검사**는 사람의 언어 감수·저작권 허가를 대체하지 않습니다. 원본 사용 권한, 독립 감수, 기기 시험 및 배포 차단 정책은 계속 유지합니다.
+
+## 추가 QA 배치 09 — 기초 DAY 14 (2026-11-05)
+
+- 기초 DAY 14에 남아 있던 규칙 기반 문장 17개를 문맥별 영어 예문과 한국어 전체 문장 번역으로 교체했습니다. 예를 들어 `span`은 강을 가로지르는 다리, `central`은 항공사 교육의 핵심인 승객 안전, `underwater`는 부두 점검에 쓰이는 수중 카메라를 문맥으로 삼았습니다.
+- 새 예문은 ID별 QA 오버레이에서 `ai-authored-contextual-qa-batch09`로 추적합니다. 학습 카드 5,101개와 원본 Anki 예문 1,481개를 보존했습니다.
+- 자체 작성 초안은 987개이며 규칙 기반 초안은 2,189개입니다. 새 예문은 독립 전문 감수 대기 상태입니다.

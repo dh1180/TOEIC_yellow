@@ -303,6 +303,20 @@
       "originalMeaningKo": "견습으로",
       "meaningKo": "수습 기간 중인; 보호 관찰 중인",
       "note": "Context-sensitive Korean sense correction; independent human language review pending."
+    },
+    {
+      "id": "1766527460864",
+      "word": "designed",
+      "originalMeaningKo": "계획적인, 고의의",
+      "meaningKo": "설계된, 계획된; 의도적인",
+      "note": "Updated Korean sense to distinguish adjectival use from other verb senses; original meaning retained; independent human validation pending."
+    },
+    {
+      "id": "1766527462803",
+      "word": "estimated",
+      "originalMeaningKo": "견적의, 추측의",
+      "meaningKo": "추정된, 예상된; 견적상의",
+      "note": "Updated Korean sense to distinguish adjectival use from other verb senses; original meaning retained; independent human validation pending."
     }
   ]
 }

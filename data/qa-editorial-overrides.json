@@ -210,15 +210,23 @@
     "word": "sheet",
     "examples": [
       {
-        "en": "The car was covered by a sheet before being unveiled at the launch.",
-        "ko": "그 자동차는 출시 행사에서 공개되기 전에 천으로 덮여 있었다.",
-        "source": "provided-crosslink",
-        "sourceWord": "cover",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "Please place one blank sheet of paper in each folder.",
+        "ko": "각 폴더에 빈 종이 한 장씩 넣어 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The car was covered by a sheet before being unveiled at the launch.",
+      "ko": "그 자동차는 출시 행사에서 공개되기 전에 천으로 덮여 있었다.",
+      "source": "provided-crosslink",
+      "sourceWord": "cover",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527458274": {
     "word": "telephone call",
@@ -236,15 +244,23 @@
     "word": "offering",
     "examples": [
       {
-        "en": "The cafeteria retains customers by offering inexpensive, flavorful food.",
-        "ko": "그 식당은 저렴하면서도 맛있는 음식을 제공함으로써 고객을 유지한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "retain",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The company's latest service offering includes online technical support.",
+        "ko": "그 회사의 최신 서비스 상품에는 온라인 기술 지원이 포함되어 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The cafeteria retains customers by offering inexpensive, flavorful food.",
+      "ko": "그 식당은 저렴하면서도 맛있는 음식을 제공함으로써 고객을 유지한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "retain",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527458330": {
     "word": "bookshelf",
@@ -290,15 +306,23 @@
     "word": "paper",
     "examples": [
       {
-        "en": "Wrapping produce in paper helps prolong its freshness.",
-        "ko": "농산물을 종이로 포장해 두면 신선함을 오래 지속시켜 준다.",
-        "source": "provided-crosslink",
-        "sourceWord": "freshness",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The manager asked us to file the signed papers by noon.",
+        "ko": "관리자는 정오까지 서명된 서류를 정리해 보관하라고 요청했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Wrapping produce in paper helps prolong its freshness.",
+      "ko": "농산물을 종이로 포장해 두면 신선함을 오래 지속시켜 준다.",
+      "source": "provided-crosslink",
+      "sourceWord": "freshness",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527458351": {
     "word": "planning",
@@ -642,15 +666,23 @@
     "word": "sales",
     "examples": [
       {
-        "en": "This month's sales outweigh expenditures.",
-        "ko": "이달 매출은 지출보다 훨씬 많다.",
-        "source": "provided-crosslink",
-        "sourceWord": "expenditure",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The sales department will contact customers who requested refunds.",
+        "ko": "영업부는 환불을 요청한 고객들에게 연락할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "This month's sales outweigh expenditures.",
+      "ko": "이달 매출은 지출보다 훨씬 많다.",
+      "source": "provided-crosslink",
+      "sourceWord": "expenditure",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527458559": {
     "word": "strict",
@@ -853,15 +885,23 @@
     "word": "private",
     "examples": [
       {
-        "en": "The private firm merged with a corporate giant.",
-        "ko": "그 사기업은 대기업과 합병했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "merge",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "She asked for a private conversation with her supervisor.",
+        "ko": "그녀는 상사에게 개인적인 대화를 요청했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The private firm merged with a corporate giant.",
+      "ko": "그 사기업은 대기업과 합병했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "merge",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527458695": {
     "word": "situation",
@@ -1865,15 +1905,23 @@
     "word": "fashion",
     "examples": [
       {
-        "en": "The fashion brand's contemporary look appeals to young consumers.",
-        "ko": "그 패션 브랜드의 현대적인 스타일은 젊은 소비자들의 관심을 끈다.",
-        "source": "provided-crosslink",
-        "sourceWord": "contemporary",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The staff organized the inventory in a systematic fashion.",
+        "ko": "직원들은 재고를 체계적인 방식으로 정리했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The fashion brand's contemporary look appeals to young consumers.",
+      "ko": "그 패션 브랜드의 현대적인 스타일은 젊은 소비자들의 관심을 끈다.",
+      "source": "provided-crosslink",
+      "sourceWord": "contemporary",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459251": {
     "word": "instructor",
@@ -1987,15 +2035,23 @@
     "word": "taste",
     "examples": [
       {
-        "en": "The decorator exhibited a sophisticated taste in art.",
-        "ko": "그 실내 장식가는 예술에 대한 세련된 취향을 보였다.",
-        "source": "provided-crosslink",
-        "sourceWord": "sophisticated",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "Guests can taste samples of the new menu at the event.",
+        "ko": "손님들은 행사에서 새로운 메뉴의 시식용 음식을 맛볼 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The decorator exhibited a sophisticated taste in art.",
+      "ko": "그 실내 장식가는 예술에 대한 세련된 취향을 보였다.",
+      "source": "provided-crosslink",
+      "sourceWord": "sophisticated",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459371": {
     "word": "goods",
@@ -2041,15 +2097,23 @@
     "word": "change",
     "examples": [
       {
-        "en": "The manager briefed the staff on the policy change.",
-        "ko": "부장은 직원들에게 방침 변화에 대해 간단히 설명했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "brief",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The cashier counted the change before handing it to the customer.",
+        "ko": "계산원은 고객에게 잔돈을 건네기 전에 금액을 세었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The manager briefed the staff on the policy change.",
+      "ko": "부장은 직원들에게 방침 변화에 대해 간단히 설명했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "brief",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459382": {
     "word": "decrease",
@@ -2323,29 +2387,45 @@
     "word": "debate",
     "examples": [
       {
-        "en": "The outcome of the study was a topic for debate.",
-        "ko": "그 연구 결과는 토론해 볼 만한 주제였다.",
-        "source": "provided-crosslink",
-        "sourceWord": "outcome",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The committee will debate the merits of the new proposal.",
+        "ko": "위원회는 새 제안의 장단점을 토론할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The outcome of the study was a topic for debate.",
+      "ko": "그 연구 결과는 토론해 볼 만한 주제였다.",
+      "source": "provided-crosslink",
+      "sourceWord": "outcome",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459599": {
     "word": "express",
     "examples": [
       {
-        "en": "Contact the supplier to request express delivery.",
-        "ko": "특급 배달을 요청하시려면 공급업체와 연락하세요.",
-        "source": "provided-crosslink",
-        "sourceWord": "contact",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "Employees are encouraged to express their concerns during the meeting.",
+        "ko": "직원들은 회의 중 우려 사항을 표현하도록 권장받습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Contact the supplier to request express delivery.",
+      "ko": "특급 배달을 요청하시려면 공급업체와 연락하세요.",
+      "source": "provided-crosslink",
+      "sourceWord": "contact",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459600": {
     "word": "gathering",
@@ -2415,15 +2495,23 @@
     "word": "group",
     "examples": [
       {
-        "en": "The tour group had a rest before visiting the palace.",
-        "ko": "그 관광 단체는 궁전을 방문하기 전에 휴식을 취했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "rest",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "Please group the invoices by month before filing them.",
+        "ko": "서류를 정리하기 전에 청구서를 월별로 묶어 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The tour group had a rest before visiting the palace.",
+      "ko": "그 관광 단체는 궁전을 방문하기 전에 휴식을 취했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "rest",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459659": {
     "word": "lounge",
@@ -2915,15 +3003,23 @@
     "word": "floor",
     "examples": [
       {
-        "en": "The top floor has been unoccupied for four months.",
-        "ko": "꼭대기 층은 넉 달간 비어 있었다.",
-        "source": "provided-crosslink",
-        "sourceWord": "unoccupied",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The maintenance crew cleaned the factory floor after the inspection.",
+        "ko": "유지보수팀은 점검 후 공장 바닥을 청소했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The top floor has been unoccupied for four months.",
+      "ko": "꼭대기 층은 넉 달간 비어 있었다.",
+      "source": "provided-crosslink",
+      "sourceWord": "unoccupied",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527459998": {
     "word": "furniture",
@@ -3225,15 +3321,23 @@
     "word": "visiting",
     "examples": [
       {
-        "en": "The tour group had a rest before visiting the palace.",
-        "ko": "그 관광 단체는 궁전을 방문하기 전에 휴식을 취했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "rest",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "A visiting professor will deliver the keynote lecture next week.",
+        "ko": "객원 교수가 다음 주에 기조 강연을 할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The tour group had a rest before visiting the palace.",
+      "ko": "그 관광 단체는 궁전을 방문하기 전에 휴식을 취했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "rest",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527460199": {
     "word": "workforce",
@@ -3688,15 +3792,23 @@
     "word": "proposed",
     "examples": [
       {
-        "en": "Gould Capital proposed to fund Ms. Locke's venture.",
-        "ko": "Gould Capital사는 Ms. Locke의 벤처 사업에 자금을 대는 것을 제안했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "propose",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The proposed changes to the safety policy will take effect next month.",
+        "ko": "제안된 안전 정책 변경안은 다음 달부터 시행됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Gould Capital proposed to fund Ms. Locke's venture.",
+      "ko": "Gould Capital사는 Ms. Locke의 벤처 사업에 자금을 대는 것을 제안했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "propose",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527460498": {
     "word": "under the new management",
@@ -4120,15 +4232,23 @@
     "word": "value",
     "examples": [
       {
-        "en": "DonCo's assumption that consumers value quality over price proved correct.",
-        "ko": "소비자들이 가격보다 품질을 중시한다는 DonCo사의 추정은 옳은 것으로 밝혀졌다.",
-        "source": "provided-crosslink",
-        "sourceWord": "assumption",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The upgraded equipment offers excellent value for money.",
+        "ko": "개선된 장비는 가격 대비 뛰어난 가치를 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "DonCo's assumption that consumers value quality over price proved correct.",
+      "ko": "소비자들이 가격보다 품질을 중시한다는 DonCo사의 추정은 옳은 것으로 밝혀졌다.",
+      "source": "provided-crosslink",
+      "sourceWord": "assumption",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527460819": {
     "word": "a selection of",
@@ -4198,15 +4318,23 @@
     "word": "designed",
     "examples": [
       {
-        "en": "This plane was originally designed as a cargo carrier.",
-        "ko": "이 비행기는 본래 화물 수송기로 설계되었다.",
-        "source": "provided-crosslink",
-        "sourceWord": "carrier",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The warehouse has specially designed storage areas for fragile products.",
+        "ko": "그 창고에는 깨지기 쉬운 제품을 위해 특별히 설계된 보관 구역이 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "This plane was originally designed as a cargo carrier.",
+      "ko": "이 비행기는 본래 화물 수송기로 설계되었다.",
+      "source": "provided-crosslink",
+      "sourceWord": "carrier",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527460871": {
     "word": "interpretation",
@@ -4738,15 +4866,23 @@
     "word": "remains",
     "examples": [
       {
-        "en": "It remains to be seen whether or not the tax cut will be passed.",
-        "ko": "세제 감면안이 통과될지는 아직 두고 봐야 한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "remain",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The museum displayed the remains of an ancient wooden boat.",
+        "ko": "박물관은 고대 목조 배의 유물을 전시했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "It remains to be seen whether or not the tax cut will be passed.",
+      "ko": "세제 감면안이 통과될지는 아직 두고 봐야 한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "remain",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461095": {
     "word": "jet lag",
@@ -5038,29 +5174,45 @@
     "word": "ordered",
     "examples": [
       {
-        "en": "The secretary ordered supplies from the main office.",
-        "ko": "그 비서는 본사로부터 비품을 주문했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "order",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The records are stored in an ordered sequence for quick retrieval.",
+        "ko": "자료는 빠르게 찾을 수 있도록 정돈된 순서로 보관됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The secretary ordered supplies from the main office.",
+      "ko": "그 비서는 본사로부터 비품을 주문했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "order",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461290": {
     "word": "ordering",
     "examples": [
       {
-        "en": "Customers will be asked to disclose some personal details when ordering online.",
-        "ko": "고객들은 온라인으로 주문 시 몇몇 개인 정보를 공개할 것을 요청받을 것이다.",
-        "source": "provided-crosslink",
-        "sourceWord": "disclose",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The ordering of the presentation slides was changed before the meeting.",
+        "ko": "회의 전에 발표 슬라이드의 배열 순서가 변경되었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Customers will be asked to disclose some personal details when ordering online.",
+      "ko": "고객들은 온라인으로 주문 시 몇몇 개인 정보를 공개할 것을 요청받을 것이다.",
+      "source": "provided-crosslink",
+      "sourceWord": "disclose",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461292": {
     "word": "packaging",
@@ -5080,15 +5232,23 @@
     "word": "separation",
     "examples": [
       {
-        "en": "Some employees received separation pay subsequent to the company's closing.",
-        "ko": "몇몇 직원들은 회사의 폐업 이후에 퇴직 수당을 받았다.",
-        "source": "provided-crosslink",
-        "sourceWord": "subsequent",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The separation of purchasing and payment duties reduces the risk of fraud.",
+        "ko": "구매 업무와 결제 업무를 분리하면 부정행위의 위험이 줄어듭니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Some employees received separation pay subsequent to the company's closing.",
+      "ko": "몇몇 직원들은 회사의 폐업 이후에 퇴직 수당을 받았다.",
+      "source": "provided-crosslink",
+      "sourceWord": "subsequent",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461296": {
     "word": "sizable",
@@ -5156,15 +5316,23 @@
     "word": "specialty",
     "examples": [
       {
-        "en": "The specialty coffee store sells more than twenty varieties of coffee.",
-        "ko": "그 커피 전문점은 스무 가지가 넘는 종류의 커피를 판매한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "variety",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "Designing accessible websites is her specialty.",
+        "ko": "접근성이 높은 웹사이트를 설계하는 것이 그녀의 전문 분야입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The specialty coffee store sells more than twenty varieties of coffee.",
+      "ko": "그 커피 전문점은 스무 가지가 넘는 종류의 커피를 판매한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "variety",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461351": {
     "word": "wait for a table",
@@ -5390,15 +5558,23 @@
     "word": "raised",
     "examples": [
       {
-        "en": "The developer raised the capital after considerable effort.",
-        "ko": "그 개발 회사는 상당한 노력 끝에 자금을 마련했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "considerable",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The raised platform made the stage visible from the back of the room.",
+        "ko": "높여진 단 덕분에 방 뒤쪽에서도 무대가 보였습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The developer raised the capital after considerable effort.",
+      "ko": "그 개발 회사는 상당한 노력 끝에 자금을 마련했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "considerable",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527461444": {
     "word": "undergraduate",
@@ -6548,15 +6724,23 @@
     "word": "setting",
     "examples": [
       {
-        "en": "Setting goals should be a regular habit.",
-        "ko": "목표 설정은 규칙적인 습관이 되어야 한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "habit",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The hotel provides a peaceful setting for business retreats.",
+        "ko": "그 호텔은 기업 연수에 평온한 환경을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Setting goals should be a regular habit.",
+      "ko": "목표 설정은 규칙적인 습관이 되어야 한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "habit",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462113": {
     "word": "mining",
@@ -7312,29 +7496,45 @@
     "word": "operating",
     "examples": [
       {
-        "en": "The company is uncertain about the cost of operating a factory in China.",
-        "ko": "그 회사는 중국에서 공장을 운영하는 비용에 대해 확신을 갖지 못한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "uncertain",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The operating expenses of the new warehouse exceeded the original budget.",
+        "ko": "새 창고의 운영비가 당초 예산을 초과했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The company is uncertain about the cost of operating a factory in China.",
+      "ko": "그 회사는 중국에서 공장을 운영하는 비용에 대해 확신을 갖지 못한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "uncertain",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462551": {
     "word": "predicted",
     "examples": [
       {
-        "en": "The morning weather report predicted a 30 percent chance of rain today.",
-        "ko": "아침 일기 예보에서는 오늘 비가 올 가능성이 30퍼센트라고 예상했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "chance",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The predicted sales growth did not occur in the first quarter.",
+        "ko": "예상했던 매출 성장이 1분기에는 나타나지 않았습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The morning weather report predicted a 30 percent chance of rain today.",
+      "ko": "아침 일기 예보에서는 오늘 비가 올 가능성이 30퍼센트라고 예상했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "chance",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462552": {
     "word": "welding",
@@ -7436,29 +7636,45 @@
     "word": "operating",
     "examples": [
       {
-        "en": "The company is uncertain about the cost of operating a factory in China.",
-        "ko": "그 회사는 중국에서 공장을 운영하는 비용에 대해 확신을 갖지 못한다.",
-        "source": "provided-crosslink",
-        "sourceWord": "uncertain",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The operating costs of the regional offices were reduced this quarter.",
+        "ko": "이번 분기에 지역 사무소들의 운영비가 절감되었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The company is uncertain about the cost of operating a factory in China.",
+      "ko": "그 회사는 중국에서 공장을 운영하는 비용에 대해 확신을 갖지 못한다.",
+      "source": "provided-crosslink",
+      "sourceWord": "uncertain",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462583": {
     "word": "predicted",
     "examples": [
       {
-        "en": "The morning weather report predicted a 30 percent chance of rain today.",
-        "ko": "아침 일기 예보에서는 오늘 비가 올 가능성이 30퍼센트라고 예상했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "chance",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The predicted demand for the new model exceeded production capacity.",
+        "ko": "신모델의 예상 수요가 생산 능력을 초과했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The morning weather report predicted a 30 percent chance of rain today.",
+      "ko": "아침 일기 예보에서는 오늘 비가 올 가능성이 30퍼센트라고 예상했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "chance",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462584": {
     "word": "welding",
@@ -7776,15 +7992,23 @@
     "word": "estimated",
     "examples": [
       {
-        "en": "The laptops were estimated to bring in over $50 million.",
-        "ko": "그 노트북 컴퓨터는 5천만 달러 이상의 이익을 가져올 것으로 추정되었다.",
-        "source": "provided-crosslink",
-        "sourceWord": "estimate",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The estimated cost of the repairs is higher than expected.",
+        "ko": "예상 수리 비용이 당초 예상보다 높습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The laptops were estimated to bring in over $50 million.",
+      "ko": "그 노트북 컴퓨터는 5천만 달러 이상의 이익을 가져올 것으로 추정되었다.",
+      "source": "provided-crosslink",
+      "sourceWord": "estimate",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462809": {
     "word": "indicative",
@@ -7852,15 +8076,23 @@
     "word": "established",
     "examples": [
       {
-        "en": "Regulations regarding lunch breaks were established.",
-        "ko": "점심시간에 관한 규정이 세워졌다.",
-        "source": "provided-crosslink",
-        "sourceWord": "regulation",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The contract was awarded to an established engineering firm.",
+        "ko": "그 계약은 업계에서 정평이 있는 엔지니어링 회사에 돌아갔습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Regulations regarding lunch breaks were established.",
+      "ko": "점심시간에 관한 규정이 세워졌다.",
+      "source": "provided-crosslink",
+      "sourceWord": "regulation",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462867": {
     "word": "favorable",
@@ -7904,15 +8136,23 @@
     "word": "chair",
     "examples": [
       {
-        "en": "The improvements to the chair designs led to increased sales.",
-        "ko": "의자 디자인의 향상은 판매량 증대로 이어졌다.",
-        "source": "provided-crosslink",
-        "sourceWord": "improvement",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The deputy director will chair the quarterly planning meeting.",
+        "ko": "부국장이 분기별 기획 회의의 의장을 맡을 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "The improvements to the chair designs led to increased sales.",
+      "ko": "의자 디자인의 향상은 판매량 증대로 이어졌다.",
+      "source": "provided-crosslink",
+      "sourceWord": "improvement",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462899": {
     "word": "sit through",
@@ -7954,15 +8194,23 @@
     "word": "second",
     "examples": [
       {
-        "en": "Overseas workers need proof of proficiency in a second language.",
-        "ko": "해외 근로자들은 외국어 숙달에 관한 증거 자료가 필요하다.",
-        "source": "provided-crosslink",
-        "sourceWord": "proficiency",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "A committee member agreed to second the motion to extend the deadline.",
+        "ko": "위원 한 명이 마감일을 연장하자는 동의안을 지지하기로 했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Overseas workers need proof of proficiency in a second language.",
+      "ko": "해외 근로자들은 외국어 숙달에 관한 증거 자료가 필요하다.",
+      "source": "provided-crosslink",
+      "sourceWord": "proficiency",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527462941": {
     "word": "conjunction",
@@ -8056,15 +8304,23 @@
     "word": "spoke",
     "examples": [
       {
-        "en": "Mr. Brooke spoke to his clients about a new venture.",
-        "ko": "Mr. Brooke은 자신의 고객들에게 신규 사업에 관해 이야기했다.",
-        "source": "provided-crosslink",
-        "sourceWord": "speak",
-        "translationStatus": "provided-unverified-for-crosslink",
-        "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "en": "The mechanic replaced a bent spoke on the bicycle wheel.",
+        "ko": "정비사는 자전거 바퀴의 휘어진 바퀴살을 교체했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch06-crosslink",
+        "reviewReason": "Different word-sense, homograph, or part of speech in reused source sentence; new bilingual usage draft, independent human review pending."
       }
-    ]
+    ],
+    "replacedCrosslink": {
+      "en": "Mr. Brooke spoke to his clients about a new venture.",
+      "ko": "Mr. Brooke은 자신의 고객들에게 신규 사업에 관해 이야기했다.",
+      "source": "provided-crosslink",
+      "sourceWord": "speak",
+      "translationStatus": "provided-unverified-for-crosslink",
+      "reviewStatus": "crosslink-needs-sense-review",
+      "method": "other-source-note"
+    }
   },
   "1766527463006": {
     "word": "wagon",

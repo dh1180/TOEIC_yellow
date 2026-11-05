@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **885개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,259개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **917개**, 원본 예문을 다른 어휘에 재연결한 후보 **296개**, 자동 문맥 초안 **2,259개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -95,3 +95,11 @@ npm test
 - 참고: [Cambridge fold](https://dictionary.cambridge.org/dictionary/english/fold), [Cambridge reach](https://dictionary.cambridge.org/dictionary/english/reach), [Cambridge probation](https://dictionary.cambridge.org/dictionary/english/probation). 사전 원문 예문 복제 없이 자체 작성했습니다.
 - 현재 5,101개 단어, 원본 예문 1,481개, 기존 프로젝트 직접 작성 391개, 추가 AI 초안 **885개**, 타 카드 원본 재연결 328개, 자동 문맥 **2,259개**, ID별 오버레이 1,213개, 비원본 검수 대기열 3,863개.
 - AI 자체 작성과 자체 점검이며 사람의 독립 전문 언어 감수·원본 사용권 검증·실기기 시험은 진행되지 않았습니다. Production 배포 차단을 유지합니다.
+
+## 추가 QA 배치 06 — 재연결 예문 의미 정합성 (2026-11-05)
+
+- 원본 제공 예문을 다른 표제어에 재사용한 328개 후보를 점검하여 **32개에서 뜻·품사·동형이의어 사용 불일치**를 확인하고, 해당 단어 뜻에 맞는 새 영어 예문과 한국어 번역 초안으로 교체했습니다.
+- 대표 사례: `second` (찬성하다/두 번째), `spoke` (바퀴살/말했다), `chair` (사회 맡다/의자), `change` (잔돈/변화), `fashion` (방식/의류), `express` (표현하다/특급의).
+- 오연결 예문은 삭제하지 않고 `data/qa-batch-06-crosslink-review.json` 및 `replacedCrosslink`에 변경 전 출처·내용을 추적합니다. 기존 원본 Anki 예문 1,481개는 변경하지 않았습니다.
+- `designed`, `estimated`의 한국어 뜻 보완. 사전 용법 참고: [Cambridge second](https://dictionary.cambridge.org/dictionary/english/second), [Cambridge chair](https://dictionary.cambridge.org/dictionary/english/chair), [Cambridge offering](https://dictionary.cambridge.org/dictionary/english/offering), [Cambridge fashion](https://dictionary.cambridge.org/dictionary/english/fashion). 사전 예문 복제 없음.
+- 현재 학습 단어 5,101개, 원본 예문 1,481개, 기존 프로젝트 직접 작성 391개, QA 자체 작성 초안 **917개**, 재연결 검수 후보 **296개**, 규칙 기반 자동 초안 **2,259개**, 전체 비원본 3,863개. 독립 검수·권리 허가·실기기 검증 미완료로 배포 차단을 유지합니다.

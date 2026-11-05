@@ -5,8 +5,8 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 885,
-    "provided-crosslink": 328,
+    "editorial-draft": 917,
+    "provided-crosslink": 296,
     "project-authored": 391,
     "generated-context": 2259
   },
@@ -29,6 +29,7 @@
     "Annotated 'profitable' headword and four Korean senses corrected; originals preserved in QA provenance.",
     "Batch 04: 132 basic DAY 6-10 / 800- and 900-score DAY 4 usage examples rewritten with Korean sentence translations, pending independent review.",
     "Batch 04: two annotated headwords normalized and ten Korean meanings clarified; originals preserved.",
-    "Batch 05: 69 basic DAY 11 / 800 & 900-score DAY 5 bilingual contextual drafts, awaiting independent professional review."
+    "Batch 05: 69 basic DAY 11 / 800 & 900-score DAY 5 bilingual contextual drafts, awaiting independent professional review.",
+    "Batch 06: 32 semantic, part-of-speech or homograph mismatches in crosslinked original examples replaced with AI-authored bilingual drafts; original source preserved and independent human review pending."
   ]
 }

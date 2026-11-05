@@ -99,6 +99,18 @@
       "before": "profitable(<->unprofitable)",
       "after": "profitable",
       "reason": "The parenthetical antonym annotation is not part of the headword; preserved in wordOriginal."
+    },
+    {
+      "id": "1766527460427",
+      "before": "seamless(=without trouble)",
+      "after": "seamless",
+      "reason": "Removed explanatory parenthetical gloss from the stored headword while retaining wordOriginal."
+    },
+    {
+      "id": "1766527462312",
+      "before": "ambiance(=ambience)",
+      "after": "ambiance",
+      "reason": "Removed spelling-equivalent annotation from the headword; retained original note ID and wordOriginal."
     }
   ],
   "senseCorrections": [
@@ -164,6 +176,80 @@
       "originalMeaningKo": "~까지",
       "meaningKo": "~까지; 최대",
       "note": "Corrected the Korean sense for the batch 03 usage sentence; independent human review pending."
+    },
+    {
+      "id": "1766527458544",
+      "word": "array",
+      "originalMeaningKo": "진열, 배열",
+      "meaningKo": "배열, 다양한 종류; 진열",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/array"
+    },
+    {
+      "id": "1766527458611",
+      "word": "in use",
+      "originalMeaningKo": "사용되는",
+      "meaningKo": "사용 중인, 쓰이고 있는",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527458618",
+      "word": "belong to",
+      "originalMeaningKo": "~에 속하다, 의 소유물이다",
+      "meaningKo": "~에 속하다, ~의 소유이다",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527458762",
+      "word": "grocery",
+      "originalMeaningKo": "식료품점",
+      "meaningKo": "식료품점, 식료품의",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/grocery"
+    },
+    {
+      "id": "1766527460379",
+      "word": "litter",
+      "originalMeaningKo": "쓰레기 어지르다, 흐트러뜨리다",
+      "meaningKo": "쓰레기; 쓰레기를 함부로 버리다",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/litter"
+    },
+    {
+      "id": "1766527460416",
+      "word": "fill with",
+      "originalMeaningKo": "~으로 가득 차다",
+      "meaningKo": "~으로 채우다; ~으로 가득 차다",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527460419",
+      "word": "key to success",
+      "originalMeaningKo": "성공의 길",
+      "meaningKo": "성공의 열쇠, 성공의 핵심 요소",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527460425",
+      "word": "reunion",
+      "originalMeaningKo": "친목회",
+      "meaningKo": "재회, 동창회, 친목 모임",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527460427",
+      "word": "seamless",
+      "originalMeaningKo": "(끊어짐이 없이) 매끄러운, 문제없는",
+      "meaningKo": "끊김 없이 매끄러운, 원활한",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending."
+    },
+    {
+      "id": "1766527462299",
+      "word": "directive",
+      "originalMeaningKo": "지시하는, 지배적인",
+      "meaningKo": "지침, 지시; 지시하는",
+      "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/directive"
     }
   ]
 }

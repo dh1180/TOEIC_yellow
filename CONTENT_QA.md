@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **684개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,460개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **816개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,328개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -15,7 +15,7 @@
 
 `python3 scripts/audit_content.py --check`는 단어 ID·분류·예문 수·빈칸·출처·검수 단계·검수 대기열 정합성을 검사합니다. 이것은 **문장이 자연스러운지, 단어 뜻과 맞는지, 한국어 뜻이 정확한지**를 확인하는 언어 검수가 아닙니다.
 
-`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 684개와 재연결 후보 328개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
+`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 816개와 재연결 후보 328개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
 
 ### 미완료 검증
 
@@ -79,3 +79,11 @@ npm test
 - `profitable(<->unprofitable)` 표제어에서 반의어 주석을 제거하고, 네 단어(`charge for`, `piece by piece`, `proportion`, `up to`)의 뜻을 개선했습니다. 원문은 별도로 보존했습니다.
 - 현재 합계: 원본 1,481개, 기존 프로젝트 작성 391개, QA 자체 작성 초안 **684개**, 예문 재연결 후보 328개, 규칙 문맥 초안 **2,460개**. 전체 검수 대기열 3,863개는 유지됩니다.
 - AI 자체 작성·점검 초안이며 독립적인 사람의 전문 언어 감수, 콘텐츠 사용 권한, Android/iOS 실기기 검증은 완료되지 않았습니다. 프로덕션 배포 차단을 유지합니다.
+
+## 추가 QA 배치 04 (2026-11-05)
+
+- 기초 단어장 DAY 6~10 **73개**, 800점 DAY 4 **39개**, 900점 DAY 4 **20개**, 합계 **132개** 규칙 문맥 초안을 사용 문맥에 맞는 영어 문장과 한국어 전체 번역으로 교체했습니다.
+- `seamless(=without trouble)`, `ambiance(=ambience)`는 단어 표제어에 붙은 사전식 주석을 분리해 원래 `wordOriginal`을 남겼습니다. `array`, `in use`, `belong to`, `grocery`, `litter`, `fill with`, `key to success`, `reunion`, `seamless`, `directive`의 의미 누락 또는 부정확한 한국어를 교정했습니다.
+- 사전 대조 자료: [Cambridge array](https://dictionary.cambridge.org/dictionary/english/array), [Cambridge litter](https://dictionary.cambridge.org/dictionary/english/litter), [Cambridge directive](https://dictionary.cambridge.org/dictionary/english/directive), [Cambridge grocery](https://dictionary.cambridge.org/dictionary/english/grocery), [Cambridge creditable](https://dictionary.cambridge.org/dictionary/english/creditable). **사전 원문 예문은 재사용하지 않았습니다.**
+- 전체 수량: 원본 예문 1,481개, 기존 프로젝트 작성 391개, QA 작성 초안 **816개**, 예문 교차 연결 328개, 규칙 기반 자동 초안 **2,328개**. ID별 오버레이 **1,144개**, 검수 대기열 3,863개를 유지합니다.
+- 새 문장의 인력 독립 검수, 원본 재배포·상용 라이선스, 실기기 테스트는 여전히 미완료입니다. Production 차단을 유지합니다.

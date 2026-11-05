@@ -32,6 +32,7 @@ WORD_FIXES = {
     "1766527458821": ("turn off", "turn off(↔turn on)"),
     "1766527460440": ("fold in half", "flod in half"),
     "1766527462326": ("reach a solution", "reach the solution"),
+    "1766527458892": ("publishing company", "publication company"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -40,7 +41,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1213:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1266:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -95,6 +96,11 @@ def main() -> None:
         "1766527462345": ("견습으로", "수습 기간 중인; 보호 관찰 중인"),
         "1766527460864": ("계획적인, 고의의", "설계된, 계획된; 의도적인"),
         "1766527462803": ("견적의, 추측의", "추정된, 예상된; 견적상의"),
+        "1766527458880": ("의류 상품", "의류 제품군, 의류 컬렉션"),
+        "1766527458886": ("철, 다리미질을 하다", "철; 다림질하다"),
+        "1766527458959": ("제품 상표", "제품 로고"),
+        "1766527462356": ("채널을 고정시키다", "계속 시청·청취하다; 후속 소식을 기다리다"),
+        "1766527462363": ("소풍", "소풍, 짧은 여행, 견학"),
     }
     for sid, (before, after) in sense_corrections.items():
         sense_word = by_id[sid]
@@ -144,7 +150,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=9, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=10, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],
@@ -169,7 +175,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 1213 QA source overlays and source-grammar correction. Regenerate structural audit next.")
+    print("Applied 1266 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

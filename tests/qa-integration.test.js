@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],917);
+  assert.equal(counts['editorial-draft'],970);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],2259);
-  assert.equal(Object.keys(overrides).length,1213);
+  assert.equal(counts['generated-context'],2206);
+  assert.equal(Object.keys(overrides).length,1266);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -287,6 +287,39 @@ test('batch 06: 32 reused-source semantic mismatches are replaced, and original 
   '1766527460864':'설계된, 계획된; 의도적인',
   '1766527462803':'추정된, 예상된; 견적상의'
  })){const w=data.find(w=>w.id===id);assert.equal(w.meaningKo,sense);assert.ok(w.meaningKoOriginal);}
+ assert.equal(manifest.providedCrosslinkedExamples,296);
+ assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+test('batch 07: all 53 example rewrites are complete bilingual contexts and preserve PR13 crosslink fixes',()=>{
+ const records=readFileSync(new URL('data/qa-batch-07-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ assert.equal(records.length,53);
+ const ids=new Set();const byDay={};
+ for(const record of records){
+  const [id,en,ko,...extra]=record.split('|');assert.equal(extra.length,0);
+  assert.ok(!ids.has(id));ids.add(id);
+  const w=data.find(w=>w.id===id);assert.ok(w,id);
+  const e=w.examples[0];
+  assert.equal(e.en,en);assert.equal(e.ko,ko);assert.equal(e.source,'editorial-draft');
+  assert.equal(e.reviewStatus,'editorial-draft');assert.equal(e.method,'ai-authored-contextual-qa-batch07');
+  assert.deepEqual(overrides[id].examples,[e]);assert.equal(overrides[id].word,w.word);
+  assert.ok(/[.!?]$/.test(en));assert.ok(/[.!?]$/.test(ko));assert.ok(!ko.startsWith('핵심 뜻:'));
+  const key=w.category+'/'+w.day;byDay[key]=(byDay[key]||0)+1;
+ }
+ assert.deepEqual(byDay,{'basic/12':16,'basic/13':14,'score900/6':23});
+ for(const w of data.filter(w=>w.category==='basic'&&[12,13].includes(w.day)||w.category==='score900'&&w.day===6))
+  assert.notEqual(w.examples[0].source,'generated-context','Leftover unreviewed template '+w.id);
+ const publishing=data.find(w=>w.id==='1766527458892');
+ assert.equal(publishing.word,'publishing company');
+ assert.equal(publishing.wordOriginal,'publication company');
+ for(const [id,meaning] of Object.entries({
+  '1766527458880':'의류 제품군, 의류 컬렉션',
+  '1766527458886':'철; 다림질하다',
+  '1766527458959':'제품 로고',
+  '1766527462356':'계속 시청·청취하다; 후속 소식을 기다리다',
+  '1766527462363':'소풍, 짧은 여행, 견학'
+ })){const w=data.find(w=>w.id===id);assert.equal(w.meaningKo,meaning);assert.ok(w.meaningKoOriginal);}
+ assert.equal(Object.values(overrides).filter(r=>r.replacedCrosslink).length,32);
  assert.equal(manifest.providedCrosslinkedExamples,296);
  assert.equal(manifest.independentlyVerifiedExamples,0);
 });

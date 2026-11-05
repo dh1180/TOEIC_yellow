@@ -129,6 +129,13 @@
       "before": "reach the solution",
       "after": "reach a solution",
       "reason": "Headword typo, study-note annotation, or unnatural article normalized; original retained."
+    },
+    {
+      "id": "1766527458892",
+      "before": "publication company",
+      "after": "publishing company",
+      "reason": "Publishing company is the conventional dictionary headword for a company producing books and periodicals; original note ID and spelling retained.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/publishing-company"
     }
   ],
   "senseCorrections": [
@@ -317,6 +324,41 @@
       "originalMeaningKo": "견적의, 추측의",
       "meaningKo": "추정된, 예상된; 견적상의",
       "note": "Updated Korean sense to distinguish adjectival use from other verb senses; original meaning retained; independent human validation pending."
+    },
+    {
+      "id": "1766527458880",
+      "word": "clothing line",
+      "originalMeaningKo": "의류 상품",
+      "meaningKo": "의류 제품군, 의류 컬렉션",
+      "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
+    },
+    {
+      "id": "1766527458886",
+      "word": "iron",
+      "originalMeaningKo": "철, 다리미질을 하다",
+      "meaningKo": "철; 다림질하다",
+      "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
+    },
+    {
+      "id": "1766527458959",
+      "word": "product logo",
+      "originalMeaningKo": "제품 상표",
+      "meaningKo": "제품 로고",
+      "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
+    },
+    {
+      "id": "1766527462356",
+      "word": "stay tuned",
+      "originalMeaningKo": "채널을 고정시키다",
+      "meaningKo": "계속 시청·청취하다; 후속 소식을 기다리다",
+      "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
+    },
+    {
+      "id": "1766527462363",
+      "word": "excursion",
+      "originalMeaningKo": "소풍",
+      "meaningKo": "소풍, 짧은 여행, 견학",
+      "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
     }
   ]
 }

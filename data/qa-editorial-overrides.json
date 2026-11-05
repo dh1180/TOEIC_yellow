@@ -17369,5 +17369,551 @@
         "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
       }
     ]
+  },
+  "1766527459228": {
+    "word": "butcher's shop",
+    "examples": [
+      {
+        "en": "The butcher's shop closes at six on Saturdays.",
+        "ko": "그 정육점은 토요일에 6시에 문을 닫습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459230": {
+    "word": "clinic",
+    "examples": [
+      {
+        "en": "The clinic will call to confirm your appointment.",
+        "ko": "진료소에서 예약을 확인하기 위해 전화할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459231": {
+    "word": "crate",
+    "examples": [
+      {
+        "en": "The movers packed the sculpture in a wooden crate.",
+        "ko": "이삿짐 운반 직원들이 조각품을 나무 상자에 포장했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459232": {
+    "word": "flow",
+    "examples": [
+      {
+        "en": "The new conveyor belt improved the flow of packages through the warehouse.",
+        "ko": "새 컨베이어 벨트 덕분에 창고 안에서 소포가 더 원활하게 이동했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459233": {
+    "word": "following week",
+    "examples": [
+      {
+        "en": "The supplier promised to send the replacement parts the following week.",
+        "ko": "공급업체는 그다음 주에 교체 부품을 보내겠다고 약속했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459235": {
+    "word": "in storage",
+    "examples": [
+      {
+        "en": "The extra chairs will remain in storage until the conference.",
+        "ko": "여분의 의자는 회의 때까지 보관해 둘 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459236": {
+    "word": "load",
+    "examples": [
+      {
+        "en": "The truck arrived with a load of fresh produce.",
+        "ko": "트럭은 신선한 농산물을 싣고 도착했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459237": {
+    "word": "mail",
+    "examples": [
+      {
+        "en": "Please sort the mail before delivering it to each department.",
+        "ko": "부서별로 배달하기 전에 우편물을 분류해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459239": {
+    "word": "parcel",
+    "examples": [
+      {
+        "en": "Your parcel will be delivered by noon tomorrow.",
+        "ko": "소포는 내일 정오까지 배달될 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459240": {
+    "word": "pick up packages",
+    "examples": [
+      {
+        "en": "Residents can pick up packages at the front desk until eight.",
+        "ko": "입주민은 8시까지 안내 데스크에서 소포를 찾아갈 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459241": {
+    "word": "pottery",
+    "examples": [
+      {
+        "en": "Local artists will display their pottery at the weekend market.",
+        "ko": "지역 예술가들이 주말 시장에서 직접 만든 도자기를 전시할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459242": {
+    "word": "public park",
+    "examples": [
+      {
+        "en": "The city is building a public park on the former factory site.",
+        "ko": "시는 옛 공장 부지에 공원을 조성하고 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459243": {
+    "word": "stamp",
+    "examples": [
+      {
+        "en": "You need a stamp to mail this postcard.",
+        "ko": "이 엽서를 보내려면 우표가 필요합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459244": {
+    "word": "van",
+    "examples": [
+      {
+        "en": "The hotel uses a van to take guests to the airport.",
+        "ko": "호텔은 밴으로 투숙객을 공항까지 데려다줍니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459246": {
+    "word": "weight",
+    "examples": [
+      {
+        "en": "Please check the weight of each box before loading it onto the truck.",
+        "ko": "상자를 트럭에 싣기 전에 각각의 무게를 확인해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459247": {
+    "word": "barrier",
+    "examples": [
+      {
+        "en": "The lack of public transportation is a barrier for many job seekers.",
+        "ko": "대중교통 부족은 많은 구직자에게 장애물입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459248": {
+    "word": "base",
+    "examples": [
+      {
+        "en": "The training program gives new hires a solid base of technical knowledge.",
+        "ko": "이 교육 프로그램은 신입 직원이 탄탄한 기술 지식의 기반을 쌓도록 돕습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459249": {
+    "word": "due date",
+    "examples": [
+      {
+        "en": "The due date for the final payment is printed on the invoice.",
+        "ko": "최종 대금 납부 기한은 청구서에 인쇄되어 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459252": {
+    "word": "offload",
+    "examples": [
+      {
+        "en": "The crew used a forklift to offload the crates from the truck.",
+        "ko": "작업팀은 지게차를 사용해 트럭에서 상자들을 내렸습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459253": {
+    "word": "parking pass",
+    "examples": [
+      {
+        "en": "Display your parking pass on the dashboard while your car is in the lot.",
+        "ko": "주차장에 차를 세워 두는 동안 대시보드에 주차권을 올려 두세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459297": {
+    "word": "bite",
+    "examples": [
+      {
+        "en": "I took a bite of the sandwich before returning to the meeting.",
+        "ko": "회의에 돌아가기 전에 샌드위치를 한 입 먹었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459298": {
+    "word": "buffet",
+    "examples": [
+      {
+        "en": "The hotel serves a breakfast buffet from seven to ten.",
+        "ko": "호텔은 7시부터 10시까지 조식 뷔페를 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459300": {
+    "word": "cereal",
+    "examples": [
+      {
+        "en": "The cafeteria serves cereal and fresh fruit in the morning.",
+        "ko": "구내식당에서는 아침에 시리얼과 신선한 과일을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459301": {
+    "word": "cookbook",
+    "examples": [
+      {
+        "en": "The chef signed copies of her new cookbook after the demonstration.",
+        "ko": "요리사는 시연을 마친 뒤 새 요리책에 사인해 주었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459302": {
+    "word": "delicious",
+    "examples": [
+      {
+        "en": "Several guests said the mushroom soup was delicious.",
+        "ko": "손님 몇 분이 버섯 수프가 맛있다고 말했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459303": {
+    "word": "dessert",
+    "examples": [
+      {
+        "en": "The set menu includes a choice of dessert.",
+        "ko": "세트 메뉴에는 선택할 수 있는 후식이 포함되어 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459304": {
+    "word": "dine",
+    "examples": [
+      {
+        "en": "Guests can dine on the terrace when the weather is fine.",
+        "ko": "날씨가 좋으면 손님들은 테라스에서 식사할 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459305": {
+    "word": "dining room",
+    "examples": [
+      {
+        "en": "The main dining room seats up to eighty guests.",
+        "ko": "메인 식당에는 손님이 최대 80명까지 앉을 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459306": {
+    "word": "dish",
+    "examples": [
+      {
+        "en": "The restaurant's most popular dish is grilled salmon with lemon.",
+        "ko": "그 식당에서 가장 인기 있는 요리는 레몬을 곁들인 연어구이입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459307": {
+    "word": "dishwasher",
+    "examples": [
+      {
+        "en": "Please put the mugs in the dishwasher after the meeting.",
+        "ko": "회의가 끝나면 머그잔을 식기세척기에 넣어 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459308": {
+    "word": "dry dishes",
+    "examples": [
+      {
+        "en": "Volunteers use clean towels to dry dishes after the community dinner.",
+        "ko": "자원봉사자들은 주민 만찬이 끝난 뒤 깨끗한 수건으로 접시의 물기를 닦습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459309": {
+    "word": "garlic",
+    "examples": [
+      {
+        "en": "Cook the chopped garlic over low heat until it starts to soften.",
+        "ko": "다진 마늘이 부드러워지기 시작할 때까지 약한 불에서 익히세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459311": {
+    "word": "plate",
+    "examples": [
+      {
+        "en": "Please bring a clean plate for the birthday cake.",
+        "ko": "생일 케이크를 담을 깨끗한 접시를 가져다주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459312": {
+    "word": "pot",
+    "examples": [
+      {
+        "en": "Heat the broth in a large pot before adding the vegetables.",
+        "ko": "채소를 넣기 전에 큰 냄비에 육수를 데우세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459313": {
+    "word": "prepare a meal",
+    "examples": [
+      {
+        "en": "The volunteers will prepare a meal for everyone attending the event.",
+        "ko": "자원봉사자들은 행사에 참석하는 모든 사람을 위해 식사를 준비할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459314": {
+    "word": "seafood",
+    "examples": [
+      {
+        "en": "The restaurant buys most of its seafood from local fishing boats.",
+        "ko": "그 식당은 해산물 대부분을 지역 어선에서 구입합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459315": {
+    "word": "spicy",
+    "examples": [
+      {
+        "en": "If you prefer less spicy food, ask for the sauce on the side.",
+        "ko": "덜 매운 음식을 원하시면 소스를 따로 달라고 하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459316": {
+    "word": "spill",
+    "examples": [
+      {
+        "en": "Hold the tray level so you don't spill the drinks.",
+        "ko": "음료를 쏟지 않도록 쟁반을 수평으로 드세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459317": {
+    "word": "tasty",
+    "examples": [
+      {
+        "en": "The café offers several tasty snacks for under five dollars.",
+        "ko": "그 카페에는 5달러 미만의 맛있는 간식이 여러 가지 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459318": {
+    "word": "whipped cream",
+    "examples": [
+      {
+        "en": "The server topped the hot chocolate with whipped cream.",
+        "ko": "종업원은 핫초코 위에 휘핑크림을 얹었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459319": {
+    "word": "blend",
+    "examples": [
+      {
+        "en": "Blend the tomatoes and onions until the sauce is smooth.",
+        "ko": "소스가 부드러워질 때까지 토마토와 양파를 함께 갈아 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
+  },
+  "1766527459323": {
+    "word": "spice",
+    "examples": [
+      {
+        "en": "Cumin is the main spice in this lentil soup.",
+        "ko": "이 렌틸콩 수프에 들어가는 주된 향신료는 쿠민입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "ai-authored-contextual-qa-batch11",
+        "reviewReason": "AI-authored contextual English sentence and full Korean translation; independent human language review pending."
+      }
+    ]
   }
 }

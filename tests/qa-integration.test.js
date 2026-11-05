@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],1061);
+  assert.equal(counts['editorial-draft'],1098);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],2115);
-  assert.equal(Object.keys(overrides).length,1357);
+  assert.equal(counts['generated-context'],2078);
+  assert.equal(Object.keys(overrides).length,1394);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -399,4 +399,20 @@ test('batch 11 replaces the remaining basic DAY 17 and 18 templates', () => {
       assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
     }
   }
+});
+
+test('batch 12 replaces the remaining basic DAY 19 and 20 templates', () => {
+  for (const [day, expected] of [[19, 18], [20, 19]]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch12');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const theme = data.find(word => word.id === '1766527459462');
+  assert.equal(theme.meaningKo, '주제, 테마');
+  assert.equal(theme.meaningKoOriginal, '주체, 테마');
 });

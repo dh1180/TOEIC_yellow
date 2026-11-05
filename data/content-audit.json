@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 1061,
+    "editorial-draft": 1098,
     "provided-crosslink": 296,
     "project-authored": 391,
-    "generated-context": 2115
+    "generated-context": 2078
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -35,7 +35,8 @@
     "Batch 08: 16 crosslinked original-example Korean glosses corrected for contextual sense; English and Korean provided source sentences were preserved, 296 crosslink source identities structurally checked; no independent language certification.",
     "Batch 09: 17 basic DAY 14 templates replaced with bilingual editorial drafts, pending independent review.",
     "Batch 10: 32 basic DAY 15–16 templates replaced with bilingual editorial drafts; provided examples unchanged.",
-    "Batch 11: 42 basic DAY 17–18 templates replaced with bilingual editorial drafts; provided examples unchanged."
+    "Batch 11: 42 basic DAY 17–18 templates replaced with bilingual editorial drafts; provided examples unchanged.",
+    "Batch 12: 37 basic DAY 19–20 templates replaced with bilingual editorial drafts; corrected one Korean gloss typo."
   ],
   "crosslinkedOriginalPairsChecked": 296
 }

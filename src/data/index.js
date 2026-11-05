@@ -11,7 +11,8 @@ export const WORDS_BY_CATEGORY={
   score900:words.filter(w=>w.category==='score900'),
 };
 export function searchWords(query,category='all',day=null){
-  const key=query.normalize('NFKC').trim().toLocaleLowerCase();
+  const normalized = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();
+  const key=normalized(query.trim());
   const base=category==='all'?WORDS:(WORDS_BY_CATEGORY[category]||[]);
-  return base.filter(w=>(day===null||w.day===day)&&(!key||w.word.toLocaleLowerCase().normalize('NFKC').includes(key)||w.meaningKo.normalize('NFKC').toLocaleLowerCase().includes(key)));
+  return base.filter(w=>(day===null||w.day===day)&&(!key||normalized(w.word).includes(key)||normalized(w.wordOriginal||'').includes(key)||normalized(w.meaningKo).includes(key)));
 }

@@ -16,11 +16,16 @@ test('provided and self-authored examples preserve explicit provenance',()=>{
   assert.equal(examples.filter(e=>e.source==='provided').length,1481);
   assert.equal(examples.filter(e=>e.source==='project-authored').length,manifest.projectReviewedExamples);
   assert.equal(examples.filter(e=>e.source==='generated-context').length,manifest.generatedContextExamples);
+  assert.equal(examples.filter(e=>e.source==='editorial-draft').length,manifest.editorialDraftExamples);
+  assert.equal(examples.filter(e=>e.source==='provided-crosslink').length,manifest.providedCrosslinkedExamples);
   assert.equal(examples.filter(e=>e.source==='generated-prompt').length,0);
   assert.ok(examples.every(e=>typeof e.en==='string'&&e.en.length>15&&typeof e.ko==='string'&&e.ko.length>3));
 });
 test('unreviewed generated contexts are never labeled as certified translations',()=>{
   assert.ok(words.flatMap(w=>w.examples).filter(e=>e.source==='generated-context').every(e=>e.reviewStatus==='needs-review'&&e.ko.startsWith('핵심 뜻:')));
   assert.ok(words.flatMap(w=>w.examples).filter(e=>e.source==='provided').every(e=>e.reviewStatus==='provided-unverified'));
+  assert.ok(words.flatMap(w=>w.examples).filter(e=>e.source==='editorial-draft').every(e=>e.reviewStatus==='editorial-draft'));
+  assert.ok(words.flatMap(w=>w.examples).filter(e=>e.source==='provided-crosslink').every(e=>e.reviewStatus==='crosslink-needs-sense-review'));
+  assert.equal(manifest.independentlyVerifiedExamples,0);
   assert.equal(words.flatMap(w=>w.examples).filter(e=>/r\?sum\?|caf\?/.test(e.en)).length,0);
 });

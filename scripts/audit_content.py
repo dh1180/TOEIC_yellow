@@ -24,7 +24,7 @@ for i,w in enumerate(words):
     if w['category']!='frequent' and any(e['source']=='provided' for e in w['examples']):errors.append(f'provided example linked to non-frequent {id_}')
     for e in w['examples']:
         en=e.get('en');ko=e.get('ko');source=e.get('source');status=e.get('reviewStatus')
-        if source not in ('provided','project-authored','generated-context'):errors.append(f'unknown source at {id_}: {source}')
+        if source not in ('provided','project-authored','editorial-draft','provided-crosslink','generated-context'):errors.append(f'unknown source at {id_}: {source}')
         source_counts[source]+=1;qa_status[status]+=1
         if not isinstance(en,str) or not en.strip() or not isinstance(ko,str) or not ko.strip():errors.append(f'missing content {id_}');continue
         if any(c in en for c in ('“','”','«','»','r?sum?','caf?')):errors.append(f'unresolved quotes or broken character {id_}')
@@ -33,6 +33,8 @@ for i,w in enumerate(words):
         if source=='generated-context' and not (status=='needs-review' and ko.startswith('핵심 뜻:')):errors.append(f'generated example incorrectly verified/translated {id_}')
         if source=='project-authored' and (ko.startswith('핵심 뜻:') or status!='project-reviewed'):errors.append(f'authored example metadata mismatch {id_}')
         if source=='provided' and status!='provided-unverified':errors.append(f'provided source represented as reviewed {id_}')
+        if source=='editorial-draft' and status!='editorial-draft':errors.append(f'editorial draft labeled as verified {id_}')
+        if source=='provided-crosslink' and status!='crosslink-needs-sense-review':errors.append(f'crosslink marked as reviewed {id_}')
         if source!='provided' and re.search(r'\b(?:A|B|sb|sth)\b|one\x27s|oneself|\s-ing\b',en):suspicious.append({'id':id_,'word':w['word'],'en':en,'reason':'possible unresolved pattern'})
         if source=='provided':source_pairs.add((id_,en,ko))
 
@@ -40,16 +42,20 @@ for cat,total in expected.items():
     if counts[cat]!=total:errors.append(f'category total {cat} {counts[cat]} != {total}')
 if len(words)!=5101 or len(ids)!=5101:errors.append(f'word counts {len(words)} IDs {len(ids)}')
 if source_counts['provided']!=1481:errors.append(f'provided count {source_counts["provided"]} != 1481')
-if sum(source_counts[s] for s in ('project-authored','generated-context'))!=3863:errors.append('generated and authored vocabulary total != 3863')
+if sum(n for s,n in source_counts.items() if s!='provided')!=3863:errors.append('non-provided example total != 3863')
 if manifest.get('wordCount')!=5101 or manifest.get('exampleCardCount')!=1481:errors.append('manifest counts incorrect')
 if manifest.get('projectReviewedExamples')!=source_counts['project-authored']:errors.append('manifest authored mismatch')
 if manifest.get('generatedContextExamples')!=source_counts['generated-context']:errors.append('manifest generated mismatch')
+if manifest.get('editorialDraftExamples')!=source_counts['editorial-draft']:errors.append('manifest editorial-draft mismatch')
+if manifest.get('providedCrosslinkedExamples')!=source_counts['provided-crosslink']:errors.append('manifest crosslink mismatch')
+if manifest.get('independentlyVerifiedExamples')!=0:errors.append('independent QA verification must not be implied')
 if manifest.get('quotedTokenPromptExamples')!=0:errors.append('manifest quoted prompts must be 0')
 # File must track every still-unreviewed generated sentence and any author notes
 with (ROOT/'data/content-review-queue.csv').open(encoding='utf-8-sig',newline='') as f:
     rows=list(csv.DictReader(f))
 if len({r['id'] for r in rows})!=len(rows):errors.append('duplicate review ID')
-if not {w['id'] for w in words if w['examples'][0]['source']=='generated-context'}.issubset({r['id'] for r in rows}):errors.append('missing review queue entries')
+if len(rows)!=3863:errors.append('review queue must cover all non-provided words')
+if {w['id'] for w in words if w['examples'][0]['source']!='provided'}!={r['id'] for r in rows}:errors.append('review queue IDs must exactly match all non-provided words')
 raw=json.dumps([(w['id'],w['word'],w['meaningKo'],w['day'],w['category']) for w in words],ensure_ascii=False,separators=(',',':')).encode()
 summary={'status':'failed' if errors else 'integrity-passed', 'scope':'structural/metadata tests only, NOT language certification',
     'wordCount':len(words),'uniqueIds':len(ids),'categoryCounts':counts,'sourceCounts':source_counts,

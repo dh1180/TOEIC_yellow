@@ -14,3 +14,5 @@ overqualified,직무 필요 수준보다 자격 경력이 높음,교육 수준�
 send a notification,통지하다 또는 알림을 보내다,전자 알림도 포괄하도록 번역 범위 확장,뜻 교정; meaningKoOriginal로 기존 뜻 보존
 default,채무불이행 또는 의무 불이행,대출 문맥에서 채무불이행 의미 명확화,뜻 교정; meaningKoOriginal로 기존 뜻 보존
 profitable(<->unprofitable),profitable,반의어 주석이 표제어에 포함되어 잘못된 용례 생성,표제어 교정; wordOriginal로 원문 보존
+seamless(=without trouble),seamless,뜻풀이 주석이 표제어에 포함되어 용례를 훼손함,표제어 교정; wordOriginal로 원문 보존
+ambiance(=ambience),ambiance,동의 철자 주석이 표제어에 포함되어 용례를 훼손함,표제어 교정; wordOriginal로 원문 보존

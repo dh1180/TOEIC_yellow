@@ -1,84 +1,90 @@
-# TOEIC Yellow (노랭이)
+# TOEIC Yellow · 노랭이 단어 학습 앱
 
-사용자가 제공한 Anki 단어장 `노랭이.apkg` 및 `노랭이_예문 기반.apkg`을 학습할 수 있게 만든 Expo/React Native 앱입니다. 학습 흐름과 SRS는 [HSK Plus Ultra](https://github.com/dh1180/HSK_Plus_Ultra)의 구조와 규칙을 참고했습니다.
+사용자가 제공한 두 Anki 파일(`노랭이.apkg`, `노랭이_예문 기반.apkg`)을 Expo / React Native 학습 앱에 연결한 프로젝트입니다. 학습 흐름은 [HSK Plus Ultra](https://github.com/dh1180/HSK_Plus_Ultra)의 복습 정책과 카드 UI를 참고해 제작했습니다.
 
-## 포함된 기능
+## 앱 기능
 
-- 빈출단어(1,241개), 토익 기초단어(837개), 800점(2,033개), 900점(990개)별 탐색
-- DAY 01~30 단위 학습 또는 단어장 전체 학습
-- 단어장별 진도·복습 대기·새 단어·장기 기억 통계
-- 한 번에 10/20/30개 학습, 복습 기한 초과 단어 우선
-- 영어 단어 → 터치해서 뜻·예문 공개 → `알고 있음` / `다시 학습`
-- 30분 → 3일 → 7일 → 21일 → 장기 기억 간격 반복
-- 오답은 현재 세션의 뒤로 재출제; 중단한 세션 이어하기
-- 영단어·한국어 뜻 통합 검색, 원본 예문 여러 개 넘겨 보기
-- 모바일/웹 영어 TTS (`en-US`, 시스템 음성 엔진)
-- 로컬 저장, JSON 백업·복원, 확인 후 기록 초기화
-- 데이터 출처·작성 문장 출처를 각 카드에서 구분
+- 어휘 **5,101개**: 빈출 1,241개, 토익 기초 837개, 800점 2,033개, 900점 990개
+- DAY 01~30 및 단어장별 학습, 10/20/30개 학습량 설정
+- 복습 우선 큐와 `30분 → 3일 → 7일 → 21일 → 장기 기억` 간격 반복
+- `알고 있음`/`다시 학습`, 현재 세션에서 오답 재출제와 중단 후 이어 학습
+- 영·한 검색(악센트 없는 `resume` 검색도 지원), 진행률·카테고리별 통계
+- 영어 단어/예문 TTS, 로컬 학습 기록 저장, JSON 백업·복원·초기화
+- 문맥 예문 출처와 검수 상태 표시; **미검수 초안 기본 가림**
 
-## 데이터 범위 및 주의 사항
+## 예문 콘텐츠 품질 · 중요
 
-| 구분 | 수량 |
-| --- | ---: |
-| 어휘 카드 | 5,101 |
-| 원본 예문 카드 | 1,481 |
-| 원본 예문이 연결된 어휘 | 1,238 |
-| 직접 작성한 보조 학습 문장 연결 어휘 | 3,863 |
+| 출처 | 단어 | 비고 |
+| --- | ---: | --- |
+| 제공 원본 예문 | 1,238개 | 원본 문장 1,481개 보존 |
+| 직접 작성한 영문·한국어 예문 초안 | 366개 | 독립 검수 미완료 |
+| 다른 카드의 제공 예문 재활용 후보 | 345개 | 뜻·용법 일치 미검수 |
+| 규칙 기반 문맥 초안 | 2,973개 | 한국어는 뜻 참고, 문장 번역 아님 |
+| 어휘를 인용하는 연습용 문장 | 179개 | **실제 용례 예문이 아님** |
 
-원본 예문은 Anki 덱의 DAY·어휘 순서 태그로 연결했으며 한 단어의 다의어 예문은 모두 보존합니다. **저장소에 포함된 사용자 제공 자료의 라이선스는 독립적으로 확인해야 합니다.** 상업적 공개·스토어 배포 전에 권리를 확인하세요.
+**전체 5,101개의 단어와 한국어 뜻을 검색하고 학습할 수 있지만, 전체 영어 예문 및 번역이 정확하다는 의미는 아닙니다.** 생성 초안 중에는 부자연스럽거나 틀린 예문이 남아 있습니다. 앱은 이들을 기본적으로 숨기고 `검수 전 문장 보기`를 명시적으로 누를 때만 표시합니다. 독립적인 콘텐츠 전수 검수와 원본 자료의 권리 확인 전까지 상용 배포 준비 완료로 보지 않습니다.
 
-중요: 원본 예문이 없는 3,863개 단어에는 문장이 비어 있지 않도록 **어휘를 언급하는 보조 학습 문장**을 작성해 두었습니다. 이들은 단어의 실제 문맥에서 쓰는 **용례 예문이 아니며**, 앱에서 검수 전 참고용이라고 명확히 표시합니다. 전문적인 문맥 예문으로 완전히 교체·전수 검증하지 않았으므로 이 버전을 *상용 콘텐츠 검수 완료*로 홍보하면 안 됩니다. 원본 Anki 예문도 철자·번역 전수 검수는 별도로 필요합니다.
-
-원본 83MB 음성은 재배포하지 않고 OS의 TTS를 사용합니다. TTS가 없는 기기에서는 발음이 재생되지 않을 수 있습니다.
+자세한 결과와 문제 목록은 [콘텐츠 검수 보고](CONTENT_QA.md), `data/content_audit.json`, `data/structural_audit.json`, `data/example_review_queue.json`을 확인하세요.
 
 ## 실행
 
-Node.js **24** 환경에서 실행하세요.
+Node.js 24 권장.
 
 ```bash
 npm install
 npx expo start
 ```
 
-Expo 개발 서버에서 `a`(Android), `i`(iOS/macOS), `w`(Web) 또는 Expo Go QR코드로 접속합니다. `npm test`는 외부 의존성 설치 없이 Node.js 24에서 데이터 및 복습 로직 회귀 테스트를 수행합니다.
+Expo 터미널에서 `a`(Android), `i`(iOS/macOS), `w`(Web) 입력 또는 Expo Go로 QR코드를 스캔합니다.
 
 ```bash
 npm test
+npm run audit:content
 npx expo export --platform web
 ```
 
-EAS Android 내부 테스트용 APK 예시는 다음과 같습니다.
+GitHub Actions는 데이터/SRS 테스트 및 Expo 웹 번들 생성을 검사합니다. 웹 빌드가 성공하더라도 모바일 실기기 설치·백업·TTS 테스트를 대신하지 않습니다.
+
+## Android 빌드
 
 ```bash
 npx eas-cli build --platform android --profile preview
 ```
 
-Expo/EAS 계정 연결과 실제 기기 검증은 직접 진행해야 합니다.
+내부 테스트용 APK 프로필이 설정되어 있습니다. **production 빌드는 검수 대기가 남았으므로 의도적으로 차단**됩니다(`npm run release:check`). 외부 독립 검수/라이선스 검증 및 실기기 검증 후 배포 요건을 직접 충족시켜야 합니다.
 
-## 단어 데이터 재생성
+## 데이터 출처와 재생성
 
-원본 Anki 파일을 다시 가져올 필요가 있을 때에만 사용합니다. `zstd` CLI 또는 `pip install zstandard`가 필요합니다.
+원본 사용자가 제공한 학습 덱은 5,101개의 Anki note ID 및 DAY·단어장·한국어 뜻이 포함됩니다. 원본 예문 카드 1,481개는 빈출단어 순번에 따라 연결했습니다. 원본의 오디오 파일 약 83MB는 포함하지 않고 OS TTS를 사용합니다. 자체 작성 문장과 사용자가 제공한 문장은 출처별로 구분합니다.
 
 ```bash
 python3 scripts/import_anki.py "노랭이.apkg" "노랭이_예문 기반.apkg"
+python3 scripts/curate_examples.py
+python3 scripts/audit_content.py --write
+npm test
 ```
 
-이 스크립트는 Anki `collection.anki21b` SQLite 원본을 읽고 `src/data/words.json`, `src/data/manifest.json`을 재생성합니다. 데이터에 사용되는 안정적인 ID는 Anki note ID이며, 원본 음성 파일과 사용자 학습 이력은 포함하지 않습니다. 재생성 시 Anki 노트 ID가 바뀌면 기존 앱 백업의 ID와 호환되지 않을 수 있습니다.
+원본 데이터는 상용·공개 재배포가 허용된 것으로 확인되지 않았으므로 권리를 확인하기 전 재배포 범위를 검토해야 합니다. Anki 카드 ID를 변경하면 기존 학습 이력이 깨질 수 있으므로, 수정 시 `wordOriginal`을 이용해 표기 변경을 추적합니다.
 
 ## 프로젝트 구조
 
 ```text
-App.jsx                   홈·단어장·학습·검색·통계·설정·백업·복원
-src/data/words.json       사용자 업로드 데이터 및 출처 표시
-src/data/manifest.json    데이터 건수 검증
-src/lib/srs.js            HSK 방식 간격 반복 정책
-src/lib/session.js        복습 우선 큐·재출제·백업 검사
-src/lib/storage.js        기기 저장소 연동
-src/styles.js             노란색 테마
-scripts/import_anki.py    APKG 추출·연결 및 참고용 문장 생성
-assets/icon.png           앱 아이콘
+App.jsx                         홈, 학습, 검색, 통계, 설정, 백업
+src/data/words.json             어휘 5,101개·예문·검수 라벨
+src/data/manifest.json          데이터 건수 및 콘텐츠 현황
+src/lib/srs.js                  HSK 방식 간격 반복
+src/lib/session.js              학습 큐·세션·백업 검증
+src/lib/storage.js              기기 저장소
+scripts/import_anki.py          Anki APKG 가져오기
+scripts/curate_examples.py      예문 초안·출처·검수 대기열 생성
+scripts/audit_content.py        전체 구조 감사
+scripts/check-release.mjs       배포 검수 게이트
+data/editorial_examples.tsv     직접 작성 문장/번역 초안
+ data/example_review_queue.json 카드별 검수 대기열
+ data/structural_audit.json     구조 검사 결과
+ data/original_text_corrections.json  원문 표기 교정 이력
+tests/                          기능·콘텐츠 회귀 테스트
+.github/workflows/check.yml     GitHub Actions 검증
 ```
 
-## 검수 및 배포
-
-`npm test`는 데이터 연결과 학습 로직을 검사하지만 실제 영어 뜻·예문의 정확성까지 증명하지 않습니다. 실제 휴대전화에서 화면, 발음, 앱 재시작, 백업 복원을 확인해야 합니다. 개인정보·스토어 등록 및 권리 검토 후 배포하세요.
+이 앱은 원본 출판사나 TOEIC 주관사의 공식 인증 제품이 아닙니다.

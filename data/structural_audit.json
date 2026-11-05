@@ -1,0 +1,752 @@
+{
+  "originalVocabularyCount": 5101,
+  "originalExampleCards": 1481,
+  "sourceCounts": {
+    "provided": 1481,
+    "draft-context": 2973,
+    "provided-crosslink": 345,
+    "editorial-draft": 366,
+    "study-prompt": 179
+  },
+  "categoryCounts": {
+    "frequent": 1241,
+    "basic": 837,
+    "score800": 2033,
+    "score900": 990
+  },
+  "dayCounts": {
+    "frequent": {
+      "1": 40,
+      "2": 40,
+      "3": 40,
+      "4": 44,
+      "5": 40,
+      "6": 42,
+      "7": 39,
+      "8": 40,
+      "9": 40,
+      "10": 40,
+      "11": 45,
+      "12": 41,
+      "13": 40,
+      "14": 44,
+      "15": 41,
+      "16": 41,
+      "17": 42,
+      "18": 41,
+      "19": 41,
+      "20": 42,
+      "21": 42,
+      "22": 46,
+      "23": 40,
+      "24": 41,
+      "25": 40,
+      "26": 44,
+      "27": 40,
+      "28": 40,
+      "29": 43,
+      "30": 42
+    },
+    "basic": {
+      "1": 28,
+      "2": 28,
+      "3": 28,
+      "4": 28,
+      "5": 28,
+      "6": 28,
+      "7": 28,
+      "8": 28,
+      "9": 28,
+      "10": 28,
+      "11": 28,
+      "12": 28,
+      "13": 28,
+      "14": 28,
+      "15": 28,
+      "16": 28,
+      "17": 28,
+      "18": 28,
+      "19": 28,
+      "20": 28,
+      "21": 28,
+      "22": 28,
+      "23": 27,
+      "24": 28,
+      "25": 28,
+      "26": 27,
+      "27": 28,
+      "28": 28,
+      "29": 28,
+      "30": 27
+    },
+    "score800": {
+      "1": 68,
+      "2": 68,
+      "3": 68,
+      "4": 68,
+      "5": 68,
+      "6": 68,
+      "7": 68,
+      "8": 68,
+      "9": 68,
+      "10": 68,
+      "11": 63,
+      "12": 68,
+      "13": 68,
+      "14": 68,
+      "15": 68,
+      "16": 68,
+      "17": 68,
+      "18": 68,
+      "19": 68,
+      "20": 67,
+      "21": 68,
+      "22": 68,
+      "23": 68,
+      "24": 68,
+      "25": 68,
+      "26": 67,
+      "27": 68,
+      "28": 68,
+      "29": 68,
+      "30": 68
+    },
+    "score900": {
+      "1": 32,
+      "2": 32,
+      "3": 32,
+      "4": 32,
+      "5": 32,
+      "6": 32,
+      "7": 32,
+      "8": 32,
+      "9": 32,
+      "10": 32,
+      "11": 32,
+      "12": 62,
+      "13": 32,
+      "14": 32,
+      "15": 32,
+      "16": 32,
+      "17": 32,
+      "18": 32,
+      "19": 32,
+      "20": 32,
+      "21": 32,
+      "22": 32,
+      "23": 32,
+      "24": 32,
+      "25": 32,
+      "26": 32,
+      "27": 32,
+      "28": 32,
+      "29": 32,
+      "30": 32
+    }
+  },
+  "structuralErrors": [],
+  "suspiciousTemplateSamples": [
+    {
+      "id": "1766527458124",
+      "word": "fair",
+      "sentence": "The new proposal was described as fair during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458135",
+      "word": "tidy",
+      "sentence": "The new proposal was described as tidy during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458143",
+      "word": "employ",
+      "sentence": "The team agreed to employ the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458144",
+      "word": "insufficient",
+      "sentence": "The new proposal was described as insufficient during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458147",
+      "word": "plentiful",
+      "sentence": "The new proposal was described as plentiful during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458200",
+      "word": "stop",
+      "sentence": "The team agreed to stop the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458209",
+      "word": "loudly",
+      "sentence": "The manager responded loudly to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458210",
+      "word": "plus",
+      "sentence": "The new proposal was described as plus during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458214",
+      "word": "try",
+      "sentence": "The team agreed to try the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458260",
+      "word": "daily",
+      "sentence": "The new proposal was described as daily during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458262",
+      "word": "hand",
+      "sentence": "The team agreed to hand the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458346",
+      "word": "spell",
+      "sentence": "The team agreed to spell the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458347",
+      "word": "wrap",
+      "sentence": "The team agreed to wrap the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458348",
+      "word": "fold",
+      "sentence": "The team agreed to fold the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458352",
+      "word": "post",
+      "sentence": "The team agreed to post the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458410",
+      "word": "timetable",
+      "sentence": "The new proposal was described as timetable during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458412",
+      "word": "chief",
+      "sentence": "The new proposal was described as chief during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458413",
+      "word": "conceal",
+      "sentence": "The new proposal was described as conceal during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458416",
+      "word": "embrace",
+      "sentence": "The team agreed to embrace the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458422",
+      "word": "remaining",
+      "sentence": "The new proposal was described as remaining during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458423",
+      "word": "rush",
+      "sentence": "The team agreed to rush the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458424",
+      "word": "unfortunately",
+      "sentence": "The manager responded unfortunately to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458539",
+      "word": "concrete",
+      "sentence": "The new proposal was described as concrete during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458545",
+      "word": "attempt",
+      "sentence": "The team agreed to attempt the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458546",
+      "word": "audiovisual",
+      "sentence": "The new proposal was described as audiovisual during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458551",
+      "word": "conclude",
+      "sentence": "The team agreed to conclude the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458554",
+      "word": "informal",
+      "sentence": "The new proposal was described as informal during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458561",
+      "word": "typical",
+      "sentence": "The new proposal was described as typical during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458603",
+      "word": "curious",
+      "sentence": "The new proposal was described as curious during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458616",
+      "word": "advertise",
+      "sentence": "The team agreed to advertise the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458626",
+      "word": "obviously",
+      "sentence": "The manager responded obviously to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458628",
+      "word": "primarily",
+      "sentence": "The manager responded primarily to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458671",
+      "word": "cast",
+      "sentence": "The team agreed to cast the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458676",
+      "word": "nice-looking",
+      "sentence": "The new proposal was described as nice-looking during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458683",
+      "word": "convenient",
+      "sentence": "The new proposal was described as convenient during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458684",
+      "word": "differently",
+      "sentence": "The manager responded differently to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458686",
+      "word": "formally",
+      "sentence": "The manager responded formally to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458688",
+      "word": "lightly",
+      "sentence": "The manager responded lightly to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458690",
+      "word": "optimistic",
+      "sentence": "The new proposal was described as optimistic during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458691",
+      "word": "overall",
+      "sentence": "The new proposal was described as overall during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458694",
+      "word": "rise",
+      "sentence": "The team agreed to rise the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458739",
+      "word": "best-selling",
+      "sentence": "The new proposal was described as best-selling during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458744",
+      "word": "free",
+      "sentence": "The new proposal was described as free during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458751",
+      "word": "size",
+      "sentence": "The team agreed to size the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458754",
+      "word": "unwanted",
+      "sentence": "The new proposal was described as unwanted during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458760",
+      "word": "fit",
+      "sentence": "The team agreed to fit the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458763",
+      "word": "keep",
+      "sentence": "The team agreed to keep the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458811",
+      "word": "brand new",
+      "sentence": "The new proposal was described as brand new during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458814",
+      "word": "handmade",
+      "sentence": "The new proposal was described as handmade during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458833",
+      "word": "pure",
+      "sentence": "The new proposal was described as pure during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458838",
+      "word": "test",
+      "sentence": "The new proposal was described as test during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458883",
+      "word": "curved",
+      "sentence": "The new proposal was described as curved during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458907",
+      "word": "underground",
+      "sentence": "The new proposal was described as underground during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458960",
+      "word": "rinse",
+      "sentence": "The team agreed to rinse the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458963",
+      "word": "complain",
+      "sentence": "The team agreed to complain the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458967",
+      "word": "invite",
+      "sentence": "The team agreed to invite the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527458975",
+      "word": "vivid",
+      "sentence": "The new proposal was described as vivid during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459025",
+      "word": "connect",
+      "sentence": "The team agreed to connect the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459038",
+      "word": "span",
+      "sentence": "The team agreed to span the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459041",
+      "word": "central",
+      "sentence": "The new proposal was described as central during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459042",
+      "word": "safe",
+      "sentence": "The new proposal was described as safe during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459045",
+      "word": "underwater",
+      "sentence": "The new proposal was described as underwater during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459090",
+      "word": "borrow",
+      "sentence": "The team agreed to borrow the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459091",
+      "word": "bother",
+      "sentence": "The team agreed to bother the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459101",
+      "word": "spray",
+      "sentence": "The team agreed to spray the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459104",
+      "word": "climb",
+      "sentence": "The team agreed to climb the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459106",
+      "word": "escape",
+      "sentence": "The team agreed to escape the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459108",
+      "word": "generally",
+      "sentence": "The manager responded generally to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459174",
+      "word": "excellently",
+      "sentence": "The manager responded excellently to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459177",
+      "word": "govern",
+      "sentence": "The team agreed to govern the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459182",
+      "word": "shortly",
+      "sentence": "The manager responded shortly to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459183",
+      "word": "start",
+      "sentence": "The team agreed to start the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459185",
+      "word": "unlikely",
+      "sentence": "The manager responded unlikely to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459230",
+      "word": "clinic",
+      "sentence": "The new proposal was described as clinic during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459243",
+      "word": "stamp",
+      "sentence": "The team agreed to stamp the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459252",
+      "word": "offload",
+      "sentence": "The team agreed to offload the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459297",
+      "word": "bite",
+      "sentence": "The team agreed to bite the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459300",
+      "word": "cereal",
+      "sentence": "The new proposal was described as cereal during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459304",
+      "word": "dine",
+      "sentence": "The team agreed to dine the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459309",
+      "word": "garlic",
+      "sentence": "The new proposal was described as garlic during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459316",
+      "word": "spill",
+      "sentence": "The team agreed to spill the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459319",
+      "word": "blend",
+      "sentence": "The team agreed to blend the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459374",
+      "word": "miss",
+      "sentence": "The team agreed to miss the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459375",
+      "word": "rent",
+      "sentence": "The new proposal was described as rent during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459376",
+      "word": "save",
+      "sentence": "The team agreed to save the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459377",
+      "word": "unbelievable",
+      "sentence": "The new proposal was described as unbelievable during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459393",
+      "word": "send",
+      "sentence": "The team agreed to send the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459436",
+      "word": "abundant",
+      "sentence": "The new proposal was described as abundant during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459437",
+      "word": "contest",
+      "sentence": "The new proposal was described as contest during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459440",
+      "word": "powerful",
+      "sentence": "The new proposal was described as powerful during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459445",
+      "word": "attack",
+      "sentence": "The team agreed to attack the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459446",
+      "word": "expressive",
+      "sentence": "The new proposal was described as expressive during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459454",
+      "word": "overcome",
+      "sentence": "The team agreed to overcome the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459507",
+      "word": "critic",
+      "sentence": "The new proposal was described as critic during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459512",
+      "word": "lean",
+      "sentence": "The team agreed to lean the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459513",
+      "word": "lift",
+      "sentence": "The team agreed to lift the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459518",
+      "word": "stretch",
+      "sentence": "The team agreed to stretch the matter before the deadline.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459521",
+      "word": "correctly",
+      "sentence": "The manager responded correctly to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459522",
+      "word": "expressly",
+      "sentence": "The manager responded expressly to the request.",
+      "flag": "generic template: manual syntax/sense review required"
+    },
+    {
+      "id": "1766527459526",
+      "word": "individual",
+      "sentence": "The new proposal was described as individual during the meeting.",
+      "flag": "generic template: manual syntax/sense review required"
+    }
+  ],
+  "suspiciousTemplateCount": 890,
+  "semanticValidation": "not performed by structural audit"
+}

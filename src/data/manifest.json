@@ -4,5 +4,11 @@
   "providedExampleWords": 1238,
   "authoredPromptWords": 3863,
   "scope": "Anki user-provided decks",
-  "version": 1
+  "version": 2,
+  "noOriginalExampleWords": 3863,
+  "editorialDrafts": 366,
+  "crosslinkedSourceExamples": 345,
+  "generatedContextDrafts": 2973,
+  "studyPromptsNotExamples": 179,
+  "pendingProfessionalReview": 3863
 }

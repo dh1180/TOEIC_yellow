@@ -13,6 +13,8 @@ jobs:
           node-version: '24'
       - name: Validate vocabulary, deck mapping and spaced repetition
         run: npm test
+      - name: Audit source attribution and structural completeness
+        run: python3 scripts/audit_content.py
   web-build:
     runs-on: ubuntu-latest
     steps:

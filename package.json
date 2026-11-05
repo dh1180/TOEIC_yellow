@@ -10,8 +10,11 @@
     "web": "expo start --web",
     "test": "node --test tests/*.test.js",
     "typecheck": "echo 'JavaScript project: static data and functional tests run via npm test'",
-    "check": "npm test",
-    "restore:icon": "node scripts/restore-icon.mjs"
+    "check": "npm test && npm run audit:content",
+    "restore:icon": "node scripts/restore-icon.mjs",
+    "audit:content": "python3 scripts/audit_content.py --write",
+    "release:check": "npm run check && node scripts/check-release.mjs",
+    "eas-build-post-install": "node scripts/eas-release-gate.mjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -31,6 +34,8 @@
     "@types/react": "~19.2.2",
     "typescript": "~6.0.3"
   },
-  "engines": {"node": ">=24.0.0 <25"},
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
   "type": "module"
 }

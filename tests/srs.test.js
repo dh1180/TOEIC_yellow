@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {applyAnswer,transition,isDue} from '../src/lib/srs.js';
-import {emptyData,newSession,answerSession,selectQueue,validateBackup,categoryStats} from '../src/lib/session.js';
+import {emptyData,newSession,answerSession,selectQueue,validateBackup,categoryStats,sessionCompleted,sessionVisibleIndex} from '../src/lib/session.js';
 import {readFileSync} from 'node:fs';
 const words=JSON.parse(readFileSync(new URL('../src/data/words.json',import.meta.url),'utf8'));
 const manifest=JSON.parse(readFileSync(new URL('../src/data/manifest.json',import.meta.url),'utf8'));
@@ -42,4 +42,33 @@ test('backup reject corrupted keys and retain session',()=>{
  const imported=validateBackup(JSON.stringify({app:'TOEIC Yellow',data:d}),ids);assert.deepEqual(imported,d);
  assert.throws(()=>validateBackup(JSON.stringify({schemaVersion:1,target:20,progress:{'__proto__.bad':{stage:'NEW'}},session:null}),ids));
  assert.throws(()=>validateBackup(JSON.stringify({app:'Other App',data:d}),ids));
+});
+
+test('review progress remains within bounds after requeue and resume',()=>{
+ const ws=words.slice(0,3);let d=newSession(emptyData(),ws,'frequent');
+ assert.equal(sessionVisibleIndex(d.session),1);
+ d=answerSession(d,'RELEARN').data;
+ assert.equal(sessionCompleted(d.session),1);
+ assert.equal(sessionVisibleIndex(d.session),2);
+ d=answerSession(d,'KNOWN').data;d=answerSession(d,'KNOWN').data;
+ assert.equal(sessionCompleted(d.session),3);
+ assert.equal(sessionVisibleIndex(d.session),3);
+ assert.equal(d.session.queue[0],ws[0].id);
+});
+test('corrupt backup with invalid dates, counts, duplicate IDs, and missing originals is rejected',()=>{
+ let d=answerSession(newSession(emptyData(),words.slice(0,2),'frequent'),'RELEARN').data;
+ const altered=()=>structuredClone(d);
+ let broken=altered();broken.progress[words[0].id].lastReviewedAt='not-a-date';
+ assert.throws(()=>validateBackup(JSON.stringify(broken),ids));
+ broken=altered();broken.progress[words[0].id].seenCount=100;
+ assert.throws(()=>validateBackup(JSON.stringify(broken),ids));
+ broken=altered();broken.session.queue.push(words[0].id);
+ assert.throws(()=>validateBackup(JSON.stringify(broken),ids));
+ broken=altered();broken.session.answeredIds=[];
+ assert.throws(()=>validateBackup(JSON.stringify(broken),ids));
+});
+test('new session rejects another category and day, but allows matching words',()=>{
+ assert.throws(()=>newSession(emptyData(),words.slice(0,2),'score900'));
+ assert.throws(()=>newSession(emptyData(),words.slice(0,2),'frequent',30));
+ assert.equal(newSession(emptyData(),words.slice(0,2),'frequent',1).session.queue.length,2);
 });

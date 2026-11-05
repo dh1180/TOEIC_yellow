@@ -1,8 +1,8 @@
 sourceWord,suggestedCorrection,reason,action
-chief financial officer(CEO),chief financial officer (CFO),원본에 재무책임자를 CEO로 표기한 약어 오류 의심,원본 표제어 보존; 예문에서는 CFO 사용
-in the distance past,in the distant past,거리(distance)와 형용사(distant) 혼동 의심,원본 표제어 보존; 예문에서 수정
-set down to work,settle down to work,원본 구문의 일반적 관용 표현 불일치 의심,원본 표제어 보존; 예문에서 수정
-make on outside call,make an outside call,관사 오타 의심,원본 표제어 보존; 예문에서 수정
-until the first next month,until the first of next month,날짜 구문 오류 의심,원본 표제어 보존; 예문에서 수정
-toxication,intoxication,흔한 표준어와 달라 어휘 출처 확인 필요,원본 표제어 보존; 예문에서 표준형 사용
-arrange item on the shelf,arrange items on the shelf,복수형이 더 자연스러운 상점 예문,원본 표제어 보존; 예문에서 수정
+chief financial officer(CEO),chief financial officer (CFO),원본에 재무책임자를 CEO로 표기한 약어 오류 의심,표제어 CFO 교정; wordOriginal로 원문 보존
+in the distance past,in the distant past,거리(distance)와 형용사(distant) 혼동 의심,표제어 교정; wordOriginal로 원문 보존
+set down to work,settle down to work,원본 구문의 일반적 관용 표현 불일치 의심,표제어 교정; wordOriginal로 원문 보존
+make on outside call,make an outside call,관사 오타 의심,표제어 교정; wordOriginal로 원문 보존
+until the first next month,until the first of next month,날짜 구문 오류 의심,표제어 교정; wordOriginal로 원문 보존
+toxication,intoxication,실재하는 독성화 전문용어로 의미·예문 보완,원문 보존; 전문용어 의미 보완
+arrange item on the shelf,arrange items on the shelf,복수형이 더 자연스러운 상점 예문,표제어 교정; wordOriginal로 원문 보존

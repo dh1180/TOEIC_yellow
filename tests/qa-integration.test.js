@@ -43,3 +43,23 @@ test('retry session UI index follows unique answered cards and not response atte
   assert.equal(sessionVisibleIndex(d.session),3); // retry reappears; all three unique cards have already been seen
   assert.equal(sessionCompleted(d.session),3);
 });
+
+test('suspect idioms and specialist toxication meaning are corrected with source identity retained',()=>{
+  const expected=new Map([
+    ['1766527461936','in the distant past'],
+    ['1766527462263','settle down to work'],
+    ['1766527462290','make an outside call'],
+    ['1766527461879','until the first of next month'],
+    ['1766527462256','arrange items on the shelf']
+  ]);
+  for(const [id,correct] of expected){
+    const w=data.find(w=>w.id===id);
+    assert.equal(w.word,correct);
+    assert.notEqual(w.wordOriginal,w.word);
+  }
+  const rare=data.find(w=>w.id==='1766527463149');
+  assert.equal(rare.word,'toxication');
+  assert.ok(rare.meaningKo.includes('독성화'));
+  assert.ok(rare.examples[0].en.includes('toxication'));
+  assert.equal(rare.meaningKoOriginal,'중독');
+});

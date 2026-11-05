@@ -46,6 +46,40 @@
       "before": "CEO(chief executive officer)",
       "after": "CEO (chief executive officer)",
       "reason": "whitespace normalization"
+    },
+    {
+      "before": "in the distance past",
+      "after": "in the distant past",
+      "reason": "grammatical adjective form; original note ID retained"
+    },
+    {
+      "before": "set down to work",
+      "after": "settle down to work",
+      "reason": "attested idiom for applying oneself diligently; original note ID retained"
+    },
+    {
+      "before": "make on outside call",
+      "after": "make an outside call",
+      "reason": "correct indefinite article; original note ID retained"
+    },
+    {
+      "before": "until the first next month",
+      "after": "until the first of next month",
+      "reason": "add required preposition; original note ID retained"
+    },
+    {
+      "before": "arrange item on the shelf",
+      "after": "arrange items on the shelf",
+      "reason": "natural plural in store shelving context; original note ID retained"
+    }
+  ],
+  "senseCorrections": [
+    {
+      "word": "toxication",
+      "originalMeaningKo": "중독",
+      "meaningKo": "독성화, 독성 대사산물로의 전환; (드물게) 중독",
+      "source": "https://en.wiktionary.org/wiki/toxication",
+      "note": "Term exists in biochemical usage; do not automatically replace with intoxication."
     }
   ]
 }

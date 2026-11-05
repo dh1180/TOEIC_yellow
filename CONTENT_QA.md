@@ -45,3 +45,7 @@ npm test
 ```
 
 프로덕션 배포는 전수 언어·권리 검증 전까지 `npm run release:check`가 차단합니다.
+
+## 2차 표제어·전문용어 교정
+
+추가로 잘못된 정형 표현 5개를 교정하고 원문을 `wordOriginal`에 보존했습니다: `in the distant past`, `settle down to work`, `make an outside call`, `until the first of next month`, `arrange items on the shelf`. `toxication`은 단순 철자 오류가 아닌 독성화 관련 전문용어로 확인되어 원문을 보존하고 문장·의미를 수정했습니다. 출처는 `data/original_text_corrections.json`에 기록했습니다. 독립 번역 감수 여부는 변하지 않았습니다.

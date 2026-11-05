@@ -10,15 +10,28 @@ export function emptyData(){return {schemaVersion:1,target:20,progress:{},sessio
 export function selectQueue(words,progress,target,now=new Date()){
   if(![10,20,30].includes(target))throw Error('Invalid daily target');
   const due=words.filter(w=>isDue(progress[w.id],now)).sort((a,b)=>progress[a.id].nextReviewAt.localeCompare(progress[b.id].nextReviewAt));
-  const fresh=words.filter(w=>!progress[w.id]);
+  const fresh=words.filter(w=>!progress[w.id]||progress[w.id].stage==='NEW');
   return [...due,...fresh].slice(0,target);
 }
-export function newSession(data,words,category,day=null){
+function shuffleIds(ids,random){
+  const result=[...ids];
+  for(let i=result.length-1;i>0;i--){
+    const value=random();
+    if(!Number.isFinite(value)||value<0||value>=1)throw Error('Invalid shuffle source');
+    const j=Math.floor(value*(i+1));
+    [result[i],result[j]]=[result[j],result[i]];
+  }
+  return result;
+}
+export function newSession(data,words,category,day=null,options={}){
   if(data.session)throw Error('Session already running');
   if(!CATEGORIES.includes(category)||!words.length||words.length>30||new Set(words.map(w=>w.id)).size!==words.length||
     (day!==null&&(!Number.isInteger(day)||day<1||day>30))||
     !words.every(w=>w.category===category&&(day===null||w.day===day)))throw Error('Invalid session');
-  return {...data,session:{category,day,originalIds:words.map(w=>w.id),queue:words.map(w=>w.id),retryIds:[],answeredIds:[],known:0,relearn:0,longTermAdded:0}};
+  const ids=words.map(w=>w.id);
+  // Match HSK Plus Ultra: choose overdue words first, but shuffle presentation to avoid order memorization.
+  const ordered=options.shuffle?shuffleIds(ids,options.random??Math.random):ids;
+  return {...data,session:{category,day,originalIds:ordered,queue:[...ordered],retryIds:[],answeredIds:[],known:0,relearn:0,longTermAdded:0}};
 }
 export function sessionCompleted(s){return s?.answeredIds?.length||0;}
 export function sessionVisibleIndex(s){if(!s)return 0;return Math.min(s.originalIds.length,s.answeredIds.length+(s.answeredIds.includes(s.queue[0])?0:1));}
@@ -33,9 +46,9 @@ export function answerSession(data,answer,now=new Date()){
   return {data:{...data,progress:{...data.progress,[id]:updated},session:queue.length?{...s,queue,retryIds,answeredIds,known:result.known,relearn:result.relearn,longTermAdded:result.longTermAdded}:null},result};
 }
 export function categoryStats(words,progress,now=new Date()){
-  return {total:words.length,studied:words.filter(w=>!!progress[w.id]).length,due:words.filter(w=>isDue(progress[w.id],now)).length,longTerm:words.filter(w=>progress[w.id]?.stage==='LONG_TERM').length,new:words.filter(w=>!progress[w.id]).length};
+  return {total:words.length,studied:words.filter(w=>!!progress[w.id]).length,due:words.filter(w=>isDue(progress[w.id],now)).length,longTerm:words.filter(w=>progress[w.id]?.stage==='LONG_TERM').length,new:words.filter(w=>!progress[w.id]||progress[w.id].stage==='NEW').length};
 }
-export function validateBackup(raw,validIds){
+export function validateBackup(raw,validIds,wordById=null){
   if(typeof raw!=='string'||raw.length>10_000_000)throw Error('백업 파일 크기 제한을 초과했습니다.');
   const x=JSON.parse(raw);const data=x?.data??x;
   if(x?.app&&x.app!=='TOEIC Yellow')throw Error('다른 앱의 백업 파일입니다.');
@@ -62,6 +75,11 @@ export function validateBackup(raw,validIds){
       !nonNegInt(s.known)||!nonNegInt(s.relearn)||!nonNegInt(s.longTermAdded)||
       s.known!==s.originalIds.length-s.queue.length||
       s.known+s.relearn<s.answeredIds.length||s.longTermAdded>s.known)throw Error('진행 중인 학습 정보가 손상되었습니다.');
+    // A valid ID can still belong to a different vocabulary deck or DAY.
+    if(wordById&&!s.originalIds.every(id=>{
+      const word=wordById.get(id);
+      return word?.category===s.category&&(s.day===null||word.day===s.day);
+    }))throw Error('백업의 단어장 또는 DAY 정보가 실제 카드와 일치하지 않습니다.');
     const set=new Set(s.originalIds),queued=new Set(s.queue),answered=new Set(s.answeredIds),retry=new Set(s.retryIds);
     if(![...queued,...answered,...retry].every(id=>set.has(id))||
       ![...retry].every(id=>queued.has(id)&&answered.has(id))||

@@ -43,3 +43,17 @@ test('backup reject corrupted keys and retain session',()=>{
  assert.throws(()=>validateBackup(JSON.stringify({schemaVersion:1,target:20,progress:{'__proto__.bad':{stage:'NEW'}},session:null}),ids));
  assert.throws(()=>validateBackup(JSON.stringify({app:'Other App',data:d}),ids));
 });
+
+test('cards are shuffled within a selected HSK-style session without changing membership',()=>{
+ const ws=words.slice(0,3);
+ const d=newSession(emptyData(),ws,'frequent',null,{shuffle:true,random:()=>0});
+ assert.deepEqual(d.session.queue,[ws[1].id,ws[2].id,ws[0].id]);
+ assert.deepEqual(new Set(d.session.queue),new Set(ws.map(w=>w.id)));
+ assert.deepEqual(d.session.originalIds,d.session.queue);
+});
+test('legacy NEW-stage cards remain selectable instead of becoming stranded',()=>{
+ const now=new Date('2026-11-05T01:00:00.000Z'),w=words[0];
+ const progress={[w.id]:{stage:'NEW',nextReviewAt:null,lastReviewedAt:now.toISOString(),seenCount:0,knownCount:0,relearnCount:0}};
+ assert.equal(selectQueue(words.slice(0,2),progress,10,now)[0].id,w.id);
+ assert.equal(categoryStats(words.slice(0,2),progress,now).new,2);
+});

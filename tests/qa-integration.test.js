@@ -331,7 +331,7 @@ test('crosslinked source examples preserve an exact provided-source origin and h
  const sourceKeys=new Set(originals.map(e=>JSON.stringify([e.word,e.en,e.ko])));
  const cross=data.filter(w=>w.examples[0].source==='provided-crosslink');
  assert.equal(cross.length,296);
- const norm=v=>v.toLowerCase().normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+ const norm=v=>v.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  for(const w of cross){
   const e=w.examples[0];
   assert.ok(sourceKeys.has(JSON.stringify([e.sourceWord,e.en,e.ko])),'Source mismatch '+w.id);

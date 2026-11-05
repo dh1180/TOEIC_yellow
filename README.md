@@ -58,7 +58,7 @@ GitHub Actions는 데이터·복습·백업 회귀 테스트, 독립적인 콘�
 python3 scripts/import_anki.py '노랭이.apkg' '노랭이_예문 기반.apkg'
 python3 -m pip install -r requirements-content.txt
 python3 scripts/curate_examples.py
-python3 scripts/apply_qa_overrides.py  # ID별 직접 작성/재연결 643개 + 표제어 교정 재적용
+python3 scripts/apply_qa_overrides.py  # ID별 직접 작성/재연결 744개 + 표제어 교정 재적용
 python3 scripts/audit_content.py --write
 npm test
 ```

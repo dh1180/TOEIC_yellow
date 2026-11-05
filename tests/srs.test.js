@@ -43,3 +43,16 @@ test('backup reject corrupted keys and retain session',()=>{
  assert.throws(()=>validateBackup(JSON.stringify({schemaVersion:1,target:20,progress:{'__proto__.bad':{stage:'NEW'}},session:null}),ids));
  assert.throws(()=>validateBackup(JSON.stringify({app:'Other App',data:d}),ids));
 });
+
+test('retry progress counts distinct cards, not repeated answers',async()=>{
+ const {newSession,answerSession,emptyData,sessionVisibleIndex}=await import('../src/lib/session.js');
+ const words=[{id:'w1',category:'frequent',day:1},{id:'w2',category:'frequent',day:1}];
+ let d=newSession(emptyData(),words,'frequent',1);
+ assert.equal(sessionVisibleIndex(d.session),1);
+ d=answerSession(d,'RELEARN').data;
+ assert.equal(sessionVisibleIndex(d.session),2);
+ d=answerSession(d,'KNOWN').data;
+ assert.equal(sessionVisibleIndex(d.session),2);
+ d=answerSession(d,'KNOWN').data;
+ assert.equal(d.session,null);
+});

@@ -3,7 +3,7 @@ import {ActivityIndicator,Alert,BackHandler,Keyboard,Platform,Pressable,ScrollVi
 import {SafeAreaProvider,SafeAreaView} from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 import {WORDS,WORD_BY_ID,WORD_IDS,WORDS_BY_CATEGORY,MANIFEST,searchWords} from './src/data/index';
-import {emptyData,newSession,answerSession,categoryStats,selectQueue,CATEGORIES,CATEGORY_LABELS,backupJson,validateBackup} from './src/lib/session';
+import {emptyData,newSession,answerSession,categoryStats,selectQueue,CATEGORIES,CATEGORY_LABELS,backupJson,validateBackup,sessionVisibleIndex} from './src/lib/session';
 import {STAGES,reviewLabel,nextLabel} from './src/lib/srs';
 import {loadData,saveData,clearData} from './src/lib/storage';
 import {C,CATEGORY_COLORS,base} from './src/styles';
@@ -56,9 +56,9 @@ function Level({data,category,day,onDay,onTarget,onStart,onBack,onPreview}){
 }
 
 function Study({word,progress,category,day,index,total,isRetry,onAnswer,onClose,readOnly=false}){
-  const [reveal,setReveal]=useState(false),[locked,setLocked]=useState(false),[sampleIndex,setSampleIndex]=useState(0);
+  const [reveal,setReveal]=useState(false),[locked,setLocked]=useState(false),[sampleIndex,setSampleIndex]=useState(0),[showDraft,setShowDraft]=useState(false);
   const example=word?.examples?.[sampleIndex]||null;
-  useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);},[word?.id,readOnly]);
+  useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);setShowDraft(false);},[word?.id,readOnly]);
   useEffect(()=>()=>{Speech.stop();},[word?.id]);
   if(!word)return <SafeAreaView style={s.safe}><Header title="단어를 불러올 수 없습니다" onBack={onClose}/></SafeAreaView>;
   const complete=()=>{if(locked||!reveal)return;setLocked(true);onAnswer('KNOWN');};
@@ -68,7 +68,7 @@ function Study({word,progress,category,day,index,total,isRetry,onAnswer,onClose,
       <Pressable accessibilityRole="button" accessibilityLabel={reveal?'뜻 표시됨':'뜻과 예문 보기'} onPress={()=>setReveal(true)} style={s.studyCard}>
         <View style={s.studyCardTop}><Text style={s.tiny}>{word.part!=='VOCAB'?word.part:'ENGLISH'}</Text><Pressable accessibilityRole="button" onPress={()=>play(word.word)} style={s.audio}><Text style={s.audioText}>▶ 발음</Text></Pressable></View>
         <View style={[s.studyCardWord,reveal&&{minHeight:140}]}><Text adjustsFontSizeToFit numberOfLines={3} style={[s.bigWord,{fontSize:word.word.length>19?31:word.word.length>13?39:word.word.length>8?47:61}]}>{word.word}</Text>{!reveal&&<Text style={s.tapHint}>카드를 탭하면 뜻과 예문이 나타나요</Text>}</View>
-        {reveal&&<View style={s.revealed}><Text style={s.meaning}>{word.meaningKo}</Text><View style={s.exampleBox}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='project-authored'?'직접 작성한 문맥 예문':'자동 작성한 문맥 예문 · 검수 전'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" onPress={()=>example&&play(example.en)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}{example?.source==='generated-context'&&<Text style={s.qualityWarning}>자동 생성한 문맥 예문 초안입니다. 자연스러운 용법과 문장 번역은 검수 전이며, 아래 한국어는 전체 번역이 아닌 핵심 뜻입니다.</Text>}{example?.source==='project-authored'&&<Text style={s.qualityWarning}>프로젝트 자체 작성 예문입니다. 공식 TOEIC 예문이나 독립적으로 검증된 자료는 아닙니다.</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>setSampleIndex(i=>(i+1)%word.examples.length)}/></View>}</View></View>}
+        {reveal&&<View style={s.revealed}><Text style={s.meaning}>{word.meaningKo}</Text><View style={s.exampleBox}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='project-authored'?'직접 작성한 문맥 예문':'자동 작성한 문맥 예문 · 검수 전'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" disabled={example?.source==='generated-context'&&!showDraft} onPress={()=>example&&play(example.en)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View>{example?.source==='generated-context'&&!showDraft?<View><Text style={s.qualityWarning}>이 문장은 자동 구성된 미검수 초안입니다. 잘못된 표현을 암기하지 않도록 기본적으로 가립니다.</Text><Action title="검수 전 문장 펼치기" variant="outline" small onPress={()=>setShowDraft(true)}/></View>:<><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}</>}{example?.source==='generated-context'&&<Text style={s.qualityWarning}>자동 생성한 문맥 예문 초안입니다. 자연스러운 용법과 문장 번역은 검수 전이며, 아래 한국어는 전체 번역이 아닌 핵심 뜻입니다.</Text>}{example?.source==='project-authored'&&<Text style={s.qualityWarning}>프로젝트 자체 작성 예문입니다. 공식 TOEIC 예문이나 독립적으로 검증된 자료는 아닙니다.</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>{setSampleIndex(i=>(i+1)%word.examples.length);setShowDraft(false)}}/></View>}</View></View>}
       </Pressable>
     </ScrollView>
     {!readOnly&&<View style={s.answerArea}><Text style={s.answerNote}>{reveal?'다음 복습 시점을 선택해 주세요':'뜻을 확인하면 답변할 수 있어요'}</Text><View style={s.answerRow}><Pressable accessibilityRole="button" accessibilityState={{disabled:!reveal||locked}} disabled={!reveal||locked} onPress={retry} style={[s.answerButton,{borderWidth:1,borderColor:C.line,backgroundColor:C.card},(!reveal||locked)&&s.disabled]}><Text style={s.answerTitle}>다시 학습</Text><Text style={s.answerSub}>다음 {nextLabel(progress,'RELEARN')}</Text></Pressable><Pressable accessibilityRole="button" accessibilityState={{disabled:!reveal||locked}} disabled={!reveal||locked} onPress={complete} style={[s.answerButton,{backgroundColor:C.yellow},(!reveal||locked)&&s.disabled]}><Text style={s.answerTitle}>알고 있음</Text><Text style={s.answerSub}>다음 {isRetry?reviewLabel(progress):nextLabel(progress,'KNOWN')}</Text></Pressable></View></View>}
@@ -142,7 +142,7 @@ function StudyApp(){
  {preview&&<Study word={preview} progress={data.progress[preview.id]} category={preview.category} day={preview.day} index={1} total={1} readOnly onClose={()=>setPreview(null)}/>}
  {!preview&&mode==='HOME'&&<Home data={data} onSelect={choose} onNavigate={setMode}/>}
  {!preview&&mode==='LEVEL'&&<Level data={data} category={category} day={day} onDay={setDay} onTarget={target=>void persist({...current.current,target})} onStart={begin} onBack={back} onPreview={openWord}/>}
- {!preview&&mode==='STUDY'&&session&&word&&<Study key={`${word.id}:${session.known+session.relearn}`} word={word} progress={data.progress[word.id]} category={session.category} day={session.day} index={Math.min(session.originalIds.length,session.known+1)} total={session.originalIds.length} isRetry={session.retryIds.includes(word.id)} onAnswer={answer} onClose={back}/>}
+ {!preview&&mode==='STUDY'&&session&&word&&<Study key={`${word.id}:${session.known+session.relearn}`} word={word} progress={data.progress[word.id]} category={session.category} day={session.day} index={sessionVisibleIndex(session)} total={session.originalIds.length} isRetry={session.retryIds.includes(word.id)} onAnswer={answer} onClose={back}/>}
  {!preview&&mode==='STUDY'&&!session&&<Home data={data} onSelect={choose} onNavigate={setMode}/>}
  {!preview&&mode==='SUMMARY'&&<Summary result={result} onDone={()=>setMode('LEVEL')}/>}
  {!preview&&mode==='SEARCH'&&<Search onBack={back} onPreview={openWord}/>}

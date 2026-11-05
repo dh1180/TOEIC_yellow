@@ -71,3 +71,9 @@ export function validateBackup(raw,validIds){
   return {schemaVersion:1,target:data.target,progress,session};
 }
 export function backupJson(data){return JSON.stringify({app:'TOEIC Yellow',formatVersion:1,exportedAt:new Date().toISOString(),data},null,2);}
+
+/** Show unique progress rather than counting repeated retry answers as new words. */
+export function sessionVisibleIndex(s){
+ if(!s)return 0;
+ return Math.min(s.originalIds.length,s.answeredIds.length+(s.answeredIds.includes(s.queue[0])?0:1));
+}

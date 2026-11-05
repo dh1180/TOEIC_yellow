@@ -41,7 +41,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1394:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1587:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -71,6 +71,8 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527459736": ("도움의, (음식물) 한 그릇", "(음식의) 한 사람 몫, 한 그릇"),
+        "1766527459791": ("떠나다, 출발하다", "(버스·기차 등에서) 내리다; 떠나다, 출발하다"),
         "1766527459462": ("주체, 테마", "주제, 테마"),
         "1766527460164": ("정규직", "전일제 근무, 상근 일자리"),
         "1766527462197": ("필요이상으로 교육을 받은", "해당 직무에 필요한 수준보다 자격·경력이 높은"),
@@ -167,7 +169,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=15, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=16, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

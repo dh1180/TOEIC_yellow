@@ -12,8 +12,8 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],885);
-  assert.equal(counts['provided-crosslink'],328);
+  assert.equal(counts['editorial-draft'],917);
+  assert.equal(counts['provided-crosslink'],296);
   assert.equal(counts['generated-context'],2259);
   assert.equal(Object.keys(overrides).length,1213);
   assert.ok(data.every(w=>w.examples.length>=1));
@@ -255,5 +255,38 @@ test('batch 05: 69 bilingual examples, correct IDs and original correction trail
   '1766527462323':'~에게 양보하다; ~로 대체되다',
   '1766527462345':'수습 기간 중인; 보호 관찰 중인'
  })){const w=data.find(w=>w.id===id);assert.equal(w.meaningKo,meaning);assert.ok(w.meaningKoOriginal);}
+ assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+test('batch 06: 32 reused-source semantic mismatches are replaced, and original source evidence is retained',()=>{
+ const records=JSON.parse(readFileSync(new URL('data/qa-batch-06-crosslink-review.json',root),'utf8'));
+ assert.equal(records.length,32);
+ const originalPairs=new Set(data.flatMap(w=>w.examples.filter(e=>e.source==='provided').map(e=>JSON.stringify([e.en,e.ko]))));
+ const ids=new Set();
+ for(const r of records){
+  assert.ok(!ids.has(r.id));ids.add(r.id);
+  assert.ok(['sense','part-of-speech','homograph'].includes(r.issue));
+  const w=data.find(w=>w.id===r.id);
+  assert.ok(w,'No vocab note for '+r.id);
+  assert.equal(w.word,r.word);
+  const e=w.examples[0];
+  assert.equal(e.source,'editorial-draft');
+  assert.equal(e.reviewStatus,'editorial-draft');
+  assert.equal(e.method,'ai-authored-contextual-qa-batch06-crosslink');
+  assert.equal(e.en,r.replacement.en);
+  assert.equal(e.ko,r.replacement.ko);
+  assert.deepEqual(overrides[r.id].examples,[e]);
+  assert.deepEqual(overrides[r.id].replacedCrosslink,r.priorCrosslink);
+  assert.ok(originalPairs.has(JSON.stringify([r.priorCrosslink.en,r.priorCrosslink.ko])),'Original provenance must remain resolvable '+r.id);
+ }
+ for(const w of data.filter(w=>w.examples[0].source==='provided-crosslink')){
+  const e=w.examples[0];
+  assert.ok(originalPairs.has(JSON.stringify([e.en,e.ko])),'Unresolved source link: '+w.id);
+ }
+ for(const [id,sense] of Object.entries({
+  '1766527460864':'설계된, 계획된; 의도적인',
+  '1766527462803':'추정된, 예상된; 견적상의'
+ })){const w=data.find(w=>w.id===id);assert.equal(w.meaningKo,sense);assert.ok(w.meaningKoOriginal);}
+ assert.equal(manifest.providedCrosslinkedExamples,296);
  assert.equal(manifest.independentlyVerifiedExamples,0);
 });

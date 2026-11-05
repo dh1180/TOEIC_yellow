@@ -93,6 +93,8 @@ def main() -> None:
         "1766527460466": ("근무 교대", "교대 근무, 근무 시간대"),
         "1766527462323": ("~에게 양보하다", "~에게 양보하다; ~로 대체되다"),
         "1766527462345": ("견습으로", "수습 기간 중인; 보호 관찰 중인"),
+        "1766527460864": ("계획적인, 고의의", "설계된, 계획된; 의도적인"),
+        "1766527462803": ("견적의, 추측의", "추정된, 예상된; 견적상의"),
     }
     for sid, (before, after) in sense_corrections.items():
         sense_word = by_id[sid]
@@ -142,7 +144,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=8, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=9, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

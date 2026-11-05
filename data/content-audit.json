@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 645,
+    "editorial-draft": 684,
     "provided-crosslink": 328,
     "project-authored": 391,
-    "generated-context": 2499
+    "generated-context": 2460
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -24,6 +24,8 @@
     "Original provided sentence 'a move to overseas' corrected in three linked cards, originals preserved in provenance.",
     "Batch 02: 229 DAY 1-3 800/900-score contexts have been authored in English with Korean sentence translations; independent external language review remains outstanding.",
     "Corrected two malformed headwords and put forward polysemy; prior forms are preserved.",
-    "Clarified four Korean meanings (full-time work, overqualified, default, send a notification) and the lag behind contextual translation; all independent validation is still outstanding."
+    "Clarified four Korean meanings (full-time work, overqualified, default, send a notification) and the lag behind contextual translation; all independent validation is still outstanding.",
+    "Batch 03: 39 DAY 19-20 score800 usage examples have been rewritten as bilingual editorial drafts; independent human language review remains outstanding.",
+    "Annotated 'profitable' headword and four Korean senses corrected; originals preserved in QA provenance."
   ]
 }

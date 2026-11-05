@@ -5,10 +5,13 @@
   "authoredPromptWords": 3863,
   "scope": "Anki user-provided decks",
   "version": 1,
-  "contentRevision": 2,
+  "contentRevision": 3,
   "projectReviewedExamples": 391,
-  "generatedContextExamples": 3472,
+  "editorialDraftExamples": 315,
+  "providedCrosslinkedExamples": 328,
+  "generatedContextExamples": 2829,
   "quotedTokenPromptExamples": 0,
   "providedExampleReviewStatus": "not-independently-verified",
-  "generatedReviewStatus": "pending-human-review"
+  "generatedReviewStatus": "pending-human-review",
+  "independentlyVerifiedExamples": 0
 }

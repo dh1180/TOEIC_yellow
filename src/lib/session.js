@@ -20,6 +20,8 @@ export function newSession(data,words,category,day=null){
     !words.every(w=>w.category===category&&(day===null||w.day===day)))throw Error('Invalid session');
   return {...data,session:{category,day,originalIds:words.map(w=>w.id),queue:words.map(w=>w.id),retryIds:[],answeredIds:[],known:0,relearn:0,longTermAdded:0}};
 }
+export function sessionCompleted(s){return s?.answeredIds?.length||0;}
+export function sessionVisibleIndex(s){if(!s)return 0;return Math.min(s.originalIds.length,s.answeredIds.length+(s.answeredIds.includes(s.queue[0])?0:1));}
 export function answerSession(data,answer,now=new Date()){
   const s=data.session;if(!s||!['KNOWN','RELEARN'].includes(answer))throw Error('No active session or invalid answer');
   const id=s.queue[0];if(!id)throw Error('Empty queue');

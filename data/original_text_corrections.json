@@ -1,0 +1,51 @@
+{
+  "providedSentenceCorrections": [
+    {
+      "id": "1766527458083",
+      "word": "applicant",
+      "before": "Applicants are required to submit a r?sum?.",
+      "after": "Applicants are required to submit a résumé.",
+      "status": "mechanical accent restoration; independent source still unverified"
+    },
+    {
+      "id": "1766527458096",
+      "word": "achievement",
+      "before": "List all of your achievements from previous jobs on your r?sum?.",
+      "after": "List all of your achievements from previous jobs on your résumé.",
+      "status": "mechanical accent restoration; independent source still unverified"
+    },
+    {
+      "id": "1766527458225",
+      "word": "submit",
+      "before": "Applicants should submit a r?sum? to the personnel manager.",
+      "after": "Applicants should submit a résumé to the personnel manager.",
+      "status": "mechanical accent restoration; independent source still unverified"
+    },
+    {
+      "id": "1766527458428",
+      "word": "live",
+      "before": "Finnegan's caf? hosts a live music performance every Saturday.",
+      "after": "Finnegan's café hosts a live music performance every Saturday.",
+      "status": "mechanical accent restoration; independent source still unverified"
+    },
+    {
+      "id": "1766527459290",
+      "word": "sip",
+      "before": "Sip your beverages at the caf?'s new outdoor area!",
+      "after": "Sip your beverages at the café's new outdoor area!",
+      "status": "mechanical accent restoration; independent source still unverified"
+    }
+  ],
+  "headwordCorrections": [
+    {
+      "before": "chief financial officer(CEO)",
+      "after": "chief financial officer (CFO)",
+      "reason": "CFO means chief financial officer; CEO means chief executive officer"
+    },
+    {
+      "before": "CEO(chief executive officer)",
+      "after": "CEO (chief executive officer)",
+      "reason": "whitespace normalization"
+    }
+  ]
+}

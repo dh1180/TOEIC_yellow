@@ -33,3 +33,10 @@ test('new sessions reject mixed-day/mixed-deck source entries',()=>{
   assert.throws(()=>newSession(emptyData(),words.slice(0,2),'frequent',29));
   assert.ok(newSession(emptyData(),words.slice(0,2),'frequent',1).session);
 });
+
+test('restored session metadata must match the actual deck and DAY of every card',()=>{
+ const byId=new Map(words.map(w=>[w.id,w]));
+ assert.deepEqual(validateBackup(JSON.stringify(base()),valid,byId),base());
+ assert.throws(()=>validateBackup(mut(x=>{x.session.category='score900';}),valid,byId),/단어장|DAY/);
+ assert.throws(()=>validateBackup(mut(x=>{x.session.day=30;}),valid,byId),/단어장|DAY/);
+});

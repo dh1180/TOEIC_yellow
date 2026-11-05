@@ -27,6 +27,8 @@ WORD_FIXES = {
     "1766527460162": ("dressed in a suit", "dressed in suit"),
     "1766527460164": ("full-time work", "full time work"),
     "1766527461412": ("profitable", "profitable(<->unprofitable)"),
+    "1766527460427": ("seamless", "seamless(=without trouble)"),
+    "1766527462312": ("ambiance", "ambiance(=ambience)"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -35,7 +37,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1012:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1144:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -73,6 +75,16 @@ def main() -> None:
         "1766527461438": ("조금씩", "하나씩, 부분별로; 조금씩"),
         "1766527461439": ("부분, 몫", "비율, 부분, 몫"),
         "1766527461445": ("~까지", "~까지; 최대"),
+        "1766527458544": ("진열, 배열", "배열, 다양한 종류; 진열"),
+        "1766527458611": ("사용되는", "사용 중인, 쓰이고 있는"),
+        "1766527458618": ("~에 속하다, 의 소유물이다", "~에 속하다, ~의 소유이다"),
+        "1766527458762": ("식료품점", "식료품점, 식료품의"),
+        "1766527460379": ("쓰레기 어지르다, 흐트러뜨리다", "쓰레기; 쓰레기를 함부로 버리다"),
+        "1766527460416": ("~으로 가득 차다", "~으로 채우다; ~으로 가득 차다"),
+        "1766527460419": ("성공의 길", "성공의 열쇠, 성공의 핵심 요소"),
+        "1766527460425": ("친목회", "재회, 동창회, 친목 모임"),
+        "1766527460427": ("(끊어짐이 없이) 매끄러운, 문제없는", "끊김 없이 매끄러운, 원활한"),
+        "1766527462299": ("지시하는, 지배적인", "지침, 지시; 지시하는"),
     }
     for sid, (before, after) in sense_corrections.items():
         sense_word = by_id[sid]
@@ -122,7 +134,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=6, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=7, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],
@@ -147,7 +159,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 1012 QA source overlays and source-grammar correction. Regenerate structural audit next.")
+    print("Applied 1144 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

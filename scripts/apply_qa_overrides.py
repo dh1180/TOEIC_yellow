@@ -19,6 +19,11 @@ QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
     "1766527458672": ("CEO (chief executive officer)", "CEO(chief executive officer)"),
     "1766527461470": ("chief financial officer (CFO)", "chief financial officer(CEO)"),
+    "1766527461936": ("in the distant past", "in the distance past"),
+    "1766527462263": ("settle down to work", "set down to work"),
+    "1766527462290": ("make an outside call", "make on outside call"),
+    "1766527461879": ("until the first of next month", "until the first next month"),
+    "1766527462256": ("arrange items on the shelf", "arrange item on the shelf"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -49,6 +54,18 @@ def main() -> None:
             raise SystemExit(f"Bad QA source at {wid}")
         w["examples"] = [example]
 
+    rare = by_id["1766527463149"]
+    if rare["word"] != "toxication" or rare["examples"][0]["source"] != "project-authored":
+        raise SystemExit("Unexpected original specialized term")
+    if rare["meaningKo"] not in ("중독", "독성화, 독성 대사산물로의 전환; (드물게) 중독"):
+        raise SystemExit("Original toxication meaning changed; review manually")
+    rare["meaningKoOriginal"] = "중독"
+    rare["meaningKo"] = "독성화, 독성 대사산물로의 전환; (드물게) 중독"
+    rare["examples"][0].update(
+        en="In toxicology, toxication describes the conversion of a substance into a toxic metabolite.",
+        ko="독성학에서 toxication은 물질이 독성 대사산물로 전환되는 과정을 뜻합니다.",
+        reviewReason="Specialized biochemistry meaning checked against a dictionary; translation needs independent review."
+    )
     sources = collections.Counter(e["source"] for w in words for e in w["examples"])
     if sources["provided"] != 1481 or sum(n for s,n in sources.items() if s != "provided") != 3863:
         raise SystemExit(f"Source count mismatch: {sources}")

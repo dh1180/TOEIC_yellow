@@ -84,6 +84,16 @@
       "before": "arrange item on the shelf",
       "after": "arrange items on the shelf",
       "reason": "natural plural in store shelving context; original note ID retained"
+    },
+    {
+      "before": "dressed in suit",
+      "after": "dressed in a suit",
+      "reason": "Added missing indefinite article; Anki note ID and wordOriginal preserved."
+    },
+    {
+      "before": "full time work",
+      "after": "full-time work",
+      "reason": "Hyphenated compound modifier for common employment term; Anki note ID and wordOriginal preserved."
     }
   ],
   "senseCorrections": [
@@ -93,6 +103,12 @@
       "meaningKo": "독성화, 독성 대사산물로의 전환; (드물게) 중독",
       "source": "https://en.wiktionary.org/wiki/toxication",
       "note": "Term exists in biochemical usage; do not automatically replace with intoxication."
+    },
+    {
+      "word": "put forward",
+      "originalMeaningKo": "앞당기다",
+      "meaningKo": "제안하다, 내세우다; (회의·일정 등을) 앞당기다",
+      "note": "In 'put forward a proposal', the primary meaning is to propose; 'put forward a meeting/date' may mean reschedule earlier in British English. Source meaning retained separately."
     }
   ]
 }

@@ -114,7 +114,7 @@ def main() -> None:
     def review_reason(source):
         return {
             "project-authored": "Project-authored draft; independent language review and rights check pending",
-            "editorial-draft": "QA-authored draft; independent language review pending",
+            "editorial-draft": "AI-authored contextual draft with Korean translation; independent human language review pending",
             "provided-crosslink": "Crosslinked original sentence; verify headword sense in context",
             "generated-context": "Rule-generated text; grammar, meaning and translation pending"
         }[source]

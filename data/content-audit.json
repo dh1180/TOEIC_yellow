@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 1400,
+    "editorial-draft": 1449,
     "provided-crosslink": 296,
     "project-authored": 391,
-    "generated-context": 1776
+    "generated-context": 1727
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -38,7 +38,8 @@
     "Batch 11: 42 basic DAY 17–18 templates replaced with bilingual editorial drafts; provided examples unchanged.",
     "Batch 12: 37 basic DAY 19–20 templates replaced with bilingual editorial drafts; corrected one Korean gloss typo.",
     "Batch 13: all 193 remaining basic-deck templates replaced with bilingual editorial drafts; two Korean glosses clarified.",
-    "Batch 14: 109 remaining score800 DAY 6–7 templates replaced with bilingual editorial drafts; two headwords and four Korean glosses corrected."
+    "Batch 14: 109 remaining score800 DAY 6–7 templates replaced with bilingual editorial drafts; two headwords and four Korean glosses corrected.",
+    "Batch 15: 49 remaining score800 DAY 8 templates replaced with bilingual editorial drafts; two Korean glosses corrected."
   ],
   "crosslinkedOriginalPairsChecked": 296
 }

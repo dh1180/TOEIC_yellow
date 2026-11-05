@@ -101,6 +101,22 @@ def main() -> None:
         "1766527458959": ("제품 상표", "제품 로고"),
         "1766527462356": ("채널을 고정시키다", "계속 시청·청취하다; 후속 소식을 기다리다"),
         "1766527462363": ("소풍", "소풍, 짧은 여행, 견학"),
+        "1766527458547": ("방지하다", "피하다, 회피하다; 방지하다"),
+        "1766527458487": ("가져오다", "가져오다; (수익·이익을) 벌어들이다"),
+        "1766527458813": ("개발자", "개발자; (부동산·제품) 개발업자·개발회사"),
+        "1766527459044": ("여행, 여행 가다", "여행, 이동; 여행하다; 교통의"),
+        "1766527458834": ("반복하다", "반복하다; (고객이) 재방문하는, 단골의"),
+        "1766527458827": ("관리, 통제, 관리하다, 통제하다", "관리, 통제, 제어; 조종 장치; 관리하다, 통제하다"),
+        "1766527459163": ("신문, 잡지, 일지", "학술지, 전문지; 신문, 잡지; 일지"),
+        "1766527460138": ("건강 상태", "체력, 건강 상태; 건강 관리"),
+        "1766527460728": ("보완하다, 보충하다", "보충물, (잡지 등의) 부록; 보완하다, 보충하다"),
+        "1766527461381": ("액수, 값", "수치, 통계, 실적; 액수"),
+        "1766527461396": ("자선 단체", "자선, 자선 단체; 자선행사"),
+        "1766527463107": ("유지", "유지보수, 정비; 관리"),
+        "1766527459378": ("당황한, 당황하게 하다", "화가 난, 속상한, 당황한; 화나게 하다"),
+        "1766527459672": ("상품, 소중하게 여기다", "상, 상금, 상품; 소중하게 여기다"),
+        "1766527462727": ("의정서", "의정서, 협약; 의전, 절차"),
+        "1766527459245": ("장소", "행사장, 회의장; 개최 장소"),
     }
     for sid, (before, after) in sense_corrections.items():
         sense_word = by_id[sid]
@@ -150,7 +166,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=10, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=11, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

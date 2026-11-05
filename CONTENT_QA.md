@@ -111,3 +111,11 @@ npm test
 - 참고 자료: [Cambridge publishing company](https://dictionary.cambridge.org/dictionary/english/publishing-company), [Cambridge stay](https://dictionary.cambridge.org/dictionary/english/stay). 사전 원문 예문은 재사용하지 않았습니다.
 - 5,101개 단어, 원본 1,481개, 기존 프로젝트 직접 작성 391개, QA 초안 **970개**, 교차 연결 검수 대기 296개, 규칙 문맥 초안 **2,206개**. 전체 비원본 검수 대기열 3,863개와 변경 전 PR #13의 교차 연결 원문 32개 추적 보존.
 - 독립적인 사람의 영어·한국어 전문 감수, 원본 콘텐츠 재배포 허가, Android/iOS 기기 테스트는 여전히 미완료이며 production 배포 차단 유지.
+
+## 추가 QA 배치 08 — 기존 예문 교차 연결의 한국어 뜻 검수 (2026-11-05)
+
+- 원본 영·한 예문과 재연결 후보 296개 사이에 원본 표제어·영문·한국어 문장의 정확한 연결이 존재하는지 재확인하는 자동 감사 및 회귀 테스트를 추가했습니다.
+- 실제 원본 문장은 그대로 유지하며, `supplement`, `repeat`, `developer`, `bring`, `avoid`, `maintenance` 등을 포함한 **16개 표제어의 한국어 뜻**에 원본 문장과 맞는 명사·형용사·숙어 의미를 추가했습니다.
+- 각 변경의 ID·원래 뜻·새 뜻·예문 원본·출처·참고 링크는 `data/qa-batch-08-crosslink-senses.json`과 `data/original_text_corrections.json`에 기록했습니다. [Cambridge supplement](https://dictionary.cambridge.org/dictionary/english/supplement), [developer](https://dictionary.cambridge.org/dictionary/english/developer), [repeat customer](https://dictionary.cambridge.org/dictionary/english/repeat-customer)를 확인했습니다.
+- 원본 예문 1,481개, QA 초안 970개, 기존 프로젝트 작성 391개, 교차 연결 대기 후보 **296개**, 자동 예문 2,206개, 비원본 검수 대기열 3,863개는 그대로입니다.
+- 296개 출처 연결의 **기계적 정합성 검사**는 사람의 언어 감수·저작권 허가를 대체하지 않습니다. 원본 사용 권한, 독립 감수, 기기 시험 및 배포 차단 정책은 계속 유지합니다.

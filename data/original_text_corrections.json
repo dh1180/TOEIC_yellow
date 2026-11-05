@@ -359,6 +359,122 @@
       "originalMeaningKo": "소풍",
       "meaningKo": "소풍, 짧은 여행, 견학",
       "note": "Clarified lexical sense and Korean wording for a contextual bilingual example; independent human validation pending."
+    },
+    {
+      "id": "1766527458547",
+      "word": "avoid",
+      "originalMeaningKo": "방지하다",
+      "meaningKo": "피하다, 회피하다; 방지하다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527458487",
+      "word": "bring",
+      "originalMeaningKo": "가져오다",
+      "meaningKo": "가져오다; (수익·이익을) 벌어들이다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527458813",
+      "word": "developer",
+      "originalMeaningKo": "개발자",
+      "meaningKo": "개발자; (부동산·제품) 개발업자·개발회사",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/developer"
+    },
+    {
+      "id": "1766527459044",
+      "word": "travel",
+      "originalMeaningKo": "여행, 여행 가다",
+      "meaningKo": "여행, 이동; 여행하다; 교통의",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527458834",
+      "word": "repeat",
+      "originalMeaningKo": "반복하다",
+      "meaningKo": "반복하다; (고객이) 재방문하는, 단골의",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/repeat-customer"
+    },
+    {
+      "id": "1766527458827",
+      "word": "control",
+      "originalMeaningKo": "관리, 통제, 관리하다, 통제하다",
+      "meaningKo": "관리, 통제, 제어; 조종 장치; 관리하다, 통제하다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527459163",
+      "word": "journal",
+      "originalMeaningKo": "신문, 잡지, 일지",
+      "meaningKo": "학술지, 전문지; 신문, 잡지; 일지",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527460138",
+      "word": "fitness",
+      "originalMeaningKo": "건강 상태",
+      "meaningKo": "체력, 건강 상태; 건강 관리",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527460728",
+      "word": "supplement",
+      "originalMeaningKo": "보완하다, 보충하다",
+      "meaningKo": "보충물, (잡지 등의) 부록; 보완하다, 보충하다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/supplement"
+    },
+    {
+      "id": "1766527461381",
+      "word": "figures",
+      "originalMeaningKo": "액수, 값",
+      "meaningKo": "수치, 통계, 실적; 액수",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527461396",
+      "word": "charity",
+      "originalMeaningKo": "자선 단체",
+      "meaningKo": "자선, 자선 단체; 자선행사",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527463107",
+      "word": "maintenance",
+      "originalMeaningKo": "유지",
+      "meaningKo": "유지보수, 정비; 관리",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending.",
+      "source": "https://dictionary.cambridge.org/dictionary/english/maintenance"
+    },
+    {
+      "id": "1766527459378",
+      "word": "upset",
+      "originalMeaningKo": "당황한, 당황하게 하다",
+      "meaningKo": "화가 난, 속상한, 당황한; 화나게 하다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527459672",
+      "word": "prize",
+      "originalMeaningKo": "상품, 소중하게 여기다",
+      "meaningKo": "상, 상금, 상품; 소중하게 여기다",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527462727",
+      "word": "protocol",
+      "originalMeaningKo": "의정서",
+      "meaningKo": "의정서, 협약; 의전, 절차",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
+    },
+    {
+      "id": "1766527459245",
+      "word": "venue",
+      "originalMeaningKo": "장소",
+      "meaningKo": "행사장, 회의장; 개최 장소",
+      "note": "Provided crosslink Korean gloss clarified without modifying the original English or Korean sentence; independent human review pending."
     }
   ]
 }

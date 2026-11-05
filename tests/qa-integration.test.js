@@ -323,3 +323,37 @@ test('batch 07: all 53 example rewrites are complete bilingual contexts and pres
  assert.equal(manifest.providedCrosslinkedExamples,296);
  assert.equal(manifest.independentlyVerifiedExamples,0);
 });
+
+test('crosslinked source examples preserve an exact provided-source origin and headword token',()=>{
+ const originals=data.flatMap(w=>w.examples.filter(e=>e.source==='provided').map(e=>({
+  word:w.word,en:e.en,ko:e.ko
+ })));
+ const sourceKeys=new Set(originals.map(e=>JSON.stringify([e.word,e.en,e.ko])));
+ const cross=data.filter(w=>w.examples[0].source==='provided-crosslink');
+ assert.equal(cross.length,296);
+ const norm=v=>v.toLowerCase().normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+ for(const w of cross){
+  const e=w.examples[0];
+  assert.ok(sourceKeys.has(JSON.stringify([e.sourceWord,e.en,e.ko])),'Source mismatch '+w.id);
+  assert.ok((' '+norm(e.en)+' ').includes(' '+norm(w.word)+' '),'Target absent from sentence '+w.id);
+  assert.equal(e.reviewStatus,'crosslink-needs-sense-review');
+ }
+});
+test('batch 08 preserves 16 source crosslinks and corrects their Korean glosses without rewriting original sentences',()=>{
+ const list=JSON.parse(readFileSync(new URL('data/qa-batch-08-crosslink-senses.json',root),'utf8'));
+ assert.equal(list.length,16);
+ const seen=new Set();
+ for(const correction of list){
+  assert.ok(!seen.has(correction.id));seen.add(correction.id);
+  const w=data.find(w=>w.id===correction.id);
+  assert.ok(w);
+  assert.equal(w.meaningKo,correction.meaningKo);
+  assert.equal(w.meaningKoOriginal,correction.originalMeaningKo);
+  assert.equal(w.examples[0].source,'provided-crosslink');
+  assert.equal(w.examples[0].sourceWord,correction.sourceWord);
+  assert.equal(w.examples[0].en,correction.linkedExampleEn);
+  assert.equal(w.examples[0].ko,correction.linkedExampleKo);
+  assert.equal(correction.humanReviewed,false);
+ }
+ assert.equal(manifest.independentlyVerifiedExamples,0);
+});

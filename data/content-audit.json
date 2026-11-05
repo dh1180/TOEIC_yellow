@@ -31,6 +31,8 @@
     "Batch 04: two annotated headwords normalized and ten Korean meanings clarified; originals preserved.",
     "Batch 05: 69 basic DAY 11 / 800 & 900-score DAY 5 bilingual contextual drafts, awaiting independent professional review.",
     "Batch 06: 32 semantic, part-of-speech or homograph mismatches in crosslinked original examples replaced with AI-authored bilingual drafts; original source preserved and independent human review pending.",
-    "Batch 07: 53 basic DAY12-13 and score900 DAY6 bilingual contexts authored, plus one normalized headword and five improved meanings; independent human review pending."
-  ]
+    "Batch 07: 53 basic DAY12-13 and score900 DAY6 bilingual contexts authored, plus one normalized headword and five improved meanings; independent human review pending.",
+    "Batch 08: 16 crosslinked original-example Korean glosses corrected for contextual sense; English and Korean provided source sentences were preserved, 296 crosslink source identities structurally checked; no independent language certification."
+  ],
+  "crosslinkedOriginalPairsChecked": 296
 }

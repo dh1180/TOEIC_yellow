@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],684);
+  assert.equal(counts['editorial-draft'],816);
   assert.equal(counts['provided-crosslink'],328);
-  assert.equal(counts['generated-context'],2460);
-  assert.equal(Object.keys(overrides).length,1012);
+  assert.equal(counts['generated-context'],2328);
+  assert.equal(Object.keys(overrides).length,1144);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -159,5 +159,69 @@ test('batch 03 preserves 39 new bilingual usage examples, meanings and their pro
  })){
    const w=data.find(w=>w.id===id);
    assert.equal(w.meaningKo,meaning);assert.ok(w.meaningKoOriginal);
+ }
+});
+
+test('batch 04 replaces all 132 early-day high-risk templates without changing note identities',()=>{
+ const rows=readFileSync(new URL('data/qa-batch-04-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ assert.equal(rows.length,132);
+ const foundIds=new Set();
+ const buckets={};
+ for(const line of rows){
+   const cells=line.split('|');
+   assert.equal(cells.length,3,'Invalid batch-04 PSV record');
+   const [id,en,ko]=cells;
+   assert.ok(!foundIds.has(id),'Duplicate card '+id);foundIds.add(id);
+   const word=data.find(w=>w.id===id);
+   assert.ok(word,'Missing card '+id);
+   assert.equal(word.examples.length,1);
+   const e=word.examples[0];
+   assert.equal(e.en,en);assert.equal(e.ko,ko);
+   assert.equal(e.source,'editorial-draft');
+   assert.equal(e.reviewStatus,'editorial-draft');
+   assert.equal(e.method,'ai-authored-contextual-qa-batch04');
+   assert.deepEqual(overrides[id].examples,[e]);
+   assert.equal(overrides[id].word,word.word);
+   assert.ok(/[.?!]$/.test(en),'English sentence missing punctuation for '+id);
+   assert.ok(/[.?!]$/.test(ko),'Korean sentence missing punctuation for '+id);
+   assert.ok(!ko.startsWith('핵심 뜻:'),'Missing full Korean translation for '+id);
+   const key=word.category+'/'+word.day;buckets[key]=(buckets[key]||0)+1;
+ }
+ assert.deepEqual(buckets,{
+   'basic/6':1,'basic/7':16,'basic/8':22,'basic/9':18,'basic/10':16,
+   'score800/4':39,'score900/4':20
+ });
+ assert.ok(!data.some(w=>w.examples[0].source==='generated-context'&&(
+   (w.category==='basic'&&w.day>=6&&w.day<=10)||
+   ((w.category==='score800'||w.category==='score900')&&w.day===4)
+ )));
+ assert.equal(data.flatMap(w=>w.examples).filter(e=>e.source==='provided').length,1481);
+ assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+test('batch 04 corrected headwords and Korean senses retain the original Anki values',()=>{
+ const heads={
+   '1766527460427':['seamless','seamless(=without trouble)'],
+   '1766527462312':['ambiance','ambiance(=ambience)']
+ };
+ for(const [id,[current,original]] of Object.entries(heads)){
+   const w=data.find(w=>w.id===id);
+   assert.equal(w.word,current);assert.equal(w.wordOriginal,original);
+ }
+ const senses={
+   '1766527458544':'배열, 다양한 종류; 진열',
+   '1766527458611':'사용 중인, 쓰이고 있는',
+   '1766527458618':'~에 속하다, ~의 소유이다',
+   '1766527458762':'식료품점, 식료품의',
+   '1766527460379':'쓰레기; 쓰레기를 함부로 버리다',
+   '1766527460416':'~으로 채우다; ~으로 가득 차다',
+   '1766527460419':'성공의 열쇠, 성공의 핵심 요소',
+   '1766527460425':'재회, 동창회, 친목 모임',
+   '1766527460427':'끊김 없이 매끄러운, 원활한',
+   '1766527462299':'지침, 지시; 지시하는'
+ };
+ for(const [id,meaning] of Object.entries(senses)){
+   const w=data.find(w=>w.id===id);
+   assert.equal(w.meaningKo,meaning);
+   assert.ok(w.meaningKoOriginal!==meaning);
  }
 });

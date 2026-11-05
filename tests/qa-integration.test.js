@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],416);
+  assert.equal(counts['editorial-draft'],645);
   assert.equal(counts['provided-crosslink'],328);
-  assert.equal(counts['generated-context'],2728);
-  assert.equal(Object.keys(overrides).length,744);
+  assert.equal(counts['generated-context'],2499);
+  assert.equal(Object.keys(overrides).length,973);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -82,4 +82,55 @@ test('batch 01 example corrections preserve target phrases, full translations an
     assert.ok(e.en.includes('a move overseas'));
     assert.equal(e.source,'provided-crosslink');
   }
+});
+
+
+test('batch 02 DAY 1-3 candidates have linked bilingual contexts with explicit draft status',()=>{
+  const text=['qa-batch-02-drafts.psv','qa-batch-02-day3.psv']
+    .map(file=>readFileSync(new URL('data/'+file,root),'utf8').trim().split('\n').slice(1))
+    .flat();
+  assert.equal(text.length,229);
+  const unique=new Set();
+  for(const line of text){
+    const [original,en,ko]=line.trim().split('|');
+    assert.ok(original&&en&&ko);
+    const selected=data.filter(w=>w.examples[0].source==='editorial-draft' &&
+      (w.wordOriginal===original || w.word===original) && w.examples[0].method==='ai-authored-contextual-qa-batch02');
+    assert.equal(selected.length,1,'Unique entry for '+original);
+    const w=selected[0], e=w.examples[0];
+    assert.ok(!unique.has(w.id)); unique.add(w.id);
+    assert.equal(e.en,en); assert.equal(e.ko,ko);
+    assert.equal(e.reviewStatus,'editorial-draft');
+    assert.ok(!e.ko.startsWith('핵심 뜻:'));
+    assert.ok(en.toLowerCase().includes(w.word.toLowerCase()) ||
+      ['send off to','in a strict way(=strictly)'].includes(w.word));
+  }
+  assert.equal(unique.size,229);
+  const idiom=data.find(w=>w.word==='put forward');
+  assert.equal(idiom.meaningKoOriginal,'앞당기다');
+  assert.ok(idiom.meaningKo.includes('제안하다'));
+  for(const spelling of ['dressed in a suit','full-time work']){
+    const w=data.find(w=>w.word===spelling);
+    assert.ok(w.wordOriginal&&w.wordOriginal!==w.word);
+  }
+  assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+
+test('batch 02 nuanced full-time employment and qualification senses are preserved',()=>{
+  const meanings=new Map([
+    ['full-time work','전일제 근무, 상근 일자리'],
+    ['overqualified','해당 직무에 필요한 수준보다 자격·경력이 높은'],
+    ['send a notification','통지하다, 알림을 보내다'],
+    ['default','채무불이행; 의무 불이행']
+  ]);
+  for(const [word,meaning] of meanings){
+    const w=data.find(w=>w.word===word);
+    assert.equal(w.meaningKo,meaning);
+    assert.ok(w.meaningKoOriginal&&w.meaningKoOriginal!==meaning);
+  }
+  const fullTime=data.find(w=>w.word==='full-time work');
+  assert.ok(fullTime.examples[0].ko.includes('전일제'));
+  const lag=data.find(w=>w.word==='lag');
+  assert.ok(lag.examples[0].en.includes('lags behind'));
 });

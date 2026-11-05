@@ -84,6 +84,16 @@
       "before": "arrange item on the shelf",
       "after": "arrange items on the shelf",
       "reason": "natural plural in store shelving context; original note ID retained"
+    },
+    {
+      "before": "dressed in suit",
+      "after": "dressed in a suit",
+      "reason": "Added missing indefinite article; Anki note ID and wordOriginal preserved."
+    },
+    {
+      "before": "full time work",
+      "after": "full-time work",
+      "reason": "Hyphenated compound modifier for common employment term; Anki note ID and wordOriginal preserved."
     }
   ],
   "senseCorrections": [
@@ -93,6 +103,38 @@
       "meaningKo": "독성화, 독성 대사산물로의 전환; (드물게) 중독",
       "source": "https://en.wiktionary.org/wiki/toxication",
       "note": "Term exists in biochemical usage; do not automatically replace with intoxication."
+    },
+    {
+      "word": "put forward",
+      "originalMeaningKo": "앞당기다",
+      "meaningKo": "제안하다, 내세우다; (회의·일정 등을) 앞당기다",
+      "note": "In 'put forward a proposal', the primary meaning is to propose; 'put forward a meeting/date' may mean reschedule earlier in British English. Source meaning retained separately."
+    },
+    {
+      "word": "full-time work",
+      "originalMeaningKo": "정규직",
+      "meaningKo": "전일제 근무, 상근 일자리",
+      "source": "https://dictionary.cambridge.org/dictionary/english/full-time",
+      "note": "Full-time means working the normal number of weekly hours; it is not necessarily permanent employment."
+    },
+    {
+      "word": "overqualified",
+      "originalMeaningKo": "필요이상으로 교육을 받은",
+      "meaningKo": "해당 직무에 필요한 수준보다 자격·경력이 높은",
+      "source": "https://dictionary.cambridge.org/dictionary/english/overqualified",
+      "note": "Excess knowledge, skills or experience for the job rather than schooling alone."
+    },
+    {
+      "word": "send a notification",
+      "originalMeaningKo": "통지서를 보내다",
+      "meaningKo": "통지하다, 알림을 보내다",
+      "note": "Notifications can be electronic messages; do not restrict to a paper notice."
+    },
+    {
+      "word": "default",
+      "originalMeaningKo": "태만, 불이행",
+      "meaningKo": "채무불이행; 의무 불이행",
+      "note": "Loan context in the new example specifically means a debt/payment default."
     }
   ]
 }

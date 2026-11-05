@@ -24,6 +24,8 @@ WORD_FIXES = {
     "1766527462290": ("make an outside call", "make on outside call"),
     "1766527461879": ("until the first of next month", "until the first next month"),
     "1766527462256": ("arrange items on the shelf", "arrange item on the shelf"),
+    "1766527460162": ("dressed in a suit", "dressed in suit"),
+    "1766527460164": ("full-time work", "full time work"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -32,7 +34,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 744:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 973:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -53,6 +55,26 @@ def main() -> None:
         if example["source"] not in VALID_OVERLAY_SOURCES:
             raise SystemExit(f"Bad QA source at {wid}")
         w["examples"] = [example]
+
+    proposal = by_id["1766527460356"]
+    if proposal["word"] != "put forward" or proposal["meaningKo"] not in ("앞당기다", "제안하다, 내세우다; (회의·일정 등을) 앞당기다"):
+        raise SystemExit("Put forward sense does not match source expectation")
+    proposal["meaningKoOriginal"] = "앞당기다"
+    proposal["meaningKo"] = "제안하다, 내세우다; (회의·일정 등을) 앞당기다"
+
+    # More precise Korean senses for employment, notification and loan-default usage.
+    sense_corrections = {
+        "1766527460164": ("정규직", "전일제 근무, 상근 일자리"),
+        "1766527462197": ("필요이상으로 교육을 받은", "해당 직무에 필요한 수준보다 자격·경력이 높은"),
+        "1766527460223": ("통지서를 보내다", "통지하다, 알림을 보내다"),
+        "1766527462279": ("태만, 불이행", "채무불이행; 의무 불이행"),
+    }
+    for sid, (before, after) in sense_corrections.items():
+        sense_word = by_id[sid]
+        if sense_word["meaningKo"] not in (before, after):
+            raise SystemExit(f"Sense drift for {sid}: {sense_word['meaningKo']}")
+        sense_word["meaningKoOriginal"] = before
+        sense_word["meaningKo"] = after
 
     rare = by_id["1766527463149"]
     if rare["word"] != "toxication" or rare["examples"][0]["source"] != "project-authored":
@@ -95,7 +117,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=3, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=5, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],
@@ -106,7 +128,7 @@ def main() -> None:
     def review_reason(source):
         return {
             "project-authored": "Project-authored draft; independent language review and rights check pending",
-            "editorial-draft": "QA-authored draft; independent language review pending",
+            "editorial-draft": "AI-authored contextual draft with Korean translation; independent human language review pending",
             "provided-crosslink": "Crosslinked original sentence; verify headword sense in context",
             "generated-context": "Rule-generated text; grammar, meaning and translation pending"
         }[source]
@@ -120,7 +142,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 744 QA source overlays and source-grammar correction. Regenerate structural audit next.")
+    print("Applied 973 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

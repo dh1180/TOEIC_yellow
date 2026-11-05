@@ -6,3 +6,10 @@ make on outside call,make an outside call,관사 오타 의심,표제어 교정;
 until the first next month,until the first of next month,날짜 구문 오류 의심,표제어 교정; wordOriginal로 원문 보존
 toxication,intoxication,실재하는 독성화 전문용어로 의미·예문 보완,원문 보존; 전문용어 의미 보완
 arrange item on the shelf,arrange items on the shelf,복수형이 더 자연스러운 상점 예문,표제어 교정; wordOriginal로 원문 보존
+dressed in suit,dressed in a suit,원본 구문에 부정관사 누락,표제어 교정; wordOriginal로 원문 보존
+full time work,full-time work,복합 수식어 하이픈 표기 개선,표제어 교정; wordOriginal로 원문 보존
+put forward,제안하다; 앞당기다,기존 한국어 뜻에서 제안 의미 누락,뜻 교정; meaningKoOriginal로 원문 보존
+full-time work,전일제 근무,기존 정규직은 고용기간에 대한 부정확한 함의를 줄 수 있음,뜻 교정; meaningKoOriginal로 기존 뜻 보존
+overqualified,직무 필요 수준보다 자격 경력이 높음,교육 수준만으로 제한한 기존 뜻 보완,뜻 교정; meaningKoOriginal로 기존 뜻 보존
+send a notification,통지하다 또는 알림을 보내다,전자 알림도 포괄하도록 번역 범위 확장,뜻 교정; meaningKoOriginal로 기존 뜻 보존
+default,채무불이행 또는 의무 불이행,대출 문맥에서 채무불이행 의미 명확화,뜻 교정; meaningKoOriginal로 기존 뜻 보존

@@ -86,3 +86,5 @@ npm test
 TOEIC 800·900점 구간 DAY 1~3에서 부자연스러운 규칙 생성 문장 **229개**를 문맥 중심 영어 예문과 한국어 전체 문장 번역으로 교체했습니다. 표제어 `dressed in suit` → `dressed in a suit`, `full time work` → `full-time work`와 `put forward`의 누락된 '제안하다' 의미도 교정했습니다. 원래 단어·뜻은 `wordOriginal`·`meaningKoOriginal`에 보존해 학습 기록을 유지합니다.
 
 변경 문장은 `data/qa-batch-02-drafts.psv`(153개)와 `data/qa-batch-02-day3.psv`(76개)에 기록했습니다. **AI 자체 교정본**이며 독립적 전문 감수까지 완료된 자료가 아니므로 배포 차단은 유지합니다.
+
+배치 02의 후속 검수에서는 `full-time work`와 `overqualified`의 한국어 뜻을 더 정확히 교정하고, `default`·`send a notification`의 문맥 의미 및 `lag behind` 예문도 수정했습니다. 원래 뜻과 교정 이유는 `data/original_text_corrections.json`에 보존했습니다.

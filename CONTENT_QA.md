@@ -65,3 +65,10 @@ npm test
 - `dressed in a suit`, `full-time work` 표제어와 `put forward`의 제안 의미 누락을 수정하고, 원본 영어·뜻은 그대로 추적합니다.
 - 총 문맥 직접 작성 초안 **645개**, 남은 규칙 문맥 초안 **2,499개**, 출처별 원본 예문 **1,481개**, 기존 자체 작성 **391개**, 예문 재연결 후보 **328개**.
 - 229개는 **AI 자체 작성·검토 초안**입니다. 독립적인 사람의 전수 언어 검수·원본 사용 허가·실기기 테스트는 여전히 미완료이므로 production 차단을 유지합니다.
+
+
+### 배치 02 후속 뜻 점검
+
+사전 용례와 대조하여 `full-time work`를 '정규직'이 아닌 '전일제 근무', `overqualified`를 학력만이 아니라 직무에 비해 과도한 자격·경력이 있는 상태로 교정했습니다. `default`의 대출 문맥을 '채무불이행'으로 명확히 하고 `send a notification`에 전자 알림 의미를 반영했습니다. `lag behind`의 예문·번역도 보다 자연스럽게 고쳤습니다. 변경 전 뜻은 `meaningKoOriginal`로 보존했습니다.
+
+사전 참고: [Cambridge full-time](https://dictionary.cambridge.org/dictionary/english/full-time), [Cambridge overqualified](https://dictionary.cambridge.org/dictionary/english/overqualified), [Cambridge put forward](https://dictionary.cambridge.org/dictionary/english/put-forward). 이 대조는 전체 항목의 독립 감수 완료가 아닙니다.

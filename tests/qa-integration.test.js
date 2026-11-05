@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],1449);
+  assert.equal(counts['editorial-draft'],1975);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],1727);
-  assert.equal(Object.keys(overrides).length,1745);
+  assert.equal(counts['generated-context'],1201);
+  assert.equal(Object.keys(overrides).length,2271);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -459,4 +459,23 @@ test('batch 15 removes the remaining 800-score DAY 8 templates', () => {
     assert.deepEqual(word.examples, overrides[word.id].examples);
     assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
   }
+});
+
+test('batch 16 replaces 526 remaining score800 templates across eleven days', () => {
+  const expectedByDay = {5: 29, 9: 57, 10: 46, 11: 47, 12: 45, 13: 44, 14: 53, 15: 49, 16: 51, 17: 52, 18: 53};
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch16');
+  assert.equal(edited.length, 526);
+  for (const [day, expected] of Object.entries(expectedByDay)) {
+    const cards = data.filter(word => word.category === 'score800' && word.day === Number(day));
+    assert.ok(cards.every(word => word.examples[0].source !== 'generated-context'));
+    assert.equal(edited.filter(word => cards.includes(word)).length, expected);
+  }
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  const notice = data.find(word => word.id === '1766527461032');
+  assert.equal(notice.word, 'post a notice on');
+  assert.equal(notice.wordOriginal, 'post an notice on');
 });

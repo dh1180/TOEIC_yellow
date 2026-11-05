@@ -17,6 +17,10 @@ MANIFEST_FILE = ROOT / "src/data/manifest.json"
 OVERRIDES_FILE = ROOT / "data/qa-editorial-overrides.json"
 QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
+    "1766527460774": ("discount coupon", "discounted coupon"),
+    "1766527461016": ("user-friendly", "user friendly"),
+    "1766527461032": ("post a notice on", "post an notice on"),
+    "1766527461043": ("board a flight", "board flight"),
     "1766527460527": ("sports tournament", "sport tournament"),
     "1766527460582": ("over the Internet", "over the lnternet"),
     "1766527458672": ("CEO (chief executive officer)", "CEO(chief executive officer)"),
@@ -43,7 +47,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1745:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 2271:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -73,6 +77,15 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527460758": ("~을 내밀다, 내뿜다", "(제안·의견 등을) 제시하다; ~을 내밀다, 내뿜다"),
+        "1766527460794": ("가게 앞 공간", "가게 정면, 점포 전면"),
+        "1766527460901": ("화재 탐지기", "연기 감지기"),
+        "1766527461063": ("(비행 시의) 도중하차, 경유지", "(여행 중) 경유 대기 시간, 중간 체류"),
+        "1766527461139": ("(규칙을) 위반하다", "기분을 상하게 하다; (규칙을) 위반하다"),
+        "1766527461247": ("택배회사", "택배 서비스, 배송 업체"),
+        "1766527461320": ("설탕을 입힘", "(케이크 등에 바르는) 아이싱, 설탕 크림"),
+        "1766527461330": ("주방용품", "주방 가전제품"),
+        "1766527461338": ("음식 시중, 한 끼 분의 음식", "(음식의) 1인분, 한 번에 제공하는 양"),
         "1766527460696": ("할인율", "할인 요금"),
         "1766527460675": ("(우편물의) 전송 주소", "우편물을 전달받을 주소"),
         "1766527460501": ("공예품", "유물, 인공물, 공예품"),
@@ -177,7 +190,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=18, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=19, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

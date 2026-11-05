@@ -115,3 +115,22 @@ test('batch 02 DAY 1-3 candidates have linked bilingual contexts with explicit d
   }
   assert.equal(manifest.independentlyVerifiedExamples,0);
 });
+
+
+test('batch 02 nuanced full-time employment and qualification senses are preserved',()=>{
+  const meanings=new Map([
+    ['full-time work','전일제 근무, 상근 일자리'],
+    ['overqualified','해당 직무에 필요한 수준보다 자격·경력이 높은'],
+    ['send a notification','통지하다, 알림을 보내다'],
+    ['default','채무불이행; 의무 불이행']
+  ]);
+  for(const [word,meaning] of meanings){
+    const w=data.find(w=>w.word===word);
+    assert.equal(w.meaningKo,meaning);
+    assert.ok(w.meaningKoOriginal&&w.meaningKoOriginal!==meaning);
+  }
+  const fullTime=data.find(w=>w.word==='full-time work');
+  assert.ok(fullTime.examples[0].ko.includes('전일제'));
+  const lag=data.find(w=>w.word==='lag');
+  assert.ok(lag.examples[0].en.includes('lags behind'));
+});

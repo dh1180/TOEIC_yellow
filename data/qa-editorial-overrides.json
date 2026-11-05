@@ -9748,7 +9748,7 @@
     "examples": [
       {
         "en": "She is looking for full-time work after graduation.",
-        "ko": "그녀는 졸업 후 정규직 일자리를 찾고 있습니다.",
+        "ko": "그녀는 졸업 후 전일제 일자리를 찾고 있습니다.",
         "source": "editorial-draft",
         "reviewStatus": "editorial-draft",
         "method": "ai-authored-contextual-qa-batch02",
@@ -10501,8 +10501,8 @@
     "word": "lag",
     "examples": [
       {
-        "en": "Our response times lag behind those of competing companies.",
-        "ko": "우리의 응답 시간은 경쟁사보다 뒤처집니다.",
+        "en": "The company's technology lags behind that of its competitors.",
+        "ko": "그 회사의 기술력은 경쟁사에 뒤처져 있습니다.",
         "source": "editorial-draft",
         "reviewStatus": "editorial-draft",
         "method": "ai-authored-contextual-qa-batch02",

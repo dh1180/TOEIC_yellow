@@ -62,6 +62,20 @@ def main() -> None:
     proposal["meaningKoOriginal"] = "앞당기다"
     proposal["meaningKo"] = "제안하다, 내세우다; (회의·일정 등을) 앞당기다"
 
+    # More precise Korean senses for employment, notification and loan-default usage.
+    sense_corrections = {
+        "1766527460164": ("정규직", "전일제 근무, 상근 일자리"),
+        "1766527462197": ("필요이상으로 교육을 받은", "해당 직무에 필요한 수준보다 자격·경력이 높은"),
+        "1766527460223": ("통지서를 보내다", "통지하다, 알림을 보내다"),
+        "1766527462279": ("태만, 불이행", "채무불이행; 의무 불이행"),
+    }
+    for sid, (before, after) in sense_corrections.items():
+        sense_word = by_id[sid]
+        if sense_word["meaningKo"] not in (before, after):
+            raise SystemExit(f"Sense drift for {sid}: {sense_word['meaningKo']}")
+        sense_word["meaningKoOriginal"] = before
+        sense_word["meaningKo"] = after
+
     rare = by_id["1766527463149"]
     if rare["word"] != "toxication" or rare["examples"][0]["source"] != "project-authored":
         raise SystemExit("Unexpected original specialized term")

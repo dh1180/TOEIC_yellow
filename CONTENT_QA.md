@@ -49,3 +49,11 @@ npm test
 ## 2차 표제어·전문용어 교정
 
 추가로 잘못된 정형 표현 5개를 교정하고 원문을 `wordOriginal`에 보존했습니다: `in the distant past`, `settle down to work`, `make an outside call`, `until the first of next month`, `arrange items on the shelf`. `toxication`은 단순 철자 오류가 아닌 독성화 관련 전문용어로 확인되어 원문을 보존하고 문장·의미를 수정했습니다. 출처는 `data/original_text_corrections.json`에 기록했습니다. 독립 번역 감수 여부는 변하지 않았습니다.
+
+
+## 추가 QA 배치 01 (2026-11-05)
+
+- 기초 단어장 자동 문맥 초안 **101개**를 각 표제어 뜻과 용법에 맞춰 새 영어 문장 및 한국어 문장 번역으로 교체했습니다. 검수 원장에는 `qa-manually-composed-usage-context`로 구분하며 **독립적인 사람의 검수는 아직 완료되지 않았습니다**.
+- 사용자 제공 원본에서 `a move to overseas`처럼 전치사를 잘못 쓴 문장을 `a move overseas`로 고쳤습니다. 원문은 `enOriginal` / `koOriginal`에 보존했고 관련된 원본 1개와 재연결 후보 2개 모두를 함께 정정했습니다.
+- 자동 문맥 초안 **2,728개**, 문맥 직접 작성 초안 **416개**, 원본 예문 재연결 후보 **328개**, 기존 자체 작성 **391개**, 원본 예문 **1,481개**를 보존했습니다.
+- 이번 배치는 우선순위 높은 기초 단어들에 대한 **AI 자체 검수 및 교정**이며, 원본 전체 영어 예문·한국어 뜻의 독립 언어 감수나 저작권 허가를 의미하지 않습니다. 프로덕션 배포 차단은 유지됩니다.

@@ -32,7 +32,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 643:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 744:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -66,6 +66,30 @@ def main() -> None:
         ko="독성학에서 toxication은 물질이 독성 대사산물로 전환되는 과정을 뜻합니다.",
         reviewReason="Specialized biochemistry meaning checked against a dictionary; translation needs independent review."
     )
+    # Correct one clear source-English preposition error in its original note and
+    # every crosslinked candidate, without erasing the Anki original.
+    original_en = "Abigail feels a move to overseas could help her career."
+    corrected_en = "Abigail believes a move overseas could help her career."
+    corrected_ko = "애비게일은 해외 이주가 자신의 경력에 도움이 될 것이라고 생각합니다."
+    corrected_ids = []
+    for word in words:
+        for example in word["examples"]:
+            if example["en"] == original_en:
+                example["enOriginal"] = original_en
+                example["koOriginal"] = example["ko"]
+                example["en"] = corrected_en
+                example["ko"] = corrected_ko
+                example["correctionNote"] = (
+                    "Removed incorrect 'to' before adverb overseas; "
+                    "manual usage correction, independently unverified."
+                )
+                corrected_ids.append(word["id"])
+            elif example["en"] == corrected_en and "enOriginal" in example:
+                corrected_ids.append(word["id"])
+    expected_ids = {"1766527458122", "1766527459131", "1766527460344"}
+    if set(corrected_ids) != expected_ids:
+        raise SystemExit(f"Original sentence/crosslink correction mismatch: {corrected_ids}")
+
     sources = collections.Counter(e["source"] for w in words for e in w["examples"])
     if sources["provided"] != 1481 or sum(n for s,n in sources.items() if s != "provided") != 3863:
         raise SystemExit(f"Source count mismatch: {sources}")
@@ -96,7 +120,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 643 QA source overlays. Regenerate structural audit next.")
+    print("Applied 744 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

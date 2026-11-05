@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "project-authored": 391,
-    "editorial-draft": 315,
+    "editorial-draft": 416,
     "provided-crosslink": 328,
-    "generated-context": 2829
+    "project-authored": 391,
+    "generated-context": 2728
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -19,6 +19,8 @@
   "warnings": [
     "English usage and Korean meanings not independently verified",
     "License permission not established",
-    "Native Android/iOS test not performed"
+    "Native Android/iOS test not performed",
+    "Batch 01: 101 basic vocabulary contextual drafts replaced with full translated AI-authored examples, awaiting independent review.",
+    "Original provided sentence 'a move to overseas' corrected in three linked cards, originals preserved in provenance."
   ]
 }

@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 917,
+    "editorial-draft": 970,
     "provided-crosslink": 296,
     "project-authored": 391,
-    "generated-context": 2259
+    "generated-context": 2206
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -30,6 +30,7 @@
     "Batch 04: 132 basic DAY 6-10 / 800- and 900-score DAY 4 usage examples rewritten with Korean sentence translations, pending independent review.",
     "Batch 04: two annotated headwords normalized and ten Korean meanings clarified; originals preserved.",
     "Batch 05: 69 basic DAY 11 / 800 & 900-score DAY 5 bilingual contextual drafts, awaiting independent professional review.",
-    "Batch 06: 32 semantic, part-of-speech or homograph mismatches in crosslinked original examples replaced with AI-authored bilingual drafts; original source preserved and independent human review pending."
+    "Batch 06: 32 semantic, part-of-speech or homograph mismatches in crosslinked original examples replaced with AI-authored bilingual drafts; original source preserved and independent human review pending.",
+    "Batch 07: 53 basic DAY12-13 and score900 DAY6 bilingual contexts authored, plus one normalized headword and five improved meanings; independent human review pending."
   ]
 }

@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **917개**, 원본 예문을 다른 어휘에 재연결한 후보 **296개**, 자동 문맥 초안 **2,259개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **970개**, 원본 예문을 다른 어휘에 재연결한 후보 **296개**, 자동 문맥 초안 **2,206개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -103,3 +103,11 @@ npm test
 - 오연결 예문은 삭제하지 않고 `data/qa-batch-06-crosslink-review.json` 및 `replacedCrosslink`에 변경 전 출처·내용을 추적합니다. 기존 원본 Anki 예문 1,481개는 변경하지 않았습니다.
 - `designed`, `estimated`의 한국어 뜻 보완. 사전 용법 참고: [Cambridge second](https://dictionary.cambridge.org/dictionary/english/second), [Cambridge chair](https://dictionary.cambridge.org/dictionary/english/chair), [Cambridge offering](https://dictionary.cambridge.org/dictionary/english/offering), [Cambridge fashion](https://dictionary.cambridge.org/dictionary/english/fashion). 사전 예문 복제 없음.
 - 현재 학습 단어 5,101개, 원본 예문 1,481개, 기존 프로젝트 직접 작성 391개, QA 자체 작성 초안 **917개**, 재연결 검수 후보 **296개**, 규칙 기반 자동 초안 **2,259개**, 전체 비원본 3,863개. 독립 검수·권리 허가·실기기 검증 미완료로 배포 차단을 유지합니다.
+
+## 추가 QA 배치 07 (2026-11-05)
+
+- 기초 DAY 12~13 **30개**, 900점 DAY 6 **23개**, 합계 53개 자동 문맥 초안을 개별 영어 용례와 한국어 전체 번역으로 교정했습니다.
+- `publication company` → `publishing company` (원문은 `wordOriginal`에 보존). `clothing line`, `iron`, `product logo`, `stay tuned`, `excursion`의 한국어 뜻 보완.
+- 참고 자료: [Cambridge publishing company](https://dictionary.cambridge.org/dictionary/english/publishing-company), [Cambridge stay](https://dictionary.cambridge.org/dictionary/english/stay). 사전 원문 예문은 재사용하지 않았습니다.
+- 5,101개 단어, 원본 1,481개, 기존 프로젝트 직접 작성 391개, QA 초안 **970개**, 교차 연결 검수 대기 296개, 규칙 문맥 초안 **2,206개**. 전체 비원본 검수 대기열 3,863개와 변경 전 PR #13의 교차 연결 원문 32개 추적 보존.
+- 독립적인 사람의 영어·한국어 전문 감수, 원본 콘텐츠 재배포 허가, Android/iOS 기기 테스트는 여전히 미완료이며 production 배포 차단 유지.

@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **816개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,328개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **885개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,259개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -87,3 +87,11 @@ npm test
 - 사전 대조 자료: [Cambridge array](https://dictionary.cambridge.org/dictionary/english/array), [Cambridge litter](https://dictionary.cambridge.org/dictionary/english/litter), [Cambridge directive](https://dictionary.cambridge.org/dictionary/english/directive), [Cambridge grocery](https://dictionary.cambridge.org/dictionary/english/grocery), [Cambridge creditable](https://dictionary.cambridge.org/dictionary/english/creditable). **사전 원문 예문은 재사용하지 않았습니다.**
 - 전체 수량: 원본 예문 1,481개, 기존 프로젝트 작성 391개, QA 작성 초안 **816개**, 예문 교차 연결 328개, 규칙 기반 자동 초안 **2,328개**. ID별 오버레이 **1,144개**, 검수 대기열 3,863개를 유지합니다.
 - 새 문장의 인력 독립 검수, 원본 재배포·상용 라이선스, 실기기 테스트는 여전히 미완료입니다. Production 차단을 유지합니다.
+
+## 추가 QA 배치 05 (2026-11-05)
+
+- 기초 DAY 11 17개, 800점 DAY 5 28개, 900점 DAY 5 24개, 총 **69개** 자동 예문을 개별 영어 용례·한글 전체 문장 번역으로 교체했습니다.
+- `fold in half`, `turn off`, `reach a solution` 표제어 3개와 `brand new`, `board meeting`, `work shift`, `give way to`, `on probation` 뜻 5개 교정; 원문은 보존했습니다.
+- 참고: [Cambridge fold](https://dictionary.cambridge.org/dictionary/english/fold), [Cambridge reach](https://dictionary.cambridge.org/dictionary/english/reach), [Cambridge probation](https://dictionary.cambridge.org/dictionary/english/probation). 사전 원문 예문 복제 없이 자체 작성했습니다.
+- 현재 5,101개 단어, 원본 예문 1,481개, 기존 프로젝트 직접 작성 391개, 추가 AI 초안 **885개**, 타 카드 원본 재연결 328개, 자동 문맥 **2,259개**, ID별 오버레이 1,213개, 비원본 검수 대기열 3,863개.
+- AI 자체 작성과 자체 점검이며 사람의 독립 전문 언어 감수·원본 사용권 검증·실기기 시험은 진행되지 않았습니다. Production 배포 차단을 유지합니다.

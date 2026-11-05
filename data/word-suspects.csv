@@ -16,3 +16,6 @@ default,채무불이행 또는 의무 불이행,대출 문맥에서 채무불이
 profitable(<->unprofitable),profitable,반의어 주석이 표제어에 포함되어 잘못된 용례 생성,표제어 교정; wordOriginal로 원문 보존
 seamless(=without trouble),seamless,뜻풀이 주석이 표제어에 포함되어 용례를 훼손함,표제어 교정; wordOriginal로 원문 보존
 ambiance(=ambience),ambiance,동의 철자 주석이 표제어에 포함되어 용례를 훼손함,표제어 교정; wordOriginal로 원문 보존
+turn off(↔turn on),turn off,원문 표제어 오타 또는 주석 및 연어 수정,표제어 교정; wordOriginal로 원문 보존
+flod in half,fold in half,원문 표제어 오타 또는 주석 및 연어 수정,표제어 교정; wordOriginal로 원문 보존
+reach the solution,reach a solution,원문 표제어 오타 또는 주석 및 연어 수정,표제어 교정; wordOriginal로 원문 보존

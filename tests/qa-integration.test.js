@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],816);
+  assert.equal(counts['editorial-draft'],885);
   assert.equal(counts['provided-crosslink'],328);
-  assert.equal(counts['generated-context'],2328);
-  assert.equal(Object.keys(overrides).length,1144);
+  assert.equal(counts['generated-context'],2259);
+  assert.equal(Object.keys(overrides).length,1213);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -224,4 +224,36 @@ test('batch 04 corrected headwords and Korean senses retain the original Anki va
    assert.equal(w.meaningKo,meaning);
    assert.ok(w.meaningKoOriginal!==meaning);
  }
+});
+
+test('batch 05: 69 bilingual examples, correct IDs and original correction trail',()=>{
+ const rows=readFileSync(new URL('data/qa-batch-05-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ assert.equal(rows.length,69);
+ const ids=new Set();
+ for(const line of rows){
+  const [id,en,ko,...extra]=line.split('|');assert.equal(extra.length,0);
+  assert.ok(!ids.has(id));ids.add(id);
+  const w=data.find(w=>w.id===id);assert.ok(w,id);
+  const e=w.examples[0];
+  assert.equal(e.en,en);assert.equal(e.ko,ko);
+  assert.equal(e.source,'editorial-draft');
+  assert.equal(e.reviewStatus,'editorial-draft');
+  assert.equal(e.method,'ai-authored-contextual-qa-batch05');
+  assert.deepEqual(overrides[id].examples,[e]);assert.equal(overrides[id].word,w.word);
+  assert.ok(/[.!?]$/.test(en));assert.ok(/[.!?]$/.test(ko));
+  assert.ok(!ko.startsWith('핵심 뜻:'));
+ }
+ for(const [id,current,original] of [
+  ['1766527458821','turn off','turn off(↔turn on)'],
+  ['1766527460440','fold in half','flod in half'],
+  ['1766527462326','reach a solution','reach the solution']
+ ]){const w=data.find(w=>w.id===id);assert.equal(w.word,current);assert.equal(w.wordOriginal,original);}
+ for(const [id,meaning] of Object.entries({
+  '1766527458811':'완전히 새로운, 새것인',
+  '1766527460435':'이사회 회의',
+  '1766527460466':'교대 근무, 근무 시간대',
+  '1766527462323':'~에게 양보하다; ~로 대체되다',
+  '1766527462345':'수습 기간 중인; 보호 관찰 중인'
+ })){const w=data.find(w=>w.id===id);assert.equal(w.meaningKo,meaning);assert.ok(w.meaningKoOriginal);}
+ assert.equal(manifest.independentlyVerifiedExamples,0);
 });

@@ -111,6 +111,24 @@
       "before": "ambiance(=ambience)",
       "after": "ambiance",
       "reason": "Removed spelling-equivalent annotation from the headword; retained original note ID and wordOriginal."
+    },
+    {
+      "id": "1766527458821",
+      "before": "turn off(↔turn on)",
+      "after": "turn off",
+      "reason": "Headword typo, study-note annotation, or unnatural article normalized; original retained."
+    },
+    {
+      "id": "1766527460440",
+      "before": "flod in half",
+      "after": "fold in half",
+      "reason": "Headword typo, study-note annotation, or unnatural article normalized; original retained."
+    },
+    {
+      "id": "1766527462326",
+      "before": "reach the solution",
+      "after": "reach a solution",
+      "reason": "Headword typo, study-note annotation, or unnatural article normalized; original retained."
     }
   ],
   "senseCorrections": [
@@ -250,6 +268,41 @@
       "meaningKo": "지침, 지시; 지시하는",
       "note": "Corrected Korean meaning to fit the documented English sense and batch 04 original-context sentence; independent human review still pending.",
       "source": "https://dictionary.cambridge.org/dictionary/english/directive"
+    },
+    {
+      "id": "1766527458811",
+      "word": "brand new",
+      "originalMeaningKo": "최신의",
+      "meaningKo": "완전히 새로운, 새것인",
+      "note": "Context-sensitive Korean sense correction; independent human language review pending."
+    },
+    {
+      "id": "1766527460435",
+      "word": "board meeting",
+      "originalMeaningKo": "임원 회의",
+      "meaningKo": "이사회 회의",
+      "note": "Context-sensitive Korean sense correction; independent human language review pending."
+    },
+    {
+      "id": "1766527460466",
+      "word": "work shift",
+      "originalMeaningKo": "근무 교대",
+      "meaningKo": "교대 근무, 근무 시간대",
+      "note": "Context-sensitive Korean sense correction; independent human language review pending."
+    },
+    {
+      "id": "1766527462323",
+      "word": "give way to",
+      "originalMeaningKo": "~에게 양보하다",
+      "meaningKo": "~에게 양보하다; ~로 대체되다",
+      "note": "Context-sensitive Korean sense correction; independent human language review pending."
+    },
+    {
+      "id": "1766527462345",
+      "word": "on probation",
+      "originalMeaningKo": "견습으로",
+      "meaningKo": "수습 기간 중인; 보호 관찰 중인",
+      "note": "Context-sensitive Korean sense correction; independent human language review pending."
     }
   ]
 }

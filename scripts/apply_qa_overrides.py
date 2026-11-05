@@ -29,6 +29,9 @@ WORD_FIXES = {
     "1766527461412": ("profitable", "profitable(<->unprofitable)"),
     "1766527460427": ("seamless", "seamless(=without trouble)"),
     "1766527462312": ("ambiance", "ambiance(=ambience)"),
+    "1766527458821": ("turn off", "turn off(↔turn on)"),
+    "1766527460440": ("fold in half", "flod in half"),
+    "1766527462326": ("reach a solution", "reach the solution"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -37,7 +40,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1144:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 1213:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -85,6 +88,11 @@ def main() -> None:
         "1766527460425": ("친목회", "재회, 동창회, 친목 모임"),
         "1766527460427": ("(끊어짐이 없이) 매끄러운, 문제없는", "끊김 없이 매끄러운, 원활한"),
         "1766527462299": ("지시하는, 지배적인", "지침, 지시; 지시하는"),
+        "1766527458811": ("최신의", "완전히 새로운, 새것인"),
+        "1766527460435": ("임원 회의", "이사회 회의"),
+        "1766527460466": ("근무 교대", "교대 근무, 근무 시간대"),
+        "1766527462323": ("~에게 양보하다", "~에게 양보하다; ~로 대체되다"),
+        "1766527462345": ("견습으로", "수습 기간 중인; 보호 관찰 중인"),
     }
     for sid, (before, after) in sense_corrections.items():
         sense_word = by_id[sid]
@@ -134,7 +142,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=7, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=8, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],
@@ -159,7 +167,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 1144 QA source overlays and source-grammar correction. Regenerate structural audit next.")
+    print("Applied 1213 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

@@ -34,6 +34,19 @@
       "before": "Sip your beverages at the caf?'s new outdoor area!",
       "after": "Sip your beverages at the café's new outdoor area!",
       "status": "mechanical accent restoration; independent source still unverified"
+    },
+    {
+      "ids": [
+        "1766527458122",
+        "1766527459131",
+        "1766527460344"
+      ],
+      "word": "move / career / overseas",
+      "before": "Abigail feels a move to overseas could help her career.",
+      "after": "Abigail believes a move overseas could help her career.",
+      "beforeKo": "Abigail은 해외로의 이동이 그녀의 경력에 도움이 될 거라고 생각한다.",
+      "afterKo": "애비게일은 해외 이주가 자신의 경력에 도움이 될 것이라고 생각합니다.",
+      "status": "English grammar and Korean translation improved; original text preserved in enOriginal and koOriginal; independently unverified"
     }
   ],
   "headwordCorrections": [

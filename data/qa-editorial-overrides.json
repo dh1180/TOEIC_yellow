@@ -3,13 +3,16 @@
     "word": "career",
     "examples": [
       {
-        "en": "Abigail feels a move to overseas could help her career.",
-        "ko": "Abigail은 해외로의 이동이 그녀의 경력에 도움이 될 거라고 생각한다.",
+        "en": "Abigail believes a move overseas could help her career.",
+        "ko": "애비게일은 해외 이주가 자신의 경력에 도움이 될 것이라고 생각합니다.",
         "source": "provided-crosslink",
         "sourceWord": "move",
         "translationStatus": "provided-unverified-for-crosslink",
         "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "method": "other-source-note",
+        "enOriginal": "Abigail feels a move to overseas could help her career.",
+        "koOriginal": "Abigail은 해외로의 이동이 그녀의 경력에 도움이 될 거라고 생각한다.",
+        "correctionNote": "Removed incorrect 'to' before adverb overseas; manual usage correction, independently unverified."
       }
     ]
   },
@@ -3472,13 +3475,16 @@
     "word": "overseas",
     "examples": [
       {
-        "en": "Abigail feels a move to overseas could help her career.",
-        "ko": "Abigail은 해외로의 이동이 그녀의 경력에 도움이 될 거라고 생각한다.",
+        "en": "Abigail believes a move overseas could help her career.",
+        "ko": "애비게일은 해외 이주가 자신의 경력에 도움이 될 것이라고 생각합니다.",
         "source": "provided-crosslink",
         "sourceWord": "move",
         "translationStatus": "provided-unverified-for-crosslink",
         "reviewStatus": "crosslink-needs-sense-review",
-        "method": "other-source-note"
+        "method": "other-source-note",
+        "enOriginal": "Abigail feels a move to overseas could help her career.",
+        "koOriginal": "Abigail은 해외로의 이동이 그녀의 경력에 도움이 될 거라고 생각한다.",
+        "correctionNote": "Removed incorrect 'to' before adverb overseas; manual usage correction, independently unverified."
       }
     ]
   },
@@ -8369,6 +8375,1319 @@
         "source": "editorial-draft",
         "reviewStatus": "editorial-draft",
         "method": "independently-authored-draft"
+      }
+    ]
+  },
+  "1766527458121": {
+    "word": "application form",
+    "examples": [
+      {
+        "en": "Please complete the application form before the interview.",
+        "ko": "면접 전에 지원서를 작성해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458123": {
+    "word": "completion",
+    "examples": [
+      {
+        "en": "Payment is due upon completion of the repairs.",
+        "ko": "수리가 완료되면 대금을 지급해야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458124": {
+    "word": "fair",
+    "examples": [
+      {
+        "en": "The selection committee promised a fair evaluation of every applicant.",
+        "ko": "선발 위원회는 모든 지원자를 공정하게 평가하겠다고 약속했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458126": {
+    "word": "in fact",
+    "examples": [
+      {
+        "en": "The shipment was not late; in fact, it arrived a day early.",
+        "ko": "배송은 늦지 않았습니다. 사실 하루 일찍 도착했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458127": {
+    "word": "job fair",
+    "examples": [
+      {
+        "en": "Our university will host a job fair on Friday.",
+        "ko": "우리 대학은 금요일에 취업 박람회를 개최합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458128": {
+    "word": "job offer",
+    "examples": [
+      {
+        "en": "She accepted the job offer after reviewing the benefits.",
+        "ko": "그녀는 복리후생을 검토한 뒤 채용 제안을 수락했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458129": {
+    "word": "list",
+    "examples": [
+      {
+        "en": "Please check the list of registered participants.",
+        "ko": "등록된 참가자 명단을 확인해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458130": {
+    "word": "newcomer",
+    "examples": [
+      {
+        "en": "The supervisor introduced the newcomer to the team.",
+        "ko": "관리자가 신입사원을 팀에 소개했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458132": {
+    "word": "previous job",
+    "examples": [
+      {
+        "en": "He developed strong communication skills in his previous job.",
+        "ko": "그는 이전 직장에서 뛰어난 의사소통 능력을 길렀습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458134": {
+    "word": "send in",
+    "examples": [
+      {
+        "en": "Please send in your application by Friday.",
+        "ko": "금요일까지 지원서를 제출해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458135": {
+    "word": "tidy",
+    "examples": [
+      {
+        "en": "Keep the reception area tidy throughout the day.",
+        "ko": "하루 종일 접수 공간을 깔끔하게 유지하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458136": {
+    "word": "trainee",
+    "examples": [
+      {
+        "en": "Each trainee will receive a safety manual.",
+        "ko": "각 교육생은 안전 지침서를 받게 됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458137": {
+    "word": "apply for",
+    "examples": [
+      {
+        "en": "You can apply for the position on our website.",
+        "ko": "우리 웹사이트에서 해당 직무에 지원할 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458138": {
+    "word": "aptitude",
+    "examples": [
+      {
+        "en": "The interview assesses each candidate's aptitude for sales.",
+        "ko": "면접에서는 각 지원자의 영업 적성을 평가합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458141": {
+    "word": "criteria",
+    "examples": [
+      {
+        "en": "The committee announced the criteria for selecting suppliers.",
+        "ko": "위원회는 공급업체 선정 기준을 발표했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458143": {
+    "word": "employ",
+    "examples": [
+      {
+        "en": "The factory plans to employ twenty additional workers.",
+        "ko": "공장은 직원 20명을 추가로 고용할 계획입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458144": {
+    "word": "insufficient",
+    "examples": [
+      {
+        "en": "The documents were insufficient to approve the refund.",
+        "ko": "제출된 서류만으로는 환불을 승인하기에 충분하지 않았습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458146": {
+    "word": "party",
+    "examples": [
+      {
+        "en": "Each party must sign the agreement before it takes effect.",
+        "ko": "계약이 효력을 발휘하기 전에 각 당사자가 서명해야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458148": {
+    "word": "profession",
+    "examples": [
+      {
+        "en": "Nursing is a profession that requires specialized training.",
+        "ko": "간호직은 전문 교육이 필요한 직업입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458189": {
+    "word": "bend over",
+    "examples": [
+      {
+        "en": "Please bend over slightly while the technician adjusts the chair.",
+        "ko": "기술자가 의자를 조정하는 동안 몸을 약간 앞으로 숙여 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458191": {
+    "word": "date",
+    "examples": [
+      {
+        "en": "The invoice must show the date of purchase.",
+        "ko": "청구서에는 구매 날짜가 표시되어야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458192": {
+    "word": "get used to",
+    "examples": [
+      {
+        "en": "It took her a week to get used to the new software.",
+        "ko": "그녀가 새 소프트웨어에 익숙해지는 데 일주일이 걸렸습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458193": {
+    "word": "if it's okay with you",
+    "examples": [
+      {
+        "en": "If it's okay with you, we can move the meeting to Thursday.",
+        "ko": "괜찮으시다면 회의를 목요일로 옮길 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458196": {
+    "word": "item",
+    "examples": [
+      {
+        "en": "Please check each item on the packing list.",
+        "ko": "포장 명세서의 각 항목을 확인해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458198": {
+    "word": "let go",
+    "examples": [
+      {
+        "en": "Please let go of the handle before the door closes.",
+        "ko": "문이 닫히기 전에 손잡이에서 손을 떼 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458199": {
+    "word": "ruler",
+    "examples": [
+      {
+        "en": "Use a ruler to measure the width of the label.",
+        "ko": "자로 라벨의 너비를 재세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458200": {
+    "word": "stop",
+    "examples": [
+      {
+        "en": "Press the red button to stop the machine.",
+        "ko": "기계를 멈추려면 빨간 버튼을 누르세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458201": {
+    "word": "busy",
+    "examples": [
+      {
+        "en": "Our customer service team is especially busy on Mondays.",
+        "ko": "고객 서비스팀은 월요일에 특히 바쁩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458208": {
+    "word": "law firm",
+    "examples": [
+      {
+        "en": "The law firm reviewed the contract before it was signed.",
+        "ko": "그 법률 사무소는 계약서에 서명하기 전에 이를 검토했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458209": {
+    "word": "loudly",
+    "examples": [
+      {
+        "en": "Please do not speak loudly in the library.",
+        "ko": "도서관에서 큰 소리로 말하지 마세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458210": {
+    "word": "plus",
+    "examples": [
+      {
+        "en": "The service costs fifty dollars plus tax.",
+        "ko": "서비스 요금은 50달러에 세금이 추가됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458212": {
+    "word": "seldom",
+    "examples": [
+      {
+        "en": "Our branch seldom closes before six in the evening.",
+        "ko": "우리 지점은 저녁 여섯 시 전에 문을 닫는 일이 거의 없습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458213": {
+    "word": "theft",
+    "examples": [
+      {
+        "en": "The company installed cameras to prevent theft.",
+        "ko": "회사는 절도를 예방하기 위해 카메라를 설치했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458214": {
+    "word": "try",
+    "examples": [
+      {
+        "en": "We will try a different delivery route tomorrow.",
+        "ko": "내일은 다른 배송 경로를 시도해 보겠습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458215": {
+    "word": "witness",
+    "examples": [
+      {
+        "en": "A witness described the accident to the police.",
+        "ko": "목격자가 경찰에게 사고를 설명했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458258": {
+    "word": "business card",
+    "examples": [
+      {
+        "en": "Please leave your business card at the front desk.",
+        "ko": "안내 데스크에 명함을 남겨 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458259": {
+    "word": "cartridge",
+    "examples": [
+      {
+        "en": "Replace the ink cartridge when the printer runs out of ink.",
+        "ko": "프린터 잉크가 떨어지면 잉크 카트리지를 교체하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458260": {
+    "word": "daily",
+    "examples": [
+      {
+        "en": "The manager checks the daily sales report each morning.",
+        "ko": "관리자는 매일 아침 일일 매출 보고서를 확인합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458261": {
+    "word": "edit",
+    "examples": [
+      {
+        "en": "Please edit the document before sending it to the client.",
+        "ko": "고객에게 보내기 전에 문서를 수정해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458262": {
+    "word": "hand",
+    "examples": [
+      {
+        "en": "Please hand the receptionist your visitor pass.",
+        "ko": "접수 담당자에게 방문증을 건네주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458265": {
+    "word": "name tag",
+    "examples": [
+      {
+        "en": "All conference staff must wear a name tag.",
+        "ko": "모든 회의 운영 요원은 명찰을 착용해야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458269": {
+    "word": "partition",
+    "examples": [
+      {
+        "en": "A glass partition separates the two workspaces.",
+        "ko": "유리 칸막이가 두 업무 공간을 구분합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458270": {
+    "word": "rush hour",
+    "examples": [
+      {
+        "en": "The subway is crowded during the morning rush hour.",
+        "ko": "아침 출근 시간에는 지하철이 붐빕니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458271": {
+    "word": "section",
+    "examples": [
+      {
+        "en": "The warranty details are in the last section of the manual.",
+        "ko": "보증 관련 내용은 설명서의 마지막 부분에 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458273": {
+    "word": "tabletop",
+    "examples": [
+      {
+        "en": "Wipe the tabletop after each customer leaves.",
+        "ko": "손님이 나간 후마다 테이블 윗면을 닦으세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458275": {
+    "word": "trash bin",
+    "examples": [
+      {
+        "en": "Please empty the trash bin before closing the store.",
+        "ko": "매장 문을 닫기 전에 쓰레기통을 비워 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458276": {
+    "word": "upstairs",
+    "examples": [
+      {
+        "en": "The conference room is upstairs, next to the elevator.",
+        "ko": "회의실은 위층 엘리베이터 옆에 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458282": {
+    "word": "detail",
+    "examples": [
+      {
+        "en": "The contract explains every detail of the payment schedule.",
+        "ko": "계약서에는 지급 일정의 모든 세부 사항이 설명되어 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458329": {
+    "word": "bookcase",
+    "examples": [
+      {
+        "en": "The new bookcase arrived with the office furniture.",
+        "ko": "새 책장은 사무용 가구와 함께 도착했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458331": {
+    "word": "case",
+    "examples": [
+      {
+        "en": "In this case, customers can request a full refund.",
+        "ko": "이 경우 고객은 전액 환불을 요청할 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458332": {
+    "word": "central office",
+    "examples": [
+      {
+        "en": "Please send the signed form to the central office.",
+        "ko": "서명한 서식을 중앙 사무실로 보내 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458333": {
+    "word": "copy machine",
+    "examples": [
+      {
+        "en": "The copy machine is out of paper again.",
+        "ko": "복사기에 또 용지가 떨어졌습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458334": {
+    "word": "fax",
+    "examples": [
+      {
+        "en": "Please send the signed agreement by fax.",
+        "ko": "서명한 계약서를 팩스로 보내 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458337": {
+    "word": "handwriting",
+    "examples": [
+      {
+        "en": "Her handwriting was difficult to read on the form.",
+        "ko": "서식에 적힌 그녀의 필체는 읽기 어려웠습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458338": {
+    "word": "keypad",
+    "examples": [
+      {
+        "en": "Enter the access code on the keypad.",
+        "ko": "키패드에 출입 코드를 입력하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458339": {
+    "word": "knife",
+    "examples": [
+      {
+        "en": "The chef sharpened the knife before preparing lunch.",
+        "ko": "요리사는 점심 준비 전에 칼을 갈았습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458340": {
+    "word": "log on to",
+    "examples": [
+      {
+        "en": "Use your employee ID to log on to the company network.",
+        "ko": "사번을 사용해 회사 네트워크에 로그인하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458343": {
+    "word": "photocopy",
+    "examples": [
+      {
+        "en": "Could you photocopy these documents for the meeting?",
+        "ko": "회의에 사용할 이 서류들을 복사해 주시겠어요?",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458344": {
+    "word": "print out",
+    "examples": [
+      {
+        "en": "Please print out two copies of the itinerary.",
+        "ko": "여행 일정표 두 부를 출력해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458345": {
+    "word": "right away",
+    "examples": [
+      {
+        "en": "I will contact the supplier right away.",
+        "ko": "공급업체에 즉시 연락하겠습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458346": {
+    "word": "spell",
+    "examples": [
+      {
+        "en": "Could you spell your last name for the reservation?",
+        "ko": "예약을 위해 성의 철자를 말씀해 주시겠어요?",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458347": {
+    "word": "wrap",
+    "examples": [
+      {
+        "en": "Please wrap the fragile items in protective paper.",
+        "ko": "깨지기 쉬운 물건은 보호용 종이로 포장해 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458348": {
+    "word": "fold",
+    "examples": [
+      {
+        "en": "Fold the letter before placing it in the envelope.",
+        "ko": "편지를 봉투에 넣기 전에 접으세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458352": {
+    "word": "post",
+    "examples": [
+      {
+        "en": "The office will post the updated schedule on the notice board.",
+        "ko": "사무실은 수정된 일정을 게시판에 게시할 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458353": {
+    "word": "press the button",
+    "examples": [
+      {
+        "en": "Press the button to open the elevator door.",
+        "ko": "엘리베이터 문을 열려면 버튼을 누르세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458355": {
+    "word": "store opening",
+    "examples": [
+      {
+        "en": "The store opening attracted hundreds of customers.",
+        "ko": "개점 행사에는 수백 명의 고객이 모였습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458398": {
+    "word": "business trip",
+    "examples": [
+      {
+        "en": "She will be away on a business trip next week.",
+        "ko": "그녀는 다음 주에 출장을 가서 자리를 비울 예정입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458399": {
+    "word": "come over",
+    "examples": [
+      {
+        "en": "Could you come over to my desk for a moment?",
+        "ko": "잠깐 제 책상으로 와 주시겠어요?",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458402": {
+    "word": "filing cabinet",
+    "examples": [
+      {
+        "en": "The signed contracts are in the filing cabinet.",
+        "ko": "서명된 계약서는 서류 캐비닛 안에 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458403": {
+    "word": "folder",
+    "examples": [
+      {
+        "en": "Please place the invoices in the blue folder.",
+        "ko": "청구서들을 파란 서류철에 넣어 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458404": {
+    "word": "headache",
+    "examples": [
+      {
+        "en": "I have a headache, so I need to take a short break.",
+        "ko": "두통이 있어서 잠시 쉬어야 합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458405": {
+    "word": "internship",
+    "examples": [
+      {
+        "en": "Her internship at the bank lasted three months.",
+        "ko": "그녀의 은행 인턴 기간은 3개월이었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458407": {
+    "word": "routine",
+    "examples": [
+      {
+        "en": "The technician performs a routine safety inspection every Monday.",
+        "ko": "기술자는 매주 월요일 정기 안전 점검을 실시합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458408": {
+    "word": "table lamp",
+    "examples": [
+      {
+        "en": "The table lamp provides enough light for reading documents.",
+        "ko": "탁상용 스탠드는 문서를 읽기에 충분한 빛을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458409": {
+    "word": "thanks to",
+    "examples": [
+      {
+        "en": "Thanks to the updated software, the report is ready early.",
+        "ko": "업데이트된 소프트웨어 덕분에 보고서가 일찍 준비되었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458410": {
+    "word": "timetable",
+    "examples": [
+      {
+        "en": "The timetable shows when each training session begins.",
+        "ko": "시간표에는 각 교육 세션의 시작 시간이 나와 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458411": {
+    "word": "window display",
+    "examples": [
+      {
+        "en": "The boutique changed its window display for the holiday season.",
+        "ko": "그 의류 매장은 연말 시즌을 맞아 쇼윈도 진열을 바꿨습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458413": {
+    "word": "conceal",
+    "examples": [
+      {
+        "en": "The protective cover conceals the wiring behind the desk.",
+        "ko": "보호 덮개가 책상 뒤 배선을 가립니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458416": {
+    "word": "embrace",
+    "examples": [
+      {
+        "en": "The company decided to embrace remote work.",
+        "ko": "회사는 원격 근무를 받아들이기로 결정했습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458418": {
+    "word": "forum",
+    "examples": [
+      {
+        "en": "Industry leaders exchanged ideas at the annual forum.",
+        "ko": "업계 리더들이 연례 토론회에서 의견을 나눴습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458419": {
+    "word": "instead of",
+    "examples": [
+      {
+        "en": "Please email the invoice instead of mailing a paper copy.",
+        "ko": "종이 사본을 우편으로 보내는 대신 청구서를 이메일로 보내 주세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458420": {
+    "word": "mission",
+    "examples": [
+      {
+        "en": "Our mission is to provide reliable service to every customer.",
+        "ko": "우리의 임무는 모든 고객에게 신뢰할 수 있는 서비스를 제공하는 것입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458422": {
+    "word": "remaining",
+    "examples": [
+      {
+        "en": "Please use the remaining budget before the fiscal year ends.",
+        "ko": "회계연도가 끝나기 전에 남은 예산을 사용하세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458423": {
+    "word": "rush",
+    "examples": [
+      {
+        "en": "Do not rush the inspection; accuracy is more important than speed.",
+        "ko": "검사를 서두르지 마세요. 속도보다 정확성이 중요합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458424": {
+    "word": "unfortunately",
+    "examples": [
+      {
+        "en": "Unfortunately, the event has been canceled due to bad weather.",
+        "ko": "안타깝게도 악천후로 행사가 취소되었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458467": {
+    "word": "backpack",
+    "examples": [
+      {
+        "en": "Keep your backpack under the seat during the presentation.",
+        "ko": "발표 중에는 배낭을 좌석 아래에 두세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458468": {
+    "word": "bike",
+    "examples": [
+      {
+        "en": "He rides his bike to the office when the weather is good.",
+        "ko": "날씨가 좋으면 그는 자전거를 타고 사무실에 갑니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458469": {
+    "word": "cabin",
+    "examples": [
+      {
+        "en": "The family rented a cabin by the lake for the weekend.",
+        "ko": "그 가족은 주말에 호숫가 통나무집을 빌렸습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458470": {
+    "word": "climb a mountain",
+    "examples": [
+      {
+        "en": "They plan to climb a mountain during their vacation.",
+        "ko": "그들은 휴가 중 산에 오를 계획입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458471": {
+    "word": "film festival",
+    "examples": [
+      {
+        "en": "Our city hosts an international film festival every autumn.",
+        "ko": "우리 도시는 매년 가을 국제 영화제를 개최합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458472": {
+    "word": "fishing",
+    "examples": [
+      {
+        "en": "The resort offers fishing trips on the lake.",
+        "ko": "그 리조트는 호수 낚시 여행을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458475": {
+    "word": "lawn",
+    "examples": [
+      {
+        "en": "The groundskeeper waters the lawn every morning.",
+        "ko": "정원 관리인은 매일 아침 잔디밭에 물을 줍니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458478": {
+    "word": "play cards",
+    "examples": [
+      {
+        "en": "The guests gathered in the lounge to play cards.",
+        "ko": "손님들은 카드놀이를 하려고 라운지에 모였습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458479": {
+    "word": "public library",
+    "examples": [
+      {
+        "en": "You can borrow travel guides from the public library.",
+        "ko": "공공 도서관에서 여행 안내서를 빌릴 수 있습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458480": {
+    "word": "race",
+    "examples": [
+      {
+        "en": "The charity race starts at eight on Saturday.",
+        "ko": "자선 경주는 토요일 8시에 시작됩니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458484": {
+    "word": "adventure",
+    "examples": [
+      {
+        "en": "The tour promises an unforgettable adventure in the mountains.",
+        "ko": "그 투어는 산에서의 잊지 못할 모험을 약속합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458485": {
+    "word": "art museum",
+    "examples": [
+      {
+        "en": "Admission to the art museum is free on Wednesdays.",
+        "ko": "수요일에는 미술관 입장이 무료입니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458488": {
+    "word": "care for",
+    "examples": [
+      {
+        "en": "The nursing staff care for patients around the clock.",
+        "ko": "간호 인력은 24시간 환자들을 돌봅니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458489": {
+    "word": "concert",
+    "examples": [
+      {
+        "en": "Tickets for the outdoor concert sold out in an hour.",
+        "ko": "야외 콘서트 입장권은 한 시간 만에 매진되었습니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458491": {
+    "word": "leisure",
+    "examples": [
+      {
+        "en": "The hotel provides leisure activities for families.",
+        "ko": "호텔은 가족을 위한 여가 활동을 제공합니다.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
+      }
+    ]
+  },
+  "1766527458492": {
+    "word": "librarian",
+    "examples": [
+      {
+        "en": "Ask the librarian where to find the reference books.",
+        "ko": "참고 도서가 어디에 있는지 사서에게 물어보세요.",
+        "source": "editorial-draft",
+        "reviewStatus": "editorial-draft",
+        "method": "qa-manually-composed-usage-context",
+        "reviewReason": "AI-authored contextual draft; manually checked for target sense and Korean sentence alignment; independent human review outstanding"
       }
     ]
   }

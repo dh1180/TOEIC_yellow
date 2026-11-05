@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],315);
+  assert.equal(counts['editorial-draft'],416);
   assert.equal(counts['provided-crosslink'],328);
-  assert.equal(counts['generated-context'],2829);
-  assert.equal(Object.keys(overrides).length,643);
+  assert.equal(counts['generated-context'],2728);
+  assert.equal(Object.keys(overrides).length,744);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -62,4 +62,24 @@ test('suspect idioms and specialist toxication meaning are corrected with source
   assert.ok(rare.meaningKo.includes('독성화'));
   assert.ok(rare.examples[0].en.includes('toxication'));
   assert.equal(rare.meaningKoOriginal,'중독');
+});
+
+test('batch 01 example corrections preserve target phrases, full translations and source provenance',()=>{
+  const touched=["1766527458121","1766527458123","1766527458124","1766527458126","1766527458127","1766527458128","1766527458129","1766527458130","1766527458132","1766527458134","1766527458135","1766527458136","1766527458137","1766527458138","1766527458141","1766527458143","1766527458144","1766527458146","1766527458148","1766527458189","1766527458191","1766527458192","1766527458193","1766527458196","1766527458198","1766527458199","1766527458200","1766527458201","1766527458208","1766527458209","1766527458210","1766527458212","1766527458213","1766527458214","1766527458215","1766527458258","1766527458259","1766527458260","1766527458261","1766527458262","1766527458265","1766527458269","1766527458270","1766527458271","1766527458273","1766527458275","1766527458276","1766527458282","1766527458329","1766527458331","1766527458332","1766527458333","1766527458334","1766527458337","1766527458338","1766527458339","1766527458340","1766527458343","1766527458344","1766527458345","1766527458346","1766527458347","1766527458348","1766527458352","1766527458353","1766527458355","1766527458398","1766527458399","1766527458402","1766527458403","1766527458404","1766527458405","1766527458407","1766527458408","1766527458409","1766527458410","1766527458411","1766527458413","1766527458416","1766527458418","1766527458419","1766527458420","1766527458422","1766527458423","1766527458424","1766527458467","1766527458468","1766527458469","1766527458470","1766527458471","1766527458472","1766527458475","1766527458478","1766527458479","1766527458480","1766527458484","1766527458485","1766527458488","1766527458489","1766527458491","1766527458492"];
+  assert.equal(touched.length,101);
+  for(const id of touched){
+    const w=data.find(w=>w.id===id);
+    assert.ok(w);
+    assert.equal(w.examples[0].source,'editorial-draft');
+    assert.equal(w.examples[0].reviewStatus,'editorial-draft');
+    assert.ok(!w.examples[0].ko.startsWith('핵심 뜻:'));
+    assert.ok(w.examples[0].en.toLowerCase().includes(w.word.toLowerCase()));
+  }
+  const sourceMove=data.find(w=>w.id==='1766527459131');
+  assert.ok(sourceMove.examples.some(e=>e.en.includes('a move overseas')&&e.enOriginal?.includes('to overseas')));
+  for(const id of ['1766527458122','1766527460344']){
+    const e=data.find(w=>w.id===id).examples[0];
+    assert.ok(e.en.includes('a move overseas'));
+    assert.equal(e.source,'provided-crosslink');
+  }
 });

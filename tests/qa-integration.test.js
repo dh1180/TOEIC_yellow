@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],645);
+  assert.equal(counts['editorial-draft'],684);
   assert.equal(counts['provided-crosslink'],328);
-  assert.equal(counts['generated-context'],2499);
-  assert.equal(Object.keys(overrides).length,973);
+  assert.equal(counts['generated-context'],2460);
+  assert.equal(Object.keys(overrides).length,1012);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -133,4 +133,31 @@ test('batch 02 nuanced full-time employment and qualification senses are preserv
   assert.ok(fullTime.examples[0].ko.includes('전일제'));
   const lag=data.find(w=>w.word==='lag');
   assert.ok(lag.examples[0].en.includes('lags behind'));
+});
+
+test('batch 03 preserves 39 new bilingual usage examples, meanings and their provenance',()=>{
+ const rows=readFileSync(new URL('data/qa-batch-03-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ assert.equal(rows.length,39);
+ for(const line of rows){
+   const [id,en,ko]=line.split('|'),w=data.find(w=>w.id===id);
+   assert.ok(w,'Unknown card '+id);
+   assert.equal(w.examples[0].en,en);
+   assert.equal(w.examples[0].ko,ko);
+   assert.equal(w.examples[0].source,'editorial-draft');
+   assert.equal(w.examples[0].reviewStatus,'editorial-draft');
+   assert.equal(w.examples[0].method,'ai-authored-contextual-qa-batch03');
+   assert.deepEqual(overrides[id].examples,[w.examples[0]]);
+   assert.ok(!ko.startsWith('핵심 뜻:'),'Incomplete translation '+id);
+ }
+ const p=data.find(w=>w.id==='1766527461412');
+ assert.equal(p.word,'profitable');assert.equal(p.wordOriginal,'profitable(<->unprofitable)');
+ for(const [id,meaning] of Object.entries({
+   '1766527461452':'요금을 청구하다; ~에 대한 요금',
+   '1766527461438':'하나씩, 부분별로; 조금씩',
+   '1766527461439':'비율, 부분, 몫',
+   '1766527461445':'~까지; 최대'
+ })){
+   const w=data.find(w=>w.id===id);
+   assert.equal(w.meaningKo,meaning);assert.ok(w.meaningKoOriginal);
+ }
 });

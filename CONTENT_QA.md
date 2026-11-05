@@ -4,7 +4,7 @@
 
 - 학습 단어 **5,101개**, 중복 Anki note ID 0개, DAY 01~30 및 단어장 분류 유지
 - 원본 예문 **1,481개**가 **1,238개** 단어에 연결됨. 원본 발음·악센트 깨짐 5건 복원
-- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **645개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,499개**
+- 원본 예문이 없는 **3,863개** 단어 중 기존 PR #2 직접 작성 **391개**, QA 자체 작성 **684개**, 원본 예문을 다른 어휘에 재연결한 후보 **328개**, 자동 문맥 초안 **2,460개**
 - 자동 생성한 **어휘를 인용부호로 언급하는 보조 문장 0개** (초기 버전 대비 개선)
 - 잘못 표기된 CEO/CFO 약어 2개 교정. 원본은 `wordOriginal`로 기록, 학습 기록의 ID 유지
 - 직접 작성 예문과 원본 예문도 **독립적인 전문가 언어 검수·사용 권한 확인은 미완료**
@@ -15,7 +15,7 @@
 
 `python3 scripts/audit_content.py --check`는 단어 ID·분류·예문 수·빈칸·출처·검수 단계·검수 대기열 정합성을 검사합니다. 이것은 **문장이 자연스러운지, 단어 뜻과 맞는지, 한국어 뜻이 정확한지**를 확인하는 언어 검수가 아닙니다.
 
-`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 645개와 재연결 후보 328개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
+`data/content-review-queue.csv`에는 원본 예문이 없던 **3,863개** 항목을 모두 기록합니다. `data/qa-editorial-overrides.json`는 추가 직접 작성 684개와 재연결 후보 328개의 출처를 ID 기준으로 추적합니다. `data/word-suspects.csv`에는 의심되는 원본 표제어·관용구 사례가 남아 있습니다.
 
 ### 미완료 검증
 
@@ -72,3 +72,10 @@ npm test
 사전 용례와 대조하여 `full-time work`를 '정규직'이 아닌 '전일제 근무', `overqualified`를 학력만이 아니라 직무에 비해 과도한 자격·경력이 있는 상태로 교정했습니다. `default`의 대출 문맥을 '채무불이행'으로 명확히 하고 `send a notification`에 전자 알림 의미를 반영했습니다. `lag behind`의 예문·번역도 보다 자연스럽게 고쳤습니다. 변경 전 뜻은 `meaningKoOriginal`로 보존했습니다.
 
 사전 참고: [Cambridge full-time](https://dictionary.cambridge.org/dictionary/english/full-time), [Cambridge overqualified](https://dictionary.cambridge.org/dictionary/english/overqualified), [Cambridge put forward](https://dictionary.cambridge.org/dictionary/english/put-forward). 이 대조는 전체 항목의 독립 감수 완료가 아닙니다.
+
+## 추가 QA 배치 03 (2026-11-05)
+
+- 800점 단어장 DAY 19~20의 자동 생성 예문 **39개**를 해당 단어의 품사와 뜻에 맞는 영어 문맥 문장과 한국어 완전 문장 번역으로 교체했습니다. `to that end`, `on the rise`, `file for bankruptcy`, `charge for`의 자동 템플릿 오류를 포함합니다.
+- `profitable(<->unprofitable)` 표제어에서 반의어 주석을 제거하고, 네 단어(`charge for`, `piece by piece`, `proportion`, `up to`)의 뜻을 개선했습니다. 원문은 별도로 보존했습니다.
+- 현재 합계: 원본 1,481개, 기존 프로젝트 작성 391개, QA 자체 작성 초안 **684개**, 예문 재연결 후보 328개, 규칙 문맥 초안 **2,460개**. 전체 검수 대기열 3,863개는 유지됩니다.
+- AI 자체 작성·점검 초안이며 독립적인 사람의 전문 언어 감수, 콘텐츠 사용 권한, Android/iOS 실기기 검증은 완료되지 않았습니다. 프로덕션 배포 차단을 유지합니다.

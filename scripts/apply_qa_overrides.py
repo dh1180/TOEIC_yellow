@@ -24,6 +24,8 @@ WORD_FIXES = {
     "1766527462290": ("make an outside call", "make on outside call"),
     "1766527461879": ("until the first of next month", "until the first next month"),
     "1766527462256": ("arrange items on the shelf", "arrange item on the shelf"),
+    "1766527460162": ("dressed in a suit", "dressed in suit"),
+    "1766527460164": ("full-time work", "full time work"),
 }
 VALID_OVERLAY_SOURCES = {"editorial-draft", "provided-crosslink"}
 
@@ -32,7 +34,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 744:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 973:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -53,6 +55,12 @@ def main() -> None:
         if example["source"] not in VALID_OVERLAY_SOURCES:
             raise SystemExit(f"Bad QA source at {wid}")
         w["examples"] = [example]
+
+    proposal = by_id["1766527460356"]
+    if proposal["word"] != "put forward" or proposal["meaningKo"] not in ("앞당기다", "제안하다, 내세우다; (회의·일정 등을) 앞당기다"):
+        raise SystemExit("Put forward sense does not match source expectation")
+    proposal["meaningKoOriginal"] = "앞당기다"
+    proposal["meaningKo"] = "제안하다, 내세우다; (회의·일정 등을) 앞당기다"
 
     rare = by_id["1766527463149"]
     if rare["word"] != "toxication" or rare["examples"][0]["source"] != "project-authored":
@@ -95,7 +103,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=3, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=5, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],
@@ -120,7 +128,7 @@ def main() -> None:
             e = w["examples"][0]
             wr.writerow((w["id"],w["day"],w["category"],w["word"],w["meaningKo"],
                 e["en"],e["ko"],e.get("method",e["source"]),review_reason(e["source"])))
-    print("Applied 744 QA source overlays and source-grammar correction. Regenerate structural audit next.")
+    print("Applied 973 QA source overlays and source-grammar correction. Regenerate structural audit next.")
 
 
 if __name__ == "__main__":

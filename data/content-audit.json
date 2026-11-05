@@ -1,0 +1,31 @@
+{
+  "status": "integrity-passed",
+  "scope": "structural/metadata tests only, NOT language certification",
+  "wordCount": 5101,
+  "uniqueIds": 5101,
+  "categoryCounts": {
+    "frequent": 1241,
+    "basic": 837,
+    "score800": 2033,
+    "score900": 990
+  },
+  "sourceCounts": {
+    "provided": 1481,
+    "generated-context": 3472,
+    "project-authored": 391
+  },
+  "reviewStatusCounts": {
+    "provided-unverified": 1481,
+    "needs-review": 3472,
+    "project-reviewed": 391
+  },
+  "reviewQueue": 3495,
+  "suspiciousPatternCount": 8,
+  "identityDigestSHA256": "1f4beecbd7b2dfa4b58af990e7471fa8d1a9306d82c395d09a856b7230a9259f",
+  "errors": [],
+  "warnings": [
+    "Automatic English contexts and Korean meaning hints are not professionally reviewed.",
+    "Provided Anki examples have not been independently verified for grammar or rights.",
+    "Suspect original terms/collocations listed in word-suspects.csv."
+  ]
+}

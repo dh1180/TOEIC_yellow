@@ -13,6 +13,12 @@ jobs:
           node-version: '24'
       - name: Validate vocabulary, deck mapping and spaced repetition
         run: npm test
+  content-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all vocabulary identity, links, provenance and review queue
+        run: python3 scripts/audit_content.py --check
   web-build:
     runs-on: ubuntu-latest
     steps:

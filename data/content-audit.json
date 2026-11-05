@@ -5,10 +5,10 @@
   "originalExamples": 1481,
   "sourceCounts": {
     "provided": 1481,
-    "editorial-draft": 684,
+    "editorial-draft": 816,
     "provided-crosslink": 328,
     "project-authored": 391,
-    "generated-context": 2460
+    "generated-context": 2328
   },
   "reviewQueue": 3863,
   "pendingProfessionalReview": 5101,
@@ -26,6 +26,8 @@
     "Corrected two malformed headwords and put forward polysemy; prior forms are preserved.",
     "Clarified four Korean meanings (full-time work, overqualified, default, send a notification) and the lag behind contextual translation; all independent validation is still outstanding.",
     "Batch 03: 39 DAY 19-20 score800 usage examples have been rewritten as bilingual editorial drafts; independent human language review remains outstanding.",
-    "Annotated 'profitable' headword and four Korean senses corrected; originals preserved in QA provenance."
+    "Annotated 'profitable' headword and four Korean senses corrected; originals preserved in QA provenance.",
+    "Batch 04: 132 basic DAY 6-10 / 800- and 900-score DAY 4 usage examples rewritten with Korean sentence translations, pending independent review.",
+    "Batch 04: two annotated headwords normalized and ten Korean meanings clarified; originals preserved."
   ]
 }

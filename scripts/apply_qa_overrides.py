@@ -17,6 +17,10 @@ MANIFEST_FILE = ROOT / "src/data/manifest.json"
 OVERRIDES_FILE = ROOT / "data/qa-editorial-overrides.json"
 QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
+    "1766527462731": ("take legal action against", "take an action against"),
+    "1766527462799": ("make a forecast", "make forecast"),
+    "1766527462832": ("whereabouts", "whereabout"),
+    "1766527462853": ("operating budget", "operation budget"),
     "1766527461496": ("claim a refund", "claim refund"),
     "1766527461511": ("unplug the device", "unplug device"),
     "1766527461596": ("make an adjustment", "make adjustment"),
@@ -58,7 +62,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 2785:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 3297:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -88,6 +92,41 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527462135": ("심장마비", "심장 발작, 심근경색"),
+        "1766527462153": ("백신, 예방 접종", "예방 접종"),
+        "1766527462172": ("1회분 복용량", "복용량, 투여량"),
+        "1766527462388": ("표적 집단", "표적 집단 면접에 참여하는 소규모 집단"),
+        "1766527462394": ("추진력, 탄성", "추진력, 기세; 운동량"),
+        "1766527462416": ("훈련", "훈련, 규율, 자기 절제"),
+        "1766527462432": ("섞다, 혼합하다", "섞다, 섞이다; 사람들과 어울리다"),
+        "1766527462435": ("착실함, 끈기", "안정성, 흔들림이 없음; 꾸준함"),
+        "1766527462437": ("~을 일치시키다", "흡수하다, 동화하다; (정보를) 이해하고 자기 것으로 만들다"),
+        "1766527462443": ("낭비하다, 흩뜨리다", "흩뜨리다, 흩어지다; (열 등을) 분산시키다; 낭비하다"),
+        "1766527462451": ("~을 끌어내리다, ~을 하락시키다", "끌어내리다, 하락시키다; 철거하다"),
+        "1766527462460": ("상당한 정도의, 인지할 수 있는", "인지할 수 있는, 감지할 수 있는"),
+        "1766527462462": ("주의하다, 말하다", "말하다, 언급하다; 발언"),
+        "1766527462489": ("모을 수 있는", "수집할 만한, 수집 가치가 있는"),
+        "1766527462510": ("바꾸다", "(쿠폰·상품권 등을) 사용하다, 교환하다"),
+        "1766527462562": ("당황하게 하다, 혼란스럽게 만들다", "모호하게 만들다, 혼란스럽게 하다"),
+        "1766527462570": ("(가치·품질이) 떨어지다", "물러가다, 줄어들다, 약해지다"),
+        "1766527462594": ("당황하게 하다, 혼란스럽게 만들다", "모호하게 만들다, 혼란스럽게 하다"),
+        "1766527462602": ("(가치·품질이) 떨어지다", "물러가다, 줄어들다, 약해지다"),
+        "1766527462620": ("사실상", "사실에 근거해, 사실에 부합하게"),
+        "1766527462642": ("(공항의) 회전식 수화물 컨베이어", "회전목마; 공항의 회전식 수하물 컨베이어"),
+        "1766527462662": ("(물건을) 압수하다", "(당국이 차량·물건 등을) 압류하거나 억류하다"),
+        "1766527462676": ("합병", "소속, 제휴, 연계"),
+        "1766527462695": ("신용대출 한도액", "신용 한도, 신용카드 이용 한도"),
+        "1766527462719": ("~와 다투다", "~와 싸우다, ~에 대처하다"),
+        "1766527462731": ("~를 고소하다", "~을 상대로 법적 조치를 취하다"),
+        "1766527462757": ("국적을 상실한 사람; 고국을 떠나다", "자국을 떠나 외국에 사는 사람; 국외로 이주하다"),
+        "1766527462783": ("무리, 집단", "한 번에 만든 분량; 한 묶음, 한 무리"),
+        "1766527462808": ("계기에 표시된", "표시된, 명시된"),
+        "1766527462815": ("보답을 받는, 보상으로서의", "보람 있는, 만족감을 주는"),
+        "1766527462829": ("이윤 차액", "이익률, 이윤율"),
+        "1766527462837": ("사실상, 실제로", "실질적으로, 내용 면에서"),
+        "1766527462859": ("통계학", "통계 자료; 통계학"),
+        "1766527462884": ("~의 선두를 유지하다", "~을 놓치지 않고 파악하다, ~을 계속 관리하다"),
+        "1766527462939": ("인용구, 인용, 표창장", "인용, 출처 표기; 표창장"),
         "1766527461395": ("할당, 분배", "할당, 배정; 배정량"),
         "1766527461487": ("가까스로, 거의 ~하지 않는", "심하게, 몹시; 잘못, 서투르게"),
         "1766527461535": ("기대하던, 대망의", "예상된, 기대한"),
@@ -222,7 +261,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=20, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=21, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

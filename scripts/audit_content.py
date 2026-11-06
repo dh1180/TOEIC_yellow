@@ -38,6 +38,25 @@ for i,w in enumerate(words):
         if source!='provided' and re.search(r'\b(?:A|B|sb|sth)\b|one\x27s|oneself|\s-ing\b',en):suspicious.append({'id':id_,'word':w['word'],'en':en,'reason':'possible unresolved pattern'})
         if source=='provided':source_pairs.add((id_,en,ko))
 
+# Crosslinks are citations of another original Anki note, not newly licensed source material.
+# Confirm each one still points to the exact provided note and bilingual pair.
+provided_source_triples = {
+    (w['word'], e['en'], e['ko'])
+    for w in words for e in w['examples'] if e.get('source') == 'provided'
+}
+crosslinked_total = 0
+for w in words:
+    for e in w['examples']:
+        if e.get('source') != 'provided-crosslink':
+            continue
+        crosslinked_total += 1
+        if (e.get('sourceWord'), e.get('en'), e.get('ko')) not in provided_source_triples:
+            errors.append(f'crosslink missing identical original note/translation: {w["id"]}')
+        def norm(value):
+            return re.sub(r'[^a-z0-9]+', ' ', value.lower()).strip()
+        if f" {norm(w['word'])} " not in f" {norm(e['en'])} ":
+            errors.append(f'crosslink sentence omits the target headword: {w["id"]}')
+
 for cat,total in expected.items():
     if counts[cat]!=total:errors.append(f'category total {cat} {counts[cat]} != {total}')
 if len(words)!=5101 or len(ids)!=5101:errors.append(f'word counts {len(words)} IDs {len(ids)}')
@@ -59,7 +78,7 @@ if {w['id'] for w in words if w['examples'][0]['source']!='provided'}!={r['id'] 
 raw=json.dumps([(w['id'],w['word'],w['meaningKo'],w['day'],w['category']) for w in words],ensure_ascii=False,separators=(',',':')).encode()
 summary={'status':'failed' if errors else 'integrity-passed', 'scope':'structural/metadata tests only, NOT language certification',
     'wordCount':len(words),'uniqueIds':len(ids),'categoryCounts':counts,'sourceCounts':source_counts,
-    'reviewStatusCounts':qa_status,'reviewQueue':len(rows),'suspiciousPatternCount':len(suspicious),
+    'reviewStatusCounts':qa_status,'reviewQueue':len(rows),'crosslinkedOriginalPairsChecked':crosslinked_total,'suspiciousPatternCount':len(suspicious),
     'identityDigestSHA256':hashlib.sha256(raw).hexdigest(),'errors':errors[:500],
     'warnings':['Automatic English contexts and Korean meaning hints are not professionally reviewed.',
                 'Provided Anki examples have not been independently verified for grammar or rights.',

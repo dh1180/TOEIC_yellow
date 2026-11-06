@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],970);
+  assert.equal(counts['editorial-draft'],3176);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],2206);
-  assert.equal(Object.keys(overrides).length,1266);
+  assert.equal(counts['generated-context'],0);
+  assert.equal(Object.keys(overrides).length,3472);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -87,7 +87,7 @@ test('batch 01 example corrections preserve target phrases, full translations an
 
 test('batch 02 DAY 1-3 candidates have linked bilingual contexts with explicit draft status',()=>{
   const text=['qa-batch-02-drafts.psv','qa-batch-02-day3.psv']
-    .map(file=>readFileSync(new URL('data/'+file,root),'utf8').trim().split('\n').slice(1))
+    .map(file=>readFileSync(new URL('data/'+file,root),'utf8').trim().split(/\r?\n/).slice(1))
     .flat();
   assert.equal(text.length,229);
   const unique=new Set();
@@ -136,7 +136,7 @@ test('batch 02 nuanced full-time employment and qualification senses are preserv
 });
 
 test('batch 03 preserves 39 new bilingual usage examples, meanings and their provenance',()=>{
- const rows=readFileSync(new URL('data/qa-batch-03-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-03-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,39);
  for(const line of rows){
    const [id,en,ko]=line.split('|'),w=data.find(w=>w.id===id);
@@ -163,7 +163,7 @@ test('batch 03 preserves 39 new bilingual usage examples, meanings and their pro
 });
 
 test('batch 04 replaces all 132 early-day high-risk templates without changing note identities',()=>{
- const rows=readFileSync(new URL('data/qa-batch-04-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-04-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,132);
  const foundIds=new Set();
  const buckets={};
@@ -227,7 +227,7 @@ test('batch 04 corrected headwords and Korean senses retain the original Anki va
 });
 
 test('batch 05: 69 bilingual examples, correct IDs and original correction trail',()=>{
- const rows=readFileSync(new URL('data/qa-batch-05-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const rows=readFileSync(new URL('data/qa-batch-05-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(rows.length,69);
  const ids=new Set();
  for(const line of rows){
@@ -292,7 +292,7 @@ test('batch 06: 32 reused-source semantic mismatches are replaced, and original 
 });
 
 test('batch 07: all 53 example rewrites are complete bilingual contexts and preserve PR13 crosslink fixes',()=>{
- const records=readFileSync(new URL('data/qa-batch-07-drafts.psv',root),'utf8').trim().split('\n').slice(1);
+ const records=readFileSync(new URL('data/qa-batch-07-drafts.psv',root),'utf8').trim().split(/\r?\n/).slice(1);
  assert.equal(records.length,53);
  const ids=new Set();const byDay={};
  for(const record of records){
@@ -322,4 +322,203 @@ test('batch 07: all 53 example rewrites are complete bilingual contexts and pres
  assert.equal(Object.values(overrides).filter(r=>r.replacedCrosslink).length,32);
  assert.equal(manifest.providedCrosslinkedExamples,296);
  assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+test('crosslinked source examples preserve an exact provided-source origin and headword token',()=>{
+ const originals=data.flatMap(w=>w.examples.filter(e=>e.source==='provided').map(e=>({
+  word:w.word,en:e.en,ko:e.ko
+ })));
+ const sourceKeys=new Set(originals.map(e=>JSON.stringify([e.word,e.en,e.ko])));
+ const cross=data.filter(w=>w.examples[0].source==='provided-crosslink');
+ assert.equal(cross.length,296);
+ const norm=v=>v.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+ for(const w of cross){
+  const e=w.examples[0];
+  assert.ok(sourceKeys.has(JSON.stringify([e.sourceWord,e.en,e.ko])),'Source mismatch '+w.id);
+  assert.ok((' '+norm(e.en)+' ').includes(' '+norm(w.word)+' '),'Target absent from sentence '+w.id);
+  assert.equal(e.reviewStatus,'crosslink-needs-sense-review');
+ }
+});
+test('batch 08 preserves 16 source crosslinks and corrects their Korean glosses without rewriting original sentences',()=>{
+ const list=JSON.parse(readFileSync(new URL('data/qa-batch-08-crosslink-senses.json',root),'utf8'));
+ assert.equal(list.length,16);
+ const seen=new Set();
+ for(const correction of list){
+  assert.ok(!seen.has(correction.id));seen.add(correction.id);
+  const w=data.find(w=>w.id===correction.id);
+  assert.ok(w);
+  assert.equal(w.meaningKo,correction.meaningKo);
+  assert.equal(w.meaningKoOriginal,correction.originalMeaningKo);
+  assert.equal(w.examples[0].source,'provided-crosslink');
+  assert.equal(w.examples[0].sourceWord,correction.sourceWord);
+  assert.equal(w.examples[0].en,correction.linkedExampleEn);
+  assert.equal(w.examples[0].ko,correction.linkedExampleKo);
+  assert.equal(correction.humanReviewed,false);
+ }
+ assert.equal(manifest.independentlyVerifiedExamples,0);
+});
+
+test('batch 09 replaces the remaining basic DAY 14 templates with bilingual drafts', () => {
+  const day = data.filter(word => word.category === 'basic' && word.day === 14);
+  assert.ok(day.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch09');
+  assert.equal(edited.length, 17);
+  for (const word of edited) {
+    assert.ok(day.includes(word), word.id);
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    const example = word.examples[0];
+    assert.equal(example.source, 'editorial-draft');
+    assert.match(example.en, /[.!?]$/);
+    assert.match(example.ko, /[.!?]$/);
+    assert.doesNotMatch(example.ko, /^핵심 뜻:/);
+  }
+});
+
+test('batch 10 replaces the remaining basic DAY 15 and 16 templates', () => {
+  for (const day of [15, 16]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch10');
+    assert.equal(edited.length, 16);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.equal(word.examples[0].source, 'editorial-draft');
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+});
+
+test('batch 11 replaces the remaining basic DAY 17 and 18 templates', () => {
+  for (const [day, expected] of [[17, 20], [18, 22]]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch11');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+});
+
+test('batch 12 replaces the remaining basic DAY 19 and 20 templates', () => {
+  for (const [day, expected] of [[19, 18], [20, 19]]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch12');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const theme = data.find(word => word.id === '1766527459462');
+  assert.equal(theme.meaningKo, '주제, 테마');
+  assert.equal(theme.meaningKoOriginal, '주체, 테마');
+});
+
+test('batch 13 removes the remaining generated templates from the basic deck', () => {
+  const basic = data.filter(word => word.category === 'basic');
+  assert.equal(basic.length, 837);
+  assert.ok(basic.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch13');
+  assert.equal(edited.length, 193);
+  assert.deepEqual([...new Set(edited.map(word => word.day))], [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]);
+  for (const word of edited) {
+    assert.equal(word.category, 'basic');
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 14 removes the remaining 800-score DAY 6 and 7 templates', () => {
+  for (const [day, expected] of [[6, 51], [7, 58]]) {
+    const words = data.filter(word => word.category === 'score800' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch14');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.equal(word.examples[0].source, 'editorial-draft');
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const internet = data.find(word => word.id === '1766527460582');
+  assert.equal(internet.word, 'over the Internet');
+  assert.equal(internet.wordOriginal, 'over the lnternet');
+});
+
+test('batch 15 removes the remaining 800-score DAY 8 templates', () => {
+  const words = data.filter(word => word.category === 'score800' && word.day === 8);
+  assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch15');
+  assert.equal(edited.length, 49);
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 16 replaces 526 remaining score800 templates across eleven days', () => {
+  const expectedByDay = {5: 29, 9: 57, 10: 46, 11: 47, 12: 45, 13: 44, 14: 53, 15: 49, 16: 51, 17: 52, 18: 53};
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch16');
+  assert.equal(edited.length, 526);
+  for (const [day, expected] of Object.entries(expectedByDay)) {
+    const cards = data.filter(word => word.category === 'score800' && word.day === Number(day));
+    assert.ok(cards.every(word => word.examples[0].source !== 'generated-context'));
+    assert.equal(edited.filter(word => cards.includes(word)).length, expected);
+  }
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  const notice = data.find(word => word.id === '1766527461032');
+  assert.equal(notice.word, 'post a notice on');
+  assert.equal(notice.wordOriginal, 'post an notice on');
+});
+
+test('batch 17 replaces 514 remaining score800 templates across DAY 19 to 29', () => {
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch17');
+  assert.equal(edited.length, 514);
+  const days = data.filter(word => word.category === 'score800' && word.day >= 19 && word.day <= 29);
+  assert.ok(days.every(word => word.examples[0].source !== 'generated-context'));
+  for (const word of edited) {
+    assert.ok(days.includes(word), word.id);
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  const badly = data.find(word => word.id === '1766527461487');
+  assert.equal(badly.meaningKo, '심하게, 몹시; 잘못, 서투르게');
+  assert.equal(badly.meaningKoOriginal, '가까스로, 거의 ~하지 않는');
+});
+
+test('batch 18 finishes score800 templates and score900 templates through DAY 23', () => {
+  const target = data.filter(word => word.category === 'score800' || (word.category === 'score900' && word.day <= 23));
+  assert.ok(target.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch18');
+  assert.equal(edited.filter(word => word.category === 'score800' && word.day === 30).length, 55);
+  assert.equal(edited.filter(word => word.category === 'score900' && word.day <= 23).length, 457);
+  assert.equal(edited.length, 512);
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 19 replaces the last 175 rule-generated examples', () => {
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch19');
+  assert.equal(edited.length, 175);
+  for (const word of edited) {
+    assert.equal(word.category, 'score900');
+    assert.ok(word.day >= 24 && word.day <= 30);
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  assert.equal(manifest.generatedContextExamples, 0);
 });

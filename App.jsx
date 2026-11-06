@@ -6,6 +6,7 @@ import {WORDS,WORD_BY_ID,WORD_IDS,WORDS_BY_CATEGORY,MANIFEST,searchWords} from '
 import {emptyData,newSession,answerSession,categoryStats,selectQueue,CATEGORIES,CATEGORY_LABELS,backupJson,validateBackup,sessionVisibleIndex,sessionCompleted} from './src/lib/session';
 import {STAGES,reviewLabel,nextLabel} from './src/lib/srs';
 import {loadData,saveData,clearData} from './src/lib/storage';
+import {selectEnglishVoice} from './src/lib/speech';
 import {C,CATEGORY_COLORS,base} from './src/styles';
 
 const DAY_LIST=Array.from({length:30},(_,i)=>i+1);
@@ -13,7 +14,29 @@ const RATE=0.85;
 const format=n=>n.toLocaleString('ko-KR');
 const dayName=d=>d===null?'전체':`DAY ${String(d).padStart(2,'0')}`;
 const withCategory=(id,d)=>WORDS_BY_CATEGORY[id].filter(w=>d===null||w.day===d);
-const play=(text)=>{try{Speech.stop();Speech.speak(text,{language:'en-US',rate:RATE,pitch:1});}catch(e){console.warn('TTS unavailable',e);}};
+const speechError='영어 음성을 재생할 수 없어요. 기기의 텍스트 음성 변환 설정에서 영어 음성을 설치한 뒤 다시 시도해 주세요.';
+let speechRequest=0;
+const stopSpeech=()=>{
+  speechRequest+=1;
+  return Speech.stop().catch(()=>{});
+};
+
+async function play(text,setError){
+  const stopped=stopSpeech();
+  const request=speechRequest;
+  setError('');
+  const reportError=()=>{if(request===speechRequest)setError(speechError)};
+  try {
+    await stopped;
+    const voice=selectEnglishVoice(await Speech.getAvailableVoicesAsync());
+    if(request!==speechRequest)return;
+    if(!voice){reportError();return;}
+    // Expo's Android implementation passes language to Locale.Builder.setLanguage.
+    Speech.speak(text,{voice:voice.identifier,language:Platform.OS==='android'?'en':voice.language,rate:RATE,pitch:1,onError:reportError});
+  } catch {
+    reportError();
+  }
+}
 
 function Action({title,onPress,variant='primary',disabled=false,style,small=false}){
   const primary=variant==='primary', danger=variant==='danger';
@@ -70,19 +93,21 @@ function Level({data,category,day,onDay,onTarget,onStart,onBack,onPreview}){
 
 function Study({word,progress,category,day,index,total,isRetry,onAnswer,onClose,readOnly=false}){
   const [reveal,setReveal]=useState(false),[locked,setLocked]=useState(false),[sampleIndex,setSampleIndex]=useState(0),[showDraft,setShowDraft]=useState(false);
+  const [audioError,setAudioError]=useState('');
   const example=word?.examples?.[sampleIndex]||null;
   const unreviewed=['generated-context','provided-crosslink'].includes(example?.source);
-  useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);setShowDraft(false);},[word?.id,readOnly]);
-  useEffect(()=>()=>{Speech.stop();},[word?.id]);
+  useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);setShowDraft(false);setAudioError('');},[word?.id,readOnly]);
+  useEffect(()=>()=>{void stopSpeech();},[word?.id]);
   if(!word)return <View style={s.safe}><Header title="단어를 불러올 수 없습니다" onBack={onClose}/></View>;
   const complete=()=>{if(locked||!reveal)return;setLocked(true);onAnswer('KNOWN');};
   const retry=()=>{if(locked||!reveal)return;setLocked(true);onAnswer('RELEARN');};
   return <View style={s.safe}><View style={s.studyTop}><Pressable accessibilityRole="button" accessibilityLabel="학습 닫기" onPress={onClose} style={s.back}><Text style={s.backText}>×</Text></Pressable><View style={{flex:1,alignItems:'center'}}><Text style={s.tiny}>{readOnly?'단어 미리 보기':`${index} / ${total} · ${isRetry?'다시 학습':'오늘의 학습'}`}</Text><View style={s.progressTrack}><View style={[s.progressFill,{width:`${Math.min(100,(index-1)/total*100)}%`,backgroundColor:C.yellow}]}/></View></View><View style={{width:44}}/></View>
     <ScrollView contentContainerStyle={s.studyScroll}><View style={s.studyStage}><Text style={s.stageText}>{CATEGORY_LABELS[word.category]} · {dayName(word.day)} · {reviewLabel(progress)}</Text></View>
       <View style={s.studyCard}>
-        <View style={s.studyCardTop}><Text style={s.tiny}>{word.part!=='VOCAB'?word.part:'ENGLISH'}</Text><Pressable accessibilityRole="button" onPress={()=>play(word.word)} style={s.audio}><Text style={s.audioText}>▶ 발음</Text></Pressable></View>
+        <View style={s.studyCardTop}><Text style={s.tiny}>{word.part!=='VOCAB'?word.part:'ENGLISH'}</Text><Pressable accessibilityRole="button" onPress={()=>void play(word.word,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 발음</Text></Pressable></View>
         <Pressable accessibilityRole={reveal?undefined:"button"} accessibilityLabel={reveal?undefined:"뜻과 예문 보기"} disabled={reveal} onPress={()=>setReveal(true)} style={[s.studyCardWord,reveal&&{minHeight:112}]}><Text adjustsFontSizeToFit numberOfLines={3} style={[s.bigWord,{fontSize:word.word.length>19?31:word.word.length>13?39:word.word.length>8?47:61}]}>{word.word}</Text>{!reveal&&<Text style={s.tapHint}>탭하여 뜻과 예문 보기 <Text style={s.categoryArrow}>↓</Text></Text>}</Pressable>
-        {reveal&&<View style={s.revealed}><Text style={s.meaning}>{word.meaningKo}</Text>{!!word.wordOriginal&&<Text style={s.qualityWarning}>원본 표기: {word.wordOriginal} · 교정 전 원문 보존</Text>}<View style={s.exampleBox}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='provided-crosslink'?'원본 예문 재활용 · 뜻 연결 검수 대기':example?.source==='editorial-draft'?'직접 작성한 예문 초안':example?.source==='project-authored'?'프로젝트 직접 작성 예문':example?.source==='generated-context'?'자동 작성 문맥 초안 · 검수 대기':'예문 출처 미확인'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" disabled={unreviewed&&!showDraft} onPress={()=>example&&play(example.en)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View>{unreviewed&&!showDraft?<View><Text style={s.qualityWarning}>이 단어에는 검수 완료된 문맥 예문이 없습니다. 잘못된 용법을 학습하지 않도록 미검수 문장은 기본적으로 가립니다.</Text><Action variant="outline" small title="검수 전 문장 보기" onPress={()=>setShowDraft(true)}/></View>:<><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}</>}{example?.source!=='provided'&&<Text style={s.qualityWarning}>{example?.source==='editorial-draft'?'직접 작성한 영문·번역 초안이며 외부 검수를 마치지 않았습니다.':example?.source==='provided-crosslink'?'다른 단어 카드에 있던 제공 예문입니다. 해당 단어 뜻과 용례가 일치하는지 확인이 필요합니다.':example?.source==='project-authored'?'프로젝트 직접 작성 예문으로, 공식 TOEIC 예문이거나 독립적인 전문 검수를 마친 자료는 아닙니다.':'자동 구성 문맥 초안입니다. 문법·뜻·자연스러움은 검수 전이며 한국어는 문장 번역이 아닌 핵심 뜻입니다.'}</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>{setSampleIndex(i=>(i+1)%word.examples.length);setShowDraft(false)}}/></View>}</View></View>}
+        {reveal&&<View style={s.revealed}><Text style={s.meaning}>{word.meaningKo}</Text>{!!word.wordOriginal&&<Text style={s.qualityWarning}>원본 표기: {word.wordOriginal} · 교정 전 원문 보존</Text>}<View style={s.exampleBox}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='provided-crosslink'?'원본 예문 재활용 · 뜻 연결 검수 대기':example?.source==='editorial-draft'?'직접 작성한 예문 초안':example?.source==='project-authored'?'프로젝트 직접 작성 예문':example?.source==='generated-context'?'자동 작성 문맥 초안 · 검수 대기':'예문 출처 미확인'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" disabled={unreviewed&&!showDraft} onPress={()=>example&&void play(example.en,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View>{unreviewed&&!showDraft?<View><Text style={s.qualityWarning}>이 단어에는 검수 완료된 문맥 예문이 없습니다. 잘못된 용법을 학습하지 않도록 미검수 문장은 기본적으로 가립니다.</Text><Action variant="outline" small title="검수 전 문장 보기" onPress={()=>setShowDraft(true)}/></View>:<><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}</>}{example?.source!=='provided'&&<Text style={s.qualityWarning}>{example?.source==='editorial-draft'?'직접 작성한 영문·번역 초안이며 외부 검수를 마치지 않았습니다.':example?.source==='provided-crosslink'?'다른 단어 카드에 있던 제공 예문입니다. 해당 단어 뜻과 용례가 일치하는지 확인이 필요합니다.':example?.source==='project-authored'?'프로젝트 직접 작성 예문으로, 공식 TOEIC 예문이거나 독립적인 전문 검수를 마친 자료는 아닙니다.':'자동 구성 문맥 초안입니다. 문법·뜻·자연스러움은 검수 전이며 한국어는 문장 번역이 아닌 핵심 뜻입니다.'}</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>{setSampleIndex(i=>(i+1)%word.examples.length);setShowDraft(false)}}/></View>}</View></View>}
+        {!!audioError&&<Text accessibilityRole="alert" style={s.qualityWarning}>{audioError}</Text>}
       </View>
     </ScrollView>
     {!readOnly&&<View style={s.answerArea}><Text style={s.answerNote}>{reveal?'다음 복습 시점을 선택해 주세요':'뜻을 확인하면 답변할 수 있어요'}</Text><View style={s.answerRow}><Pressable accessibilityRole="button" accessibilityState={{disabled:!reveal||locked}} disabled={!reveal||locked} onPress={retry} style={[s.answerButton,{borderWidth:1,borderColor:C.line,backgroundColor:C.card},(!reveal||locked)&&s.disabled]}><Text style={s.answerTitle}>다시 학습</Text><Text style={s.answerSub}>다음 {nextLabel(progress,'RELEARN')}</Text></Pressable><Pressable accessibilityRole="button" accessibilityState={{disabled:!reveal||locked}} disabled={!reveal||locked} onPress={complete} style={[s.answerButton,{backgroundColor:C.yellow},(!reveal||locked)&&s.disabled]}><Text style={s.answerTitle}>알고 있음</Text><Text style={s.answerSub}>다음 {isRetry?reviewLabel(progress):nextLabel(progress,'KNOWN')}</Text></Pressable></View></View>}
@@ -143,7 +168,7 @@ function StudyApp(){
  const persist=next=>{current.current=next;setData(next);const task=queueRef.current.catch(()=>{}).then(()=>saveData(next));queueRef.current=task;task.then(()=>setSaveError(false)).catch(()=>setSaveError(true));return task;};
  const replace=async next=>{await queueRef.current.catch(()=>{});await saveData(next);current.current=next;setData(next);setSaveError(false);};
  const reset=async()=>{await queueRef.current.catch(()=>{});await clearData();const next=emptyData();current.current=next;setData(next);setSaveError(false);};
- const back=()=>{Speech.stop();if(preview){setPreview(null);return;}if(mode==='STUDY'||mode==='SUMMARY'){setMode('LEVEL');return;}if(mode==='LEVEL'||mode==='SEARCH'||mode==='STATS'||mode==='SETTINGS'){setMode('HOME');return;}};
+ const back=()=>{void stopSpeech();if(preview){setPreview(null);return;}if(mode==='STUDY'||mode==='SUMMARY'){setMode('LEVEL');return;}if(mode==='LEVEL'||mode==='SEARCH'||mode==='STATS'||mode==='SETTINGS'){setMode('HOME');return;}};
  useEffect(()=>{if(Platform.OS!=='android')return;const sub=BackHandler.addEventListener('hardwareBackPress',()=>{if(mode==='HOME'&&!preview)return false;back();return true});return()=>sub.remove()},[mode,preview]);
  useEffect(()=>{answerLock.current=false;},[data.session?.queue?.[0],data.session?.known,data.session?.relearn,mode]);
  const navigate=destination=>{

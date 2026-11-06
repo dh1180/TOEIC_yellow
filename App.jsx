@@ -7,7 +7,7 @@ import {emptyData,newSession,answerSession,categoryStats,selectQueue,CATEGORIES,
 import {STAGES,reviewLabel,nextLabel} from './src/lib/srs';
 import {loadData,saveData,clearData} from './src/lib/storage';
 import {selectEnglishVoice} from './src/lib/speech';
-import {C,CATEGORY_COLORS,CATEGORY_DESIGN,base} from './src/styles';
+import {C,CATEGORY_COLORS,CATEGORY_SOFT,STUDY_ACCENTS,base} from './src/styles';
 
 const DAY_LIST=Array.from({length:30},(_,i)=>i+1);
 const RATE=0.85;
@@ -70,30 +70,7 @@ function Home({data,onSelect,onNavigate}){
     </View>
     {data.session&&<Card style={{borderColor:C.yellow,borderWidth:2}}><Text style={s.sectionTitle}>중단한 학습이 있어요</Text><Text style={s.body}>{CATEGORY_LABELS[data.session.category]} · {dayName(data.session.day)} · {sessionCompleted(data.session)} / {data.session.originalIds.length} 카드 진행</Text><Action title="이어 학습하기" onPress={()=>onNavigate('STUDY')}/></Card>}
     <View style={s.sectionHeading}><SectionTitle>단어장 선택</SectionTitle><Text style={s.tiny}>DAY 01–30</Text></View>
-    <View style={s.catGrid}>
-      {CATEGORIES.map(cat=>{
-        const words=WORDS_BY_CATEGORY[cat];
-        const stats=categoryStats(words,data.progress);
-        const accent=CATEGORY_COLORS[cat];
-        const {soft,badge,sample}=CATEGORY_DESIGN[cat];
-        return <Pressable key={cat} accessibilityRole="button" accessibilityLabel={`${CATEGORY_LABELS[cat]} ${words.length}개 단어`} onPress={()=>onSelect(cat)}
-          style={({pressed})=>[s.categoryCard,wide&&s.categoryCardWide,{backgroundColor:soft},pressed&&s.categoryPressed]}>
-          <View style={s.categoryTop}>
-            <Text style={[s.categoryBadge,{color:accent}]}>{badge}</Text>
-            <Text style={s.catSub}>{format(stats.total)}개</Text>
-          </View>
-          <Text adjustsFontSizeToFit numberOfLines={1} style={s.categorySample}>{sample}</Text>
-          <Text style={s.catTitle}>{CATEGORY_LABELS[cat]}</Text>
-          <View style={[s.progressTrack,s.categoryTrack]}><View style={[s.progressFill,{width:`${100*stats.studied/stats.total}%`,backgroundColor:accent}]}/></View>
-          <Text style={s.catSub}>학습 {format(stats.studied)} · 복습 {format(stats.due)}</Text>
-          <View style={[s.categoryAction,{backgroundColor:accent}]}><Text style={s.categoryActionText}>학습하기</Text><Text style={s.categoryActionText}>›</Text></View>
-        </Pressable>;
-      })}
-    </View>
-    <Card style={s.rhythmCard}>
-      <Text style={s.rhythmTitle}>복습 주기</Text>
-      <Text style={s.rhythmSteps}>30분  →  3일  →  7일  →  21일  →  장기 기억</Text>
-    </Card>
+    <View style={s.catGrid}>{CATEGORIES.map(cat=>{const words=WORDS_BY_CATEGORY[cat],v=categoryStats(words,data.progress);return <Pressable accessibilityRole="button" accessibilityLabel={`${CATEGORY_LABELS[cat]} ${words.length}개 단어`} onPress={()=>onSelect(cat)} key={cat} style={({pressed})=>[s.categoryCard,wide&&s.categoryCardWide,pressed&&{opacity:.75}]}><View style={s.categoryTop}><View style={[s.dot,{backgroundColor:CATEGORY_COLORS[cat]}]}/><Text style={s.categoryArrow}>↗</Text></View><Text style={s.catTitle}>{CATEGORY_LABELS[cat]}</Text><Text style={s.catCount}>{format(v.total)}개</Text><View style={s.progressTrack}><View style={[s.progressFill,{width:`${100*v.studied/v.total}%`,backgroundColor:CATEGORY_COLORS[cat]}]}/></View><Text style={s.catSub}>학습 {format(v.studied)} · 복습 {v.due}</Text></Pressable>})}</View>
     <SectionTitle>빠른 메뉴</SectionTitle><View style={s.shortcuts}><Action variant="outline" title="⌕ 단어 검색" onPress={()=>onNavigate('SEARCH')} style={{flex:1}}/><Action variant="outline" title="◷ 학습 통계" onPress={()=>onNavigate('STATS')} style={{flex:1}}/></View>
     <Text style={[s.footnote,{marginTop:16}]}>DAY 01~30, 기존 단어 뜻과 제공 예문을 보존했어요. 추가로 만든 학습용 문장은 출처를 구분해 표시합니다.</Text>
   </ScrollView>;
@@ -122,8 +99,8 @@ function Study({word,progress,category,day,index,total,isRetry,onAnswer,onClose,
   useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);setShowDraft(false);setAudioError('');},[word?.id,readOnly]);
   useEffect(()=>()=>{void stopSpeech();},[word?.id]);
   if(!word)return <View style={s.safe}><Header title="단어를 불러올 수 없습니다" onBack={onClose}/></View>;
-  const accent=CATEGORY_COLORS[word.category];
-  const soft=CATEGORY_DESIGN[word.category].soft;
+  const accent=STUDY_ACCENTS[word.category];
+  const soft=CATEGORY_SOFT[word.category];
   const complete=()=>{if(locked||!reveal)return;setLocked(true);onAnswer('KNOWN');};
   const retry=()=>{if(locked||!reveal)return;setLocked(true);onAnswer('RELEARN');};
   return <View style={s.safe}><View style={s.studyTop}><Pressable accessibilityRole="button" accessibilityLabel="학습 닫기" onPress={onClose} style={s.back}><Text style={s.backText}>×</Text></Pressable><View style={{flex:1,alignItems:'center'}}><Text style={s.tiny}>{readOnly?'단어 미리 보기':`${index} / ${total} · ${isRetry?'다시 학습':'오늘의 학습'}`}</Text><View style={s.progressTrack}><View style={[s.progressFill,{width:`${Math.min(100,(index-1)/total*100)}%`,backgroundColor:accent}]}/></View></View><View style={{width:44}}/></View>
@@ -238,16 +215,6 @@ const s=StyleSheet.create({
  heroStatsValue:{fontSize:21,color:C.yellow,fontWeight:'900',fontVariant:['tabular-nums']},
  heroStatsText:{fontSize:11,color:'#F0E8CB',marginTop:4},
  sectionHeading:{flexDirection:'row',justifyContent:'space-between',alignItems:'baseline'},
- categoryTop:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:4},
- categoryBadge:{backgroundColor:'#FFFFFFC9',overflow:'hidden',borderRadius:99,paddingHorizontal:9,paddingVertical:4,fontSize:10,fontWeight:'900',letterSpacing:.8},
- categorySample:{fontSize:30,fontWeight:'900',letterSpacing:-1.2,color:C.ink,marginTop:7},
- categoryTrack:{backgroundColor:'#FFFFFFBA'},
- categoryAction:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:10,paddingVertical:8,borderRadius:11,marginTop:5},
- categoryActionText:{color:'#FFFFFF',fontSize:12,fontWeight:'800'},
- categoryPressed:{opacity:.86,transform:[{scale:.99}]},
- rhythmCard:{gap:5,paddingVertical:14},
- rhythmTitle:{fontSize:12,fontWeight:'900',color:C.ink},
- rhythmSteps:{fontSize:12,lineHeight:19,color:C.muted,fontVariant:['tabular-nums']},
  studyCardLabel:{flexDirection:'row',alignItems:'center',gap:7},
  studyDot:{width:8,height:8,borderRadius:4},
  answerOnAccent:{color:'#FFFFFF'},
@@ -255,7 +222,7 @@ const s=StyleSheet.create({
  categoryCardWide:{width:'24%'},
  searchPanel:{width:'100%',maxWidth:820,alignSelf:'center',paddingHorizontal:18},
  searchResults:{width:'100%',maxWidth:820,alignSelf:'center',paddingHorizontal:18,paddingBottom:30},
- sectionTitle:{color:C.ink,fontWeight:'900',fontSize:16,marginTop:12,marginBottom:2},catGrid:{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',rowGap:12},categoryCard:{width:'48.2%',backgroundColor:C.card,padding:16,minHeight:178,borderRadius:23,gap:6},catTitle:{color:C.ink,fontWeight:'900',fontSize:14},catSub:{fontSize:11,color:C.muted},
+ sectionTitle:{color:C.ink,fontWeight:'900',fontSize:16,marginTop:12,marginBottom:2},catGrid:{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',rowGap:12},categoryCard:{width:'48.2%',backgroundColor:C.card,padding:16,minHeight:156,borderRadius:20,borderWidth:1,borderColor:C.line,gap:7,...base},dot:{width:13,height:13,borderRadius:99,marginBottom:3},catTitle:{color:C.ink,fontWeight:'900',fontSize:15},catCount:{color:C.ink,fontWeight:'900',fontSize:21},catSub:{fontSize:11,color:C.muted},
  progressTrack:{height:6,borderRadius:9,backgroundColor:'#EAE6DC',overflow:'hidden',width:'100%',marginTop:5},progressFill:{height:'100%',borderRadius:9},shortcuts:{flexDirection:'row',gap:10},
  action:{paddingHorizontal:13,minHeight:49,borderWidth:1,borderColor:'transparent',borderRadius:13,alignItems:'center',justifyContent:'center'},smallAction:{minHeight:34,paddingHorizontal:12},actionText:{fontSize:13,fontWeight:'900',textAlign:'center'},body:{color:C.ink,fontSize:13,lineHeight:22},footnote:{color:C.muted,fontSize:11,lineHeight:18},pillRow:{flexDirection:'row',gap:7,alignItems:'center',paddingVertical:5},dayPicker:{flexDirection:'row',alignItems:'center',gap:7,paddingVertical:7,paddingHorizontal:1},pill:{borderWidth:1,borderColor:C.line,backgroundColor:C.card,borderRadius:22,minHeight:36,paddingHorizontal:14,justifyContent:'center',alignItems:'center'},pillText:{fontSize:12,color:C.ink,fontWeight:'800'},
  statsRow:{flexDirection:'row',gap:8,justifyContent:'space-between',alignItems:'stretch'},stat:{flex:1,backgroundColor:C.card,borderRadius:16,paddingVertical:13,paddingHorizontal:9,alignItems:'center',gap:4},statNum:{color:C.ink,fontSize:22,fontWeight:'900'},

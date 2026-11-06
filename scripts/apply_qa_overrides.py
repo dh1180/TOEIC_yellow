@@ -17,6 +17,7 @@ MANIFEST_FILE = ROOT / "src/data/manifest.json"
 OVERRIDES_FILE = ROOT / "data/qa-editorial-overrides.json"
 QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
+    "1766527463138": ("exhaust emissions", "fuel emission"),
     "1766527462731": ("take legal action against", "take an action against"),
     "1766527462799": ("make a forecast", "make forecast"),
     "1766527462832": ("whereabouts", "whereabout"),
@@ -62,7 +63,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 3297:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 3472:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -92,6 +93,28 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527462962": ("민감한, 세심한 주의가 필요한", "섬세한, 깨지기 쉬운; 세심한 주의가 필요한"),
+        "1766527462970": ("(품위·지위 등을) 떨어뜨리다", "떨어뜨리다, 저하시키다; 품위를 손상시키다"),
+        "1766527462995": ("심야 고속", "야간 급행열차, 심야 고속편"),
+        "1766527463007": ("~을 몸에 지니다", "지니다, 표시하고 있다; 운반하다"),
+        "1766527463025": ("대부하여", "대여 중인, 빌려 온"),
+        "1766527463026": ("잔액이 부족한", "(계좌가) 잔액을 초과해 인출된, 마이너스인"),
+        "1766527463029": ("축적하다, 모으다", "(이자·혜택 등이) 쌓이다, 발생하다"),
+        "1766527463045": ("은행 자동 이체", "계좌 직접 입금, 급여 자동 입금"),
+        "1766527463051": ("피(被)신탁인, 수탁자", "수탁자"),
+        "1766527463059": ("외진, 변경의", "외곽의, 중심부에서 떨어진"),
+        "1766527463067": ("점검, 정비; 철저히 조사하다", "전면 점검·정비; 전면적으로 정비하다"),
+        "1766527463073": ("(물가를) 끌어내리다, (통화를) 수축시키다", "바람을 빼다; (물가 등을) 낮추다"),
+        "1766527463086": ("아치 길", "아치형 통로"),
+        "1766527463133": ("(자원 등의) 고갈", "고갈, 감소"),
+        "1766527463138": ("연료 배기", "배기가스, 배기가스 배출량"),
+        "1766527463140": ("방목, 목초지", "방목, 풀을 뜯는 일"),
+        "1766527463147": ("지구상의", "육상의; 지구의"),
+        "1766527463153": ("처방전을 조제 받다", "처방약을 조제받다"),
+        "1766527463158": ("전문의", "전문 분야 종사자; 의료인, 의사"),
+        "1766527463159": ("되풀이하여 반복하는", "반복되는, 되풀이되는"),
+        "1766527463161": ("별관, 부속 건물", "(건물의) 한쪽 부분, 별관"),
+        "1766527463175": ("비정상적으로 빠른 심장 박동", "심장이 빠르거나 세게 또는 불규칙하게 뛰는 느낌, 심계항진"),
         "1766527462135": ("심장마비", "심장 발작, 심근경색"),
         "1766527462153": ("백신, 예방 접종", "예방 접종"),
         "1766527462172": ("1회분 복용량", "복용량, 투여량"),
@@ -261,7 +284,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=21, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=22, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

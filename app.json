@@ -2,7 +2,7 @@
   "expo": {
     "name": "TOEIC Yellow",
     "slug": "toeic-yellow",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "backgroundColor": "#FFF9E8",
@@ -16,7 +16,7 @@
     },
     "android": {
       "package": "com.dh1180.toeicyellow",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFF0AB"

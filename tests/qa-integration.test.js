@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],3001);
+  assert.equal(counts['editorial-draft'],3176);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],175);
-  assert.equal(Object.keys(overrides).length,3297);
+  assert.equal(counts['generated-context'],0);
+  assert.equal(Object.keys(overrides).length,3472);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -508,4 +508,17 @@ test('batch 18 finishes score800 templates and score900 templates through DAY 23
     assert.deepEqual(word.examples, overrides[word.id].examples);
     assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
   }
+});
+
+test('batch 19 replaces the last 175 rule-generated examples', () => {
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch19');
+  assert.equal(edited.length, 175);
+  for (const word of edited) {
+    assert.equal(word.category, 'score900');
+    assert.ok(word.day >= 24 && word.day <= 30);
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  assert.equal(manifest.generatedContextExamples, 0);
 });

@@ -1,0 +1,81 @@
+name: Build TOEIC Yellow installation APK
+on:
+  push:
+    branches: [build/toeic-yellow-apk-7938720]
+permissions:
+  contents: read
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Prepare Android SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import concurrent.futures, hashlib, os, pathlib, shutil, subprocess, tempfile, xml.etree.ElementTree as ET
+          sdk = pathlib.Path(os.environ['ANDROID_HOME'])
+          base = 'https://dl.google.com/android/repository/'
+          repository = ET.fromstring(subprocess.check_output(['curl','-fsSL',base+'repository2-3.xml']))
+          packages = {
+            'platforms;android-37.0': 'platforms/android-37.0',
+            'build-tools;37.0.0': 'build-tools/37.0.0',
+            'ndk;27.1.12297006': 'ndk/27.1.12297006',
+            'cmake;3.22.1': 'cmake/3.22.1',
+          }
+          def install(item):
+              package, relative = item
+              dest = sdk / relative
+              if (dest / 'source.properties').exists():
+                  return
+              entry = next(p for p in repository.findall('remotePackage') if p.attrib['path'] == package)
+              archive = next(a.find('complete') for a in entry.findall('./archives/archive') if a.findtext('host-os') in (None, 'linux'))
+              with tempfile.TemporaryDirectory() as folder:
+                  root = pathlib.Path(folder)
+                  zipfile = root / 'package.zip'
+                  subprocess.run(['curl','-fsSL','--retry','3',base+archive.findtext('url'),'-o',str(zipfile)],check=True)
+                  with zipfile.open('rb') as source:
+                      assert hashlib.file_digest(source,'sha1').hexdigest() == archive.findtext('checksum'), package
+                  extracted = root / 'extracted'
+                  extracted.mkdir()
+                  subprocess.run(['unzip','-q',str(zipfile),'-d',str(extracted)],check=True)
+                  pkgroot = next(p.parent for p in extracted.glob('*/source.properties')) if not (extracted/'source.properties').exists() else extracted
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  shutil.move(str(pkgroot),str(dest))
+                  print(f'Installed {package}',flush=True)
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+              list(executor.map(install,packages.items()))
+          PY
+      - name: Build standalone APK
+        run: |
+          npm install --no-audit --no-fund --no-package-lock
+          npx expo prebuild --platform android --no-install
+          cd android
+          ./gradlew :app:assembleRelease --console=plain --max-workers=4 -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+      - name: Verify and encrypt APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=android/app/build/outputs/apk/release/app-release.apk
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose "$apk"
+          "$ANDROID_HOME/build-tools/37.0.0/aapt" dump badging "$apk" | grep -E "^package:|^sdkVersion:|^targetSdkVersion:|^native-code:"
+          mkdir delivery
+          keyfile=$(mktemp)
+          openssl rand -hex 32 > "$keyfile"
+          openssl pkeyutl -encrypt -pubin -inkey apk-delivery-public.pem -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in "$keyfile" -out delivery/key.enc
+          openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -pass "file:$keyfile" -in "$apk" -out delivery/toeic-yellow.apk.enc
+          rm -f "$keyfile"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: toeic-yellow-encrypted-apk
+          path: delivery/
+          retention-days: 1

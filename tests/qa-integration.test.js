@@ -12,10 +12,10 @@ test('combines PR2 and QA edits without dropping any Anki examples or note IDs',
   assert.equal(new Set(data.map(w=>w.id)).size,5101);
   assert.equal(counts.provided,1481);
   assert.equal(counts['project-authored'],391);
-  assert.equal(counts['editorial-draft'],1019);
+  assert.equal(counts['editorial-draft'],3176);
   assert.equal(counts['provided-crosslink'],296);
-  assert.equal(counts['generated-context'],2157);
-  assert.equal(Object.keys(overrides).length,1315);
+  assert.equal(counts['generated-context'],0);
+  assert.equal(Object.keys(overrides).length,3472);
   assert.ok(data.every(w=>w.examples.length>=1));
 });
 test('no independent or licensed status is claimed for authored and crosslinked candidates',()=>{
@@ -386,4 +386,139 @@ test('batch 10 replaces the remaining basic DAY 15 and 16 templates', () => {
       assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
     }
   }
+});
+
+test('batch 11 replaces the remaining basic DAY 17 and 18 templates', () => {
+  for (const [day, expected] of [[17, 20], [18, 22]]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch11');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+});
+
+test('batch 12 replaces the remaining basic DAY 19 and 20 templates', () => {
+  for (const [day, expected] of [[19, 18], [20, 19]]) {
+    const words = data.filter(word => word.category === 'basic' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch12');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const theme = data.find(word => word.id === '1766527459462');
+  assert.equal(theme.meaningKo, '주제, 테마');
+  assert.equal(theme.meaningKoOriginal, '주체, 테마');
+});
+
+test('batch 13 removes the remaining generated templates from the basic deck', () => {
+  const basic = data.filter(word => word.category === 'basic');
+  assert.equal(basic.length, 837);
+  assert.ok(basic.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch13');
+  assert.equal(edited.length, 193);
+  assert.deepEqual([...new Set(edited.map(word => word.day))], [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]);
+  for (const word of edited) {
+    assert.equal(word.category, 'basic');
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 14 removes the remaining 800-score DAY 6 and 7 templates', () => {
+  for (const [day, expected] of [[6, 51], [7, 58]]) {
+    const words = data.filter(word => word.category === 'score800' && word.day === day);
+    assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+    const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch14');
+    assert.equal(edited.length, expected);
+    for (const word of edited) {
+      assert.equal(word.examples[0].source, 'editorial-draft');
+      assert.deepEqual(word.examples, overrides[word.id].examples);
+      assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+    }
+  }
+  const internet = data.find(word => word.id === '1766527460582');
+  assert.equal(internet.word, 'over the Internet');
+  assert.equal(internet.wordOriginal, 'over the lnternet');
+});
+
+test('batch 15 removes the remaining 800-score DAY 8 templates', () => {
+  const words = data.filter(word => word.category === 'score800' && word.day === 8);
+  assert.ok(words.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = words.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch15');
+  assert.equal(edited.length, 49);
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 16 replaces 526 remaining score800 templates across eleven days', () => {
+  const expectedByDay = {5: 29, 9: 57, 10: 46, 11: 47, 12: 45, 13: 44, 14: 53, 15: 49, 16: 51, 17: 52, 18: 53};
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch16');
+  assert.equal(edited.length, 526);
+  for (const [day, expected] of Object.entries(expectedByDay)) {
+    const cards = data.filter(word => word.category === 'score800' && word.day === Number(day));
+    assert.ok(cards.every(word => word.examples[0].source !== 'generated-context'));
+    assert.equal(edited.filter(word => cards.includes(word)).length, expected);
+  }
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  const notice = data.find(word => word.id === '1766527461032');
+  assert.equal(notice.word, 'post a notice on');
+  assert.equal(notice.wordOriginal, 'post an notice on');
+});
+
+test('batch 17 replaces 514 remaining score800 templates across DAY 19 to 29', () => {
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch17');
+  assert.equal(edited.length, 514);
+  const days = data.filter(word => word.category === 'score800' && word.day >= 19 && word.day <= 29);
+  assert.ok(days.every(word => word.examples[0].source !== 'generated-context'));
+  for (const word of edited) {
+    assert.ok(days.includes(word), word.id);
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  const badly = data.find(word => word.id === '1766527461487');
+  assert.equal(badly.meaningKo, '심하게, 몹시; 잘못, 서투르게');
+  assert.equal(badly.meaningKoOriginal, '가까스로, 거의 ~하지 않는');
+});
+
+test('batch 18 finishes score800 templates and score900 templates through DAY 23', () => {
+  const target = data.filter(word => word.category === 'score800' || (word.category === 'score900' && word.day <= 23));
+  assert.ok(target.every(word => word.examples[0].source !== 'generated-context'));
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch18');
+  assert.equal(edited.filter(word => word.category === 'score800' && word.day === 30).length, 55);
+  assert.equal(edited.filter(word => word.category === 'score900' && word.day <= 23).length, 457);
+  assert.equal(edited.length, 512);
+  for (const word of edited) {
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+});
+
+test('batch 19 replaces the last 175 rule-generated examples', () => {
+  const edited = data.filter(word => word.examples[0].method === 'ai-authored-contextual-qa-batch19');
+  assert.equal(edited.length, 175);
+  for (const word of edited) {
+    assert.equal(word.category, 'score900');
+    assert.ok(word.day >= 24 && word.day <= 30);
+    assert.equal(word.examples[0].source, 'editorial-draft');
+    assert.deepEqual(word.examples, overrides[word.id].examples);
+    assert.match(word.examples[0].ko, /[가-힣].*[.!?]$/u);
+  }
+  assert.equal(manifest.generatedContextExamples, 0);
 });

@@ -92,7 +92,7 @@ function Level({data,category,day,onDay,onTarget,onStart,onBack,onPreview}){
   </ScrollView></View>;
 }
 
-const POS_LABELS={n:'명사',v:'동사',adj:'형용사',adv:'부사',pron:'대명사',prep:'전치사',conj:'접속사',phr:'구 표현'};
+const POS_LABELS={n:'명사',v:'동사',adj:'형용사',adv:'부사',pron:'대명사',prep:'전치사',conj:'접속사',phr:'구 표현',det:'한정사',aux:'조동사'};
 
 function WordMeaning({word}){
   return <View style={s.meaningList}>

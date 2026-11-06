@@ -17,6 +17,17 @@ MANIFEST_FILE = ROOT / "src/data/manifest.json"
 OVERRIDES_FILE = ROOT / "data/qa-editorial-overrides.json"
 QUEUE_FILE = ROOT / "data/content-review-queue.csv"
 WORD_FIXES = {
+    "1766527461496": ("claim a refund", "claim refund"),
+    "1766527461511": ("unplug the device", "unplug device"),
+    "1766527461596": ("make an adjustment", "make adjustment"),
+    "1766527461633": ("draw a conclusion", "make a conclusion"),
+    "1766527461654": ("going-away party", "going away party"),
+    "1766527461713": ("time off", "time-off"),
+    "1766527461766": ("interdepartmental", "inter department"),
+    "1766527461807": ("dock at the pier", "land at the dock"),
+    "1766527461829": ("toll fee", "toll price"),
+    "1766527461894": ("accounts payable", "account payable"),
+    "1766527461924": ("call an urgent meeting", "call on urgent meeting"),
     "1766527460774": ("discount coupon", "discounted coupon"),
     "1766527461016": ("user-friendly", "user friendly"),
     "1766527461032": ("post a notice on", "post an notice on"),
@@ -47,7 +58,7 @@ def main() -> None:
     words = json.loads(WORD_FILE.read_text(encoding="utf-8"))
     overrides = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8"))
     by_id = {w["id"]: w for w in words}
-    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 2271:
+    if len(words) != 5101 or len(by_id) != 5101 or len(overrides) != 2785:
         raise SystemExit("Unexpected corpus or QA override count")
     for wid, (correct, original) in WORD_FIXES.items():
         w = by_id[wid]
@@ -77,6 +88,27 @@ def main() -> None:
 
     # More precise Korean senses for employment, notification and loan-default usage.
     sense_corrections = {
+        "1766527461395": ("할당, 분배", "할당, 배정; 배정량"),
+        "1766527461487": ("가까스로, 거의 ~하지 않는", "심하게, 몹시; 잘못, 서투르게"),
+        "1766527461535": ("기대하던, 대망의", "예상된, 기대한"),
+        "1766527461671": ("서고, 서가", "여러 더미로 쌓인 책"),
+        "1766527461739": ("주목하다", "주의하다, 유의하다"),
+        "1766527461807": ("부두에 정박하다", "부두에 접안하다"),
+        "1766527461818": ("차고", "주차장, 주차 건물"),
+        "1766527461889": ("수용하다", "기꺼이 받아들이는, 수용적인"),
+        "1766527461894": ("지급 계정", "매입채무, 미지급금"),
+        "1766527461938": ("(액체 등이) 세는", "(물 등이) 새는"),
+        "1766527461950": ("풍부하게, 아주 분명한", "풍부하게; 아주, 더없이"),
+        "1766527461961": ("불안하여", "불안하게; 단단히 고정되지 않게"),
+        "1766527461974": ("투입", "투입, 입력; 의견, 조언"),
+        "1766527462006": ("쿵쾅거리는", "망치질, 망치로 두드리는 소리"),
+        "1766527462008": ("주거 개선용의", "주택 개보수, 주거 환경 개선"),
+        "1766527462013": ("잠자리를 준비하다", "침대를 정리하다, 이부자리를 정돈하다"),
+        "1766527462042": ("붙박이 가구", "고정 설비, 붙박이 가구"),
+        "1766527462044": ("가사", "가사; (호텔의) 객실 청소 및 정돈"),
+        "1766527462058": ("물줄기", "수역, 물이 모여 있는 곳"),
+        "1766527462073": ("해안에", "해안에서 조금 떨어진 곳에"),
+        "1766527462104": ("순전한, 얇은", "순전한; 얇고 비치는; 깎아지른"),
         "1766527460758": ("~을 내밀다, 내뿜다", "(제안·의견 등을) 제시하다; ~을 내밀다, 내뿜다"),
         "1766527460794": ("가게 앞 공간", "가게 정면, 점포 전면"),
         "1766527460901": ("화재 탐지기", "연기 감지기"),
@@ -190,7 +222,7 @@ def main() -> None:
         raise SystemExit(f"Source count mismatch: {sources}")
 
     manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
-    manifest.update(contentRevision=19, projectReviewedExamples=sources["project-authored"],
+    manifest.update(contentRevision=20, projectReviewedExamples=sources["project-authored"],
         editorialDraftExamples=sources["editorial-draft"],
         providedCrosslinkedExamples=sources["provided-crosslink"],
         generatedContextExamples=sources["generated-context"],

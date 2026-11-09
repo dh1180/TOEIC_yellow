@@ -24,6 +24,10 @@ from import_anki import clean
 ROOT = Path(__file__).resolve().parents[1]
 ZSTD_MAGIC = bytes.fromhex("28b52ffd")
 SAMPLE = "Please confirm your reservation before Friday."
+EXAMPLE_PRONUNCIATIONS = {
+    "Fax your resume and cover letter to the above number.":
+        "Fax your résumé and cover letter to the above number.",
+}
 
 
 def unpack(data):
@@ -154,7 +158,8 @@ def main():
                 jobs.append((spoken_word(word["word"]), target))
                 counts["generatedWords"] += 1
             for position, example in enumerate(word["examples"]):
-                jobs.append((example["en"], output / f"e_{wid}_{position}.mp3"))
+                text = EXAMPLE_PRONUNCIATIONS.get(example["en"], example["en"])
+                jobs.append((text, output / f"e_{wid}_{position}.mp3"))
                 counts["examples"] += 1
     jobs.append((SAMPLE, output / "sample.mp3"))
     if args.reverse:

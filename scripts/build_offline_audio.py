@@ -4,11 +4,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import io
+import os
 import json
 import re
 import sqlite3
 import tempfile
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import lameenc
@@ -88,6 +90,10 @@ def main():
     parser.add_argument("--model", required=True, type=Path)
     parser.add_argument("--model-config", type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--cuda", action="store_true")
+    parser.add_argument("--reverse", action="store_true")
     args = parser.parse_args()
     words = json.loads((ROOT / "src/data/words.json").read_text(encoding="utf8"))
     output = args.output
@@ -96,34 +102,43 @@ def main():
     notes = read_notes(args.anki)
 
     opts = onnxruntime.SessionOptions()
-    opts.intra_op_num_threads = 2
+    opts.intra_op_num_threads = 1
     opts.inter_op_num_threads = 1
+    provider = "CUDAExecutionProvider" if args.cuda else "CPUExecutionProvider"
+    if args.cuda:
+        onnxruntime.preload_dlls(directory="")
     voice = PiperVoice.load(args.model, config_path=args.model_config)
-    voice.session = onnxruntime.InferenceSession(str(args.model), sess_options=opts, providers=["CPUExecutionProvider"])
+    providers = [(provider, {"cudnn_conv_algo_search": "HEURISTIC"}), "CPUExecutionProvider"] if args.cuda else [provider]
+    voice.session = onnxruntime.InferenceSession(str(args.model), sess_options=opts, providers=providers)
+    if voice.session.get_providers()[0] != provider:
+        raise RuntimeError(f"Requested ONNX Runtime provider is unavailable: {provider}")
+
     config = SynthesisConfig(length_scale=1.02)
-    cache = {}
     counts = {"originalWords": 0, "generatedWords": 0, "examples": 0}
 
     def synthesize(text, target):
-        if text not in cache:
-            chunks = list(voice.synthesize(text, syn_config=config))
-            if not chunks:
-                raise ValueError(f"No speech for {text!r}")
-            encoder = lameenc.Encoder()
-            encoder.set_bit_rate(40)
-            encoder.set_in_sample_rate(chunks[0].sample_rate)
-            encoder.set_channels(1)
-            encoder.set_quality(3)
-            audio = bytearray()
-            for chunk in chunks:
-                audio.extend(encoder.encode(chunk.audio_int16_bytes))
-            audio.extend(encoder.flush())
-            cache[text] = audio
-        target.write_bytes(cache[text])
+        if args.resume and target.is_file() and target.stat().st_size > 512:
+            return
+        chunks = list(voice.synthesize(text, syn_config=config))
+        if not chunks:
+            raise ValueError(f"No speech for {text!r}")
+        encoder = lameenc.Encoder()
+        encoder.set_bit_rate(40)
+        encoder.set_in_sample_rate(chunks[0].sample_rate)
+        encoder.set_channels(1)
+        encoder.set_quality(3)
+        audio = bytearray()
+        for chunk in chunks:
+            audio.extend(encoder.encode(chunk.audio_int16_bytes))
+        audio.extend(encoder.flush())
+        temporary = target.with_suffix(f".{os.getpid()}.part")
+        temporary.write_bytes(audio)
+        temporary.replace(target)
 
+    jobs = []
     with zipfile.ZipFile(args.anki) as archive:
         media = original_media(archive)
-        for index, word in enumerate(words, 1):
+        for word in words:
             wid = word["id"]
             raw = notes.get(wid, "")
             match = re.search(r"\[sound:([^\]]+)\]", raw)
@@ -136,15 +151,19 @@ def main():
                 target.write_bytes(audio)
                 counts["originalWords"] += 1
             else:
-                synthesize(spoken_word(word["word"]), target)
+                jobs.append((spoken_word(word["word"]), target))
                 counts["generatedWords"] += 1
             for position, example in enumerate(word["examples"]):
-                synthesize(example["en"], output / f"e_{wid}_{position}.mp3")
+                jobs.append((example["en"], output / f"e_{wid}_{position}.mp3"))
                 counts["examples"] += 1
+    jobs.append((SAMPLE, output / "sample.mp3"))
+    if args.reverse:
+        jobs.reverse()
+    print(f"{counts['originalWords']} original word clips; preparing {len(jobs)} synthesized clips", flush=True)
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        for index, _ in enumerate(pool.map(lambda job: synthesize(*job), jobs), 1):
             if index % 200 == 0:
-                print(f"{index}/{len(words)} cards", flush=True)
-
-    synthesize(SAMPLE, output / "sample.mp3")
+                print(f"{index}/{len(jobs)} synthesized clips ready", flush=True)
     (output / "manifest.json").write_text(json.dumps(counts, indent=2) + "\n", encoding="utf8")
     print(counts, flush=True)
 

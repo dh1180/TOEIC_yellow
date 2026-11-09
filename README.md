@@ -130,3 +130,13 @@ TOEIC 800·900점 구간 DAY 1~3에서 부자연스러운 규칙 생성 문장 *
 ## 추가 QA 배치 09 (2026-11-05)
 
 기초 DAY 14에 남아 있던 규칙 기반 예문 17개를 여행·공항·관광 상황의 영어 예문과 한국어 전체 문장 번역으로 교체했습니다. 예문은 독립 전문 감수 대기 상태입니다. [콘텐츠 검수 이력](CONTENT_QA.md)에 세부 내용을 기록했습니다.
+
+## 오프라인 발음 APK
+
+개인용 Android 음성 빌드는 카드에 대응하는 MP3를 APK에 넣고 기기의 TTS 대신 재생합니다. 현재 표제어와 일치하는 Anki 음성은 원본을 사용하며, 나머지 표제어와 영어 예문은 Piper의 미국 영어 LJ Speech 음성으로 합성합니다. 예문 텍스트에는 변경이 없습니다. [LJ Speech 데이터 출처](https://keithito.com/LJ-Speech-Dataset/)
+
+1. 로컬 Python 환경에 `piper-tts`, `lameenc`, `zstandard`를 설치합니다.
+2. `python scripts/build_offline_audio.py --anki "노랭이.apkg" --model en_US-ljspeech-medium.onnx --output <로컬-음성-폴더>`를 실행합니다. 음성 모델 옆에 같은 이름의 `.onnx.json` 설정 파일을 둡니다.
+3. `TOEIC_BUNDLED_AUDIO=1` 환경 변수로 Expo Android 프로젝트를 생성한 뒤, 생성된 MP3를 `android/app/src/main/assets/pronunciation/`에 복사하고 같은 환경 변수로 APK를 빌드합니다. `manifest.json`에 단어와 예문 수가 기록됩니다.
+
+원본 APKG와 음성 파일은 Git 저장소 밖에 보관합니다. 음성을 포함하는 개인용 APK는 원본 파일을 제공한 사용자에게 전달합니다.

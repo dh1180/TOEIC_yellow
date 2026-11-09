@@ -1,7 +1,9 @@
-import React,{useEffect,useMemo,useRef,useState} from 'react';
+import React,{useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {ActivityIndicator,Alert,BackHandler,Keyboard,Platform,Pressable,ScrollView,StatusBar,StyleSheet,Text,TextInput,useWindowDimensions,View} from 'react-native';
 import {SafeAreaProvider,SafeAreaView} from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
+import {useAudioPlayer} from 'expo-audio';
+import Constants from 'expo-constants';
 import {WORDS,WORD_BY_ID,WORD_IDS,WORDS_BY_CATEGORY,MANIFEST,searchWords} from './src/data/index';
 import {emptyData,newSession,answerSession,categoryStats,selectQueue,CATEGORIES,CATEGORY_LABELS,backupJson,validateBackup,sessionVisibleIndex,sessionCompleted} from './src/lib/session';
 import {STAGES,reviewLabel,nextLabel} from './src/lib/srs';
@@ -10,6 +12,7 @@ import {meaningSenses} from './src/data/meaning-senses';
 import {DEFAULT_SPEECH,SPEECH_RATES,englishVoices,selectEnglishVoice} from './src/lib/speech';
 import {C,CATEGORY_COLORS,CATEGORY_SOFT,STUDY_ACCENTS,base} from './src/styles';
 
+const BUNDLED_AUDIO=Platform.OS==='android'&&Constants.expoConfig?.extra?.bundledAudio===true;
 const DAY_LIST=Array.from({length:30},(_,i)=>i+1);
 const format=n=>n.toLocaleString('ko-KR');
 const dayName=d=>d===null?'전체':`DAY ${String(d).padStart(2,'0')}`;
@@ -114,13 +117,13 @@ function WordMeaning({word}){
   </View>;
 }
 
-function Study({word,speech,progress,category,day,index,total,isRetry,onAnswer,onClose,readOnly=false}){
+function Study({word,onPlay,onStop,progress,category,day,index,total,isRetry,onAnswer,onClose,readOnly=false}){
   const [reveal,setReveal]=useState(false),[locked,setLocked]=useState(false),[sampleIndex,setSampleIndex]=useState(0),[showDraft,setShowDraft]=useState(false);
   const [audioError,setAudioError]=useState('');
   const example=word?.examples?.[sampleIndex]||null;
   const unreviewed=['generated-context','provided-crosslink'].includes(example?.source);
   useEffect(()=>{setReveal(false);setLocked(false);setSampleIndex(0);setShowDraft(false);setAudioError('');},[word?.id,readOnly]);
-  useEffect(()=>()=>{void stopSpeech();},[word?.id]);
+  useEffect(()=>()=>{onStop();},[word?.id,onStop]);
   if(!word)return <View style={s.safe}><Header title="단어를 불러올 수 없습니다" onBack={onClose}/></View>;
   const accent=STUDY_ACCENTS[word.category];
   const soft=CATEGORY_SOFT[word.category];
@@ -129,9 +132,9 @@ function Study({word,speech,progress,category,day,index,total,isRetry,onAnswer,o
   return <View style={s.safe}><View style={s.studyTop}><Pressable accessibilityRole="button" accessibilityLabel="학습 닫기" onPress={onClose} style={s.back}><Text style={s.backText}>×</Text></Pressable><View style={{flex:1,alignItems:'center'}}><Text style={s.tiny}>{readOnly?'단어 미리 보기':`${index} / ${total} · ${isRetry?'다시 학습':'오늘의 학습'}`}</Text><View style={s.progressTrack}><View style={[s.progressFill,{width:`${Math.min(100,(index-1)/total*100)}%`,backgroundColor:accent}]}/></View></View><View style={{width:44}}/></View>
     <ScrollView contentContainerStyle={s.studyScroll}><View style={s.studyStage}><Text style={[s.stageText,{backgroundColor:soft,color:accent}]}>{CATEGORY_LABELS[word.category]} · {dayName(word.day)} · {reviewLabel(progress)}</Text></View>
       <View style={s.studyCard}>
-        <View style={s.studyCardTop}><View style={s.studyCardLabel}><View style={[s.studyDot,{backgroundColor:accent}]}/><Text style={s.tiny}>{word.part!=='VOCAB'?word.part:'ENGLISH'}</Text></View><Pressable accessibilityRole="button" onPress={()=>void play(word.word,speech,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 발음</Text></Pressable></View>
+        <View style={s.studyCardTop}><View style={s.studyCardLabel}><View style={[s.studyDot,{backgroundColor:accent}]}/><Text style={s.tiny}>{word.part!=='VOCAB'?word.part:'ENGLISH'}</Text></View><Pressable accessibilityRole="button" onPress={()=>onPlay(`w_${word.id}`,word.word,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 발음</Text></Pressable></View>
         <Pressable accessibilityRole={reveal?undefined:"button"} accessibilityLabel={reveal?undefined:"뜻과 예문 보기"} disabled={reveal} onPress={()=>setReveal(true)} style={[s.studyCardWord,reveal&&{minHeight:112}]}><Text adjustsFontSizeToFit numberOfLines={3} style={[s.bigWord,{fontSize:word.word.length>19?31:word.word.length>13?39:word.word.length>8?47:61}]}>{word.word}</Text>{!reveal&&<Text style={s.tapHint}>탭하여 뜻과 예문 보기 <Text style={s.categoryArrow}>↓</Text></Text>}</Pressable>
-        {reveal&&<View style={s.revealed}><WordMeaning word={word}/>{!!word.wordOriginal&&<Text style={s.qualityWarning}>원본 표기: {word.wordOriginal} · 교정 전 원문 보존</Text>}<View style={[s.exampleBox,{borderLeftColor:accent}]}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='provided-crosslink'?'원본 예문 재활용 · 뜻 연결 검수 대기':example?.source==='editorial-draft'?'직접 작성한 예문 초안':example?.source==='project-authored'?'프로젝트 직접 작성 예문':example?.source==='generated-context'?'자동 작성 문맥 초안 · 검수 대기':'예문 출처 미확인'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" disabled={unreviewed&&!showDraft} onPress={()=>example&&void play(example.en,speech,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View>{unreviewed&&!showDraft?<View><Text style={s.qualityWarning}>이 단어에는 검수 완료된 문맥 예문이 없습니다. 잘못된 용법을 학습하지 않도록 미검수 문장은 기본적으로 가립니다.</Text><Action variant="outline" small title="검수 전 문장 보기" onPress={()=>setShowDraft(true)}/></View>:<><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}</>}{example?.source!=='provided'&&<Text style={s.qualityWarning}>{example?.source==='editorial-draft'?'직접 작성한 영문·번역 초안이며 외부 검수를 마치지 않았습니다.':example?.source==='provided-crosslink'?'다른 단어 카드에 있던 제공 예문입니다. 해당 단어 뜻과 용례가 일치하는지 확인이 필요합니다.':example?.source==='project-authored'?'프로젝트 직접 작성 예문으로, 공식 TOEIC 예문이거나 독립적인 전문 검수를 마친 자료는 아닙니다.':'자동 구성 문맥 초안입니다. 문법·뜻·자연스러움은 검수 전이며 한국어는 문장 번역이 아닌 핵심 뜻입니다.'}</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>{setSampleIndex(i=>(i+1)%word.examples.length);setShowDraft(false)}}/></View>}</View></View>}
+        {reveal&&<View style={s.revealed}><WordMeaning word={word}/>{!!word.wordOriginal&&<Text style={s.qualityWarning}>원본 표기: {word.wordOriginal} · 교정 전 원문 보존</Text>}<View style={[s.exampleBox,{borderLeftColor:accent}]}><View style={s.exampleHeader}><Text style={s.exampleTitle}>{example?.source==='provided'?'제공된 원본 예문':example?.source==='provided-crosslink'?'원본 예문 재활용 · 뜻 연결 검수 대기':example?.source==='editorial-draft'?'직접 작성한 예문 초안':example?.source==='project-authored'?'프로젝트 직접 작성 예문':example?.source==='generated-context'?'자동 작성 문맥 초안 · 검수 대기':'예문 출처 미확인'}</Text><Pressable accessibilityRole="button" accessibilityLabel="예문 발음 재생" disabled={unreviewed&&!showDraft} onPress={()=>example&&onPlay(`e_${word.id}_${sampleIndex}`,example.en,setAudioError)} style={s.audio}><Text style={s.audioText}>▶ 듣기</Text></Pressable></View>{unreviewed&&!showDraft?<View><Text style={s.qualityWarning}>이 단어에는 검수 완료된 문맥 예문이 없습니다. 잘못된 용법을 학습하지 않도록 미검수 문장은 기본적으로 가립니다.</Text><Action variant="outline" small title="검수 전 문장 보기" onPress={()=>setShowDraft(true)}/></View>:<><Text style={s.exampleEn}>{example?.en||'예문을 확인할 수 없습니다.'}</Text>{!!example?.ko&&<Text style={s.exampleKo}>{example.ko}</Text>}</>}{example?.source!=='provided'&&<Text style={s.qualityWarning}>{example?.source==='editorial-draft'?'직접 작성한 영문·번역 초안이며 외부 검수를 마치지 않았습니다.':example?.source==='provided-crosslink'?'다른 단어 카드에 있던 제공 예문입니다. 해당 단어 뜻과 용례가 일치하는지 확인이 필요합니다.':example?.source==='project-authored'?'프로젝트 직접 작성 예문으로, 공식 TOEIC 예문이거나 독립적인 전문 검수를 마친 자료는 아닙니다.':'자동 구성 문맥 초안입니다. 문법·뜻·자연스러움은 검수 전이며 한국어는 문장 번역이 아닌 핵심 뜻입니다.'}</Text>}{word.examples.length>1&&<View style={s.exampleButtons}><Text style={s.tiny}>예문 {sampleIndex+1}/{word.examples.length}</Text><Action title="다른 예문" small variant="outline" onPress={()=>{onStop();setAudioError('');setSampleIndex(i=>(i+1)%word.examples.length);setShowDraft(false)}}/></View>}</View></View>}
         {!!audioError&&<Text accessibilityRole="alert" style={s.qualityWarning}>{audioError}</Text>}
       </View>
     </ScrollView>
@@ -173,7 +176,7 @@ async function selectBackup(){
  const r=await Picker.getDocumentAsync({type:['application/json','text/plain'],copyToCacheDirectory:true,multiple:false});if(r.canceled)return null;
  const f=new File(r.assets[0].uri);if((r.assets[0].size??f.size)>10_000_000)throw Error('10MB 이하 파일만 가능합니다.');return f.text();
 }
-function VoiceSettings({speech,onChange,disabled}){
+function VoiceSettings({speech,onChange,onPlay,onStop,disabled}){
   const [voices,setVoices]=useState(null);
   const [expanded,setExpanded]=useState(false);
   const [error,setError]=useState('');
@@ -184,14 +187,14 @@ function VoiceSettings({speech,onChange,disabled}){
   };
   const selected=voices?.find(voice=>voice.identifier===speech.voiceId);
   const change=next=>{
-    void stopSpeech();
+    onStop();
     setError('');
     onChange(next);
   };
   return <Card>
     <SectionTitle>영어 발음</SectionTitle>
-    <Text style={s.body}>기기에 설치된 영어 음성을 골라 단어와 예문을 들어보세요.</Text>
-    <Action variant="outline" title={expanded?'음성 목록 닫기':'영어 음성 선택'} onPress={()=>expanded?setExpanded(false):open()}/>
+    <Text style={s.body}>{BUNDLED_AUDIO?'앱에 포함된 단어와 예문 음성을 인터넷 연결 없이 들을 수 있습니다.':'기기에 설치된 영어 음성을 골라 단어와 예문을 들어보세요.'}</Text>
+    {!BUNDLED_AUDIO&&<Action variant="outline" title={expanded?'음성 목록 닫기':'영어 음성 선택'} onPress={()=>expanded?setExpanded(false):open()}/>}
     {expanded&&<>
       {voices===null?<ActivityIndicator color={C.dark}/>:voices.length===0?<Text style={s.body}>{speechError}</Text>:<>
         <Pill label="자동 · 미국 영어 우선" selected={speech.voiceId===null} disabled={disabled} onPress={()=>change({...speech,voiceId:null})}/>
@@ -201,20 +204,20 @@ function VoiceSettings({speech,onChange,disabled}){
     </>}
     <Text style={s.tiny}>재생 속도</Text>
     <View style={s.pillRow}>{SPEECH_RATES.map(rate=><Pill key={rate} label={`${rate}×`} selected={speech.rate===rate} disabled={disabled} onPress={()=>change({...speech,rate})}/>)}</View>
-    <Action title="영어 음성 미리 듣기" disabled={disabled} onPress={()=>void play('Please confirm your reservation before Friday.',speech,setError)}/>
+    <Action title="영어 음성 미리 듣기" disabled={disabled} onPress={()=>onPlay('sample','Please confirm your reservation before Friday.',setError)}/>
     {!!error&&<Text accessibilityRole="alert" style={s.qualityWarning}>{error}</Text>}
   </Card>;
 }
 
-function Settings({data,speech,onSpeechChange,onBack,onReplace,onReset}){
+function Settings({data,speech,onSpeechChange,onPlay,onStop,onBack,onReplace,onReset}){
  const [busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const run=async task=>{if(busy)return;setBusy(true);setMessage('');try{await task()}catch(e){setMessage(e instanceof Error?e.message:'처리하지 못했습니다.')}finally{setBusy(false)}};
  const confirm=(title,body,yes)=>{if(Platform.OS==='web'){if(window.confirm(`${title}\n${body}`))void run(yes);return;}Alert.alert(title,body,[{text:'취소',style:'cancel'},{text:'확인',style:'destructive',onPress:()=>void run(yes)}]);};
  return <View style={s.safe}><Header title="설정" subtitle="학습 기록과 자료 정보" onBack={onBack}/><ScrollView contentContainerStyle={s.page}>{busy&&<ActivityIndicator size="large" color={C.dark}/ >}{!!message&&<Card><Text accessibilityRole="alert" style={s.body}>{message}</Text></Card>}
  <Card><SectionTitle>한 번에 학습할 단어</SectionTitle><Text style={s.body}>현재 {data.target}개 · 단어장 화면에서 10/20/30개로 변경할 수 있습니다.</Text></Card>
- <VoiceSettings speech={speech} onChange={next=>void run(()=>onSpeechChange(next))} disabled={busy}/>
+ <VoiceSettings speech={speech} onPlay={onPlay} onStop={onStop} onChange={next=>void run(()=>onSpeechChange(next))} disabled={busy}/>
  <Card><SectionTitle>백업 및 복구</SectionTitle><Text style={s.body}>학습 상태는 기기에만 저장되며 서버로 전송되지 않습니다. 기기 교체나 앱 삭제 전 JSON 백업을 내보내 주세요.</Text><Action variant="outline" title="학습 기록 백업 파일 내보내기" onPress={()=>void run(async()=>{await downloadBackup(data);setMessage('파일 공유 또는 다운로드를 실행했습니다. 저장 여부를 확인하세요.')})} disabled={busy}/><Action variant="outline" title="백업 파일 불러오기" disabled={busy} onPress={()=>void run(async()=>{const raw=await selectBackup();if(raw===null)return;const next=validateBackup(raw,WORD_IDS,WORD_BY_ID);if(Platform.OS==='web'){if(window.confirm('기존 기록 위에 백업을 복원할까요?')){await onReplace(next);setMessage('백업을 복원했습니다.')}}else{Alert.alert('기존 기록 덮어쓰기','백업 데이터를 현재 기록 위에 복원할까요?',[{text:'취소',style:'cancel'},{text:'복원',onPress:()=>void run(async()=>{await onReplace(next);setMessage('백업을 복원했습니다.')})}])}})}/><Action variant="danger" title="학습 기록 초기화" disabled={busy} onPress={()=>confirm('학습 기록 초기화','기기에 저장된 학습 이력이 삭제됩니다. 백업 후 진행해 주세요.',async()=>{await onReset();setMessage('학습 기록을 초기화했습니다.')})}/></Card>
- <Card><SectionTitle>단어 및 예문 출처</SectionTitle><Text style={s.body}>사용자가 제공한 두 개의 Anki 덱에서 어휘 {format(MANIFEST.wordCount)}개와 예문 카드 {format(MANIFEST.exampleCardCount)}개를 추출했습니다. 중복 의미를 가진 원본 항목은 통합하지 않았습니다.</Text><Text style={s.body}>원본 예문이 있는 단어 {format(MANIFEST.providedExampleWords)}개. 그 외 {format(MANIFEST.authoredPromptWords)}개 중 {format((MANIFEST.projectReviewedExamples||0)+(MANIFEST.editorialDraftExamples||0))}개는 프로젝트 작성 예문, {format(MANIFEST.providedCrosslinkedExamples||0)}개는 다른 원본 카드의 예문을 재연결한 후보, {format(MANIFEST.generatedContextExamples||0)}개의 규칙 기반 예문이 남아 있습니다. 재연결 후보는 기본으로 숨깁니다. 예문은 독립 언어 감수 대기 상태입니다.</Text><Text style={s.body}>발음은 기기의 영어 TTS를 사용하며 기기 및 음성 엔진 설정에 따라 품질이 달라집니다.</Text><Text style={s.body}>저작권 및 사용 권한은 원본 Anki 데이터 제공자와 별도로 확인이 필요합니다. 원본 음성 MP3는 앱에 재배포하지 않았습니다.</Text></Card>
+ <Card><SectionTitle>단어 및 예문 출처</SectionTitle><Text style={s.body}>사용자가 제공한 두 개의 Anki 덱에서 어휘 {format(MANIFEST.wordCount)}개와 예문 카드 {format(MANIFEST.exampleCardCount)}개를 추출했습니다. 중복 의미를 가진 원본 항목은 통합하지 않았습니다.</Text><Text style={s.body}>원본 예문이 있는 단어 {format(MANIFEST.providedExampleWords)}개. 그 외 {format(MANIFEST.authoredPromptWords)}개 중 {format((MANIFEST.projectReviewedExamples||0)+(MANIFEST.editorialDraftExamples||0))}개는 프로젝트 작성 예문, {format(MANIFEST.providedCrosslinkedExamples||0)}개는 다른 원본 카드의 예문을 재연결한 후보, {format(MANIFEST.generatedContextExamples||0)}개의 규칙 기반 예문이 남아 있습니다. 재연결 후보는 기본으로 숨깁니다. 예문은 독립 언어 감수 대기 상태입니다.</Text><Text style={s.body}>{BUNDLED_AUDIO?'단어 발음은 제공된 Anki 음성을 우선 사용하고, 예문과 새 표제어는 미국 영어 음성으로 미리 합성했습니다.':'이 버전은 기기의 영어 TTS를 사용합니다.'}</Text><Text style={s.body}>저작권 및 사용 권한은 원본 Anki 데이터 제공자와 별도로 확인이 필요합니다. {BUNDLED_AUDIO?'이 설치 파일은 제공받은 자료를 바탕으로 만든 개인용 빌드입니다.':'이 버전에는 원본 음성 MP3가 포함되어 있지 않습니다.'}</Text></Card>
  <Card><SectionTitle>개인정보</SectionTitle><Text style={s.body}>회원가입과 별도 서버가 없습니다. 학습 기록은 AsyncStorage에 보관하고, 외부 백업 파일은 사용자가 직접 관리합니다. 광고 및 분석 SDK를 사용하지 않습니다.</Text></Card>
  </ScrollView></View>;
 }
@@ -222,6 +225,23 @@ function Settings({data,speech,onSpeechChange,onBack,onReplace,onReset}){
 function StudyApp(){
  const [data,setData]=useState(emptyData),[ready,setReady]=useState(false),[loadError,setLoadError]=useState(false),[saveError,setSaveError]=useState(false),[mode,setMode]=useState('HOME'),[category,setCategory]=useState('frequent'),[day,setDay]=useState(null),[preview,setPreview]=useState(null),[result,setResult]=useState({total:0,known:0,relearn:0,longTermAdded:0});
  const [speech,setSpeech]=useState(DEFAULT_SPEECH);
+ const player=useAudioPlayer(null);
+ const stopAudio=useCallback(()=>{
+  if(BUNDLED_AUDIO)player.pause();
+  else void stopSpeech();
+ },[player]);
+ const playAudio=(clip,text,setError)=>{
+  if(!BUNDLED_AUDIO){void play(text,speech,setError);return;}
+  setError('');
+  try {
+   player.pause();
+   player.replace({uri:`asset:///pronunciation/${clip}.mp3`});
+   player.setPlaybackRate(speech.rate,'high');
+   player.play();
+  } catch {
+   setError('앱에 포함된 음성을 재생하지 못했습니다.');
+  }
+ };
  const speechChanged=useRef(false);
  useEffect(()=>{void loadSpeechSettings().then(saved=>{if(!speechChanged.current)setSpeech(saved);}).catch(()=>{});},[]);
  const changeSpeech=async next=>{await saveSpeechSettings(next);speechChanged.current=true;setSpeech(next);};
@@ -231,7 +251,7 @@ function StudyApp(){
  const persist=next=>{current.current=next;setData(next);const task=queueRef.current.catch(()=>{}).then(()=>saveData(next));queueRef.current=task;task.then(()=>setSaveError(false)).catch(()=>setSaveError(true));return task;};
  const replace=async next=>{await queueRef.current.catch(()=>{});await saveData(next);current.current=next;setData(next);setSaveError(false);};
  const reset=async()=>{await queueRef.current.catch(()=>{});await clearData();const next=emptyData();current.current=next;setData(next);setSaveError(false);};
- const back=()=>{void stopSpeech();if(preview){setPreview(null);return;}if(mode==='STUDY'||mode==='SUMMARY'){setMode('LEVEL');return;}if(mode==='LEVEL'||mode==='SEARCH'||mode==='STATS'||mode==='SETTINGS'){setMode('HOME');return;}};
+ const back=()=>{stopAudio();if(preview){setPreview(null);return;}if(mode==='STUDY'||mode==='SUMMARY'){setMode('LEVEL');return;}if(mode==='LEVEL'||mode==='SEARCH'||mode==='STATS'||mode==='SETTINGS'){setMode('HOME');return;}};
  useEffect(()=>{if(Platform.OS!=='android')return;const sub=BackHandler.addEventListener('hardwareBackPress',()=>{if(mode==='HOME'&&!preview)return false;back();return true});return()=>sub.remove()},[mode,preview]);
  useEffect(()=>{answerLock.current=false;},[data.session?.queue?.[0],data.session?.known,data.session?.relearn,mode]);
  const navigate=destination=>{
@@ -248,15 +268,15 @@ function StudyApp(){
  if(!ready)return <SafeAreaView style={s.loading}>{loadError?<><Text accessibilityRole="alert" style={s.body}>저장된 학습 기록을 읽지 못했습니다. 데이터를 초기화하지 않고 보존합니다.</Text><Action title="다시 불러오기" onPress={()=>void load()}/><Action variant="outline" title="설정에서 백업 복구" onPress={()=>{setReady(true);setMode('SETTINGS')}}/></>:<ActivityIndicator size="large" color={C.dark}/>}</SafeAreaView>;
  const session=data.session, word=preview|| (session?WORD_BY_ID.get(session.queue[0]):null);
  return <SafeAreaView style={s.root}><StatusBar barStyle="dark-content" backgroundColor={C.bg}/>{saveError&&<View style={s.saveBanner}><Text style={s.body}>기기 저장에 실패했습니다. 앱을 종료하지 마세요.</Text><Action title="저장 재시도" variant="outline" small onPress={()=>void persist(current.current)}/></View>}
- {preview&&<Study speech={speech} word={preview} progress={data.progress[preview.id]} category={preview.category} day={preview.day} index={1} total={1} readOnly onClose={()=>setPreview(null)}/>}
+ {preview&&<Study onPlay={playAudio} onStop={stopAudio} word={preview} progress={data.progress[preview.id]} category={preview.category} day={preview.day} index={1} total={1} readOnly onClose={()=>setPreview(null)}/>}
  {!preview&&mode==='HOME'&&<Home data={data} onSelect={choose} onNavigate={navigate}/>}
  {!preview&&mode==='LEVEL'&&<Level data={data} category={category} day={day} onDay={setDay} onTarget={target=>void persist({...current.current,target})} onStart={begin} onBack={back} onPreview={openWord}/>}
- {!preview&&mode==='STUDY'&&session&&word&&<Study speech={speech} key={`${word.id}:${session.known+session.relearn}`} word={word} progress={data.progress[word.id]} category={session.category} day={session.day} index={sessionVisibleIndex(session)} total={session.originalIds.length} isRetry={session.retryIds.includes(word.id)} onAnswer={answer} onClose={back}/>}
+ {!preview&&mode==='STUDY'&&session&&word&&<Study onPlay={playAudio} onStop={stopAudio} key={`${word.id}:${session.known+session.relearn}`} word={word} progress={data.progress[word.id]} category={session.category} day={session.day} index={sessionVisibleIndex(session)} total={session.originalIds.length} isRetry={session.retryIds.includes(word.id)} onAnswer={answer} onClose={back}/>}
  {!preview&&mode==='STUDY'&&!session&&<Home data={data} onSelect={choose} onNavigate={navigate}/>}
  {!preview&&mode==='SUMMARY'&&<Summary result={result} onDone={()=>setMode('LEVEL')}/>}
  {mode==='SEARCH'&&<View style={[s.safe,preview&&s.hidden]}><Search onBack={back} onPreview={openWord}/></View>}
  {!preview&&mode==='STATS'&&<Stats progress={data.progress} onBack={back}/>}
- {!preview&&mode==='SETTINGS'&&<Settings data={data} speech={speech} onSpeechChange={changeSpeech} onBack={back} onReplace={replace} onReset={reset}/>}
+ {!preview&&mode==='SETTINGS'&&<Settings data={data} speech={speech} onPlay={playAudio} onStop={stopAudio} onSpeechChange={changeSpeech} onBack={back} onReplace={replace} onReset={reset}/>}
  </SafeAreaView>;
 }
 export default function App(){return <SafeAreaProvider><StudyApp/></SafeAreaProvider>}

@@ -2,7 +2,7 @@
   "expo": {
     "name": "TOEIC Yellow",
     "slug": "toeic-yellow",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "backgroundColor": "#FFF9E8",
@@ -16,7 +16,7 @@
     },
     "android": {
       "package": "com.dh1180.toeicyellow",
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFF0AB"
@@ -34,7 +34,15 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-audio",
+        {
+          "recordAudioAndroid": false,
+          "microphonePermission": false,
+          "enableBackgroundPlayback": false
+        }
+      ]
     ]
   }
 }
